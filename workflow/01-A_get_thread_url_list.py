@@ -20,10 +20,10 @@ SITEMAPS = [
   'sitemap-1.xml',
   'sitemap-2.xml' ]
 
-URL_PREFIX = 'https://kiwifarms.net/'
+URL_PREFIX = 'https://kiwifarms.st/'
 
-THREAD_PATTERN = 'https://kiwifarms.net/threads/'
-MEMBER_PATTERN = 'https://kiwifarms.net/members/'
+THREAD_PATTERN = 'https://kiwifarms.st/threads/'
+MEMBER_PATTERN = 'https://kiwifarms.st/members/'
 
 THREAD_LIST_FILENAME = 'thread_url_list.txt'
 MEMBER_LIST_FILENAME = 'member_url_list.txt'

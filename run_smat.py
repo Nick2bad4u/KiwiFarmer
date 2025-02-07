@@ -17,10 +17,10 @@ import kiwifarmer
 ###############################################################################
 
 # Master sitemap for KiwiFarms
-SITEMAP_URL = 'https://kiwifarms.net/sitemap.xml'
+SITEMAP_URL = 'https://kiwifarms.st/sitemap.xml'
 
 # Pattern for KiwiFarms thread URLs
-THREAD_PATTERN = 'https://kiwifarms.net/threads/'
+THREAD_PATTERN = 'https://kiwifarms.st/threads/'
 
 # Redis instance host
 REDIS_HOST = 'localhost'
@@ -30,7 +30,7 @@ REDIS_PORT = 6379
 REDIS_DB = 1
 
 # List of hosts for Elasticsearch instance
-ES_HOSTS = [ { 'host' : 'localhost','port' : 9200 }, ]
+ES_HOSTS = [ { 'host' : 'localhost','port' : 9200, 'scheme' : 'http' }, ]
 # Name of Elasticsearch index to store data in
 ES_INDEX = 'kf_posts'
 
@@ -46,7 +46,7 @@ def get_page_url( thread_unique, page ):
   KiwiFarms URL.
   """
 
-  return f'https://kiwifarms.net/threads/{thread_unique}/page-{page}'
+  return f'https://kiwifarms.st/threads/{thread_unique}/page-{page}'
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 

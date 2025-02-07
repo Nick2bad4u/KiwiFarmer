@@ -40,7 +40,7 @@ for file in files:
 
   last_page = functions.get_thread_last_page( thread_page = soup )
 
-  pages = [ 'https://kiwifarms.net/threads/' + file[:-5] + f'/page-{i}/' for i in range( 1, last_page + 1 ) ]
+  pages = [ 'https://kiwifarms.st/threads/' + file[:-5] + f'/page-{i}/' for i in range( 1, last_page + 1 ) ]
 
   all_pages.extend( pages )
 

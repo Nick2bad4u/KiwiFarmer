@@ -22,7 +22,7 @@ THRESHOLD_KB = 15
 
 ###############################################################################
 
-URL_BASE = 'https://kiwifarms.net/members/'
+URL_BASE = 'https://kiwifarms.st/members/'
 
 def filename_to_url( filename ):
   return URL_BASE + '/'.join( filename.split( '.' )[ 0 ].split( '_' ) )

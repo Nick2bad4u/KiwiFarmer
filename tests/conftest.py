@@ -14,11 +14,11 @@ from kiwifarmer import functions
 
 ###############################################################################
 
-THREAD_URL = 'https://kiwifarms.net/threads/satanic-vampire-neo-nazis-atomwaffen-division-siegeculture.38120/'
-REACTION_URL = 'https://kiwifarms.net/posts/2924919/reactions?reaction_id=0&list_only=1&page=1'
-USER_URL = 'https://kiwifarms.net/members/magnum-dong.9983/'
-USER_ABOUT_URL = 'https://kiwifarms.net/members/magnum-dong.9983/about'
-USER_FOLLOWING_URL = 'https://kiwifarms.net/members/234/following/page-1'
+THREAD_URL = 'https://kiwifarms.st/threads/satanic-vampire-neo-nazis-atomwaffen-division-siegeculture.38120/'
+REACTION_URL = 'https://kiwifarms.st/posts/2924919/reactions?reaction_id=0&list_only=1&page=1'
+USER_URL = 'https://kiwifarms.st/members/magnum-dong.9983/'
+USER_ABOUT_URL = 'https://kiwifarms.st/members/magnum-dong.9983/about'
+USER_FOLLOWING_URL = 'https://kiwifarms.st/members/234/following/page-1'
 
 ###############################################################################
 

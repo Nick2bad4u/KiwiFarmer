@@ -24,7 +24,7 @@ SEMAPHORE = 20
 
 THRESHOLD_KB = 15
 
-URL_PATTERN = 'https://kiwifarms.net/posts/{}/reactions?reaction_id=0&list_only=1&page={}'
+URL_PATTERN = 'https://kiwifarms.st/posts/{}/reactions?reaction_id=0&list_only=1&page={}'
 
 COMMAND = 'SELECT * FROM reactions'
 

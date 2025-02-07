@@ -22,7 +22,7 @@ def get_thread_id( thread_url ):
   ----------
   thread_url : str
     URL of thread page
-    e.g. ``'https://kiwifarms.net/threads/satanic-vampire-neo-nazis-atomwaffen-division-siegeculture.38120/'``
+    e.g. ``'https://kiwifarms.st/threads/satanic-vampire-neo-nazis-atomwaffen-division-siegeculture.38120/'``
 
   Returns
   -------
@@ -223,7 +223,7 @@ def get_page_thread_id( page_url ):
   ----------
   page_url : str
     URL of thread page
-    e.g. ``'https://kiwifarms.net/threads/satanic-vampire-neo-nazis-atomwaffen-division-siegeculture.38120/page-2/'``
+    e.g. ``'https://kiwifarms.st/threads/satanic-vampire-neo-nazis-atomwaffen-division-siegeculture.38120/page-2/'``
 
   Returns
   -------
@@ -394,13 +394,13 @@ def get_post_url( post ):
   -------
   url
     URL of post
-    e.g. ``'https://kiwifarms.net/threads/john-cameron-denton-atomwaffen-division-siegeculture.38120/post-2924919'``
+    e.g. ``'https://kiwifarms.st/threads/john-cameron-denton-atomwaffen-division-siegeculture.38120/post-2924919'``
 
   """
 
   url = post.find( 'a', { 'rel' : 'nofollow' } )[ 'href' ]
 
-  url = 'https://kiwifarms.net' + url
+  url = 'https://kiwifarms.st' + url
 
   return url
 
@@ -790,7 +790,7 @@ def get_user_image( user_page ):
   -------
   str
     Link of user's profile image
-    e.g. ``'https://no-cookie.kiwifarms.net/data/avatars/o/0/1.jpg?1578406498'``
+    e.g. ``'https://no-cookie.kiwifarms.st/data/avatars/o/0/1.jpg?1578406498'``
 
   """
 

@@ -123,14 +123,14 @@ for i in range( ndf.shape[ 0 ] ):
 
   for j in range( 1, row[ 'followers_pages' ] + 1 ):
 
-    url = f'https://kiwifarms.net/members/{member_id}/followers/page-{j}'
+    url = f'https://kiwifarms.st/members/{member_id}/followers/page-{j}'
 
     url_list.append( url )
 
   for j in range( 1, row[ 'following_pages' ] + 1 ):
 
     page_num = j
-    url = f'https://kiwifarms.net/members/{member_id}/following/page-{j}'
+    url = f'https://kiwifarms.st/members/{member_id}/following/page-{j}'
 
     url_list.append( url )
 

@@ -24,11 +24,11 @@ from kiwifarmer import (
 
 ###############################################################################
 
-PAGE_URL = 'https://kiwifarms.net/threads/john-cameron-denton-atomwaffen-division-siegeculture.38120/page-1/'
+PAGE_URL = 'https://kiwifarms.st/threads/john-cameron-denton-atomwaffen-division-siegeculture.38120/page-1/'
 
 PAGE_FILENAME = 'john-cameron-denton-atomwaffen-division-siegeculture.38120_page-1.html'
 
-REACTION_URL = 'https://kiwifarms.net/posts/1234/reactions?reaction_id=0&list_only=1&page=1'
+REACTION_URL = 'https://kiwifarms.st/posts/1234/reactions?reaction_id=0&list_only=1&page=1'
 
 REACTION_FILENAME = '1234_page-1.html'
 

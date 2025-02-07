@@ -21,7 +21,7 @@ def page_url_to_filename( url ):
   ----------
   url : str
     URL of a Kiwifarms forum page
-    e.g. ``'https://kiwifarms.net/threads/john-cameron-denton-atomwaffen-division-siegeculture.38120/page-1/'``
+    e.g. ``'https://kiwifarms.st/threads/john-cameron-denton-atomwaffen-division-siegeculture.38120/page-1/'``
 
   Returns
   -------
@@ -49,11 +49,11 @@ def page_filename_to_url( filename ):
   Returns
   -------
   str
-    e.g. ``'https://kiwifarms.net/threads/john-cameron-denton-atomwaffen-division-siegeculture.38120/page-1/'``
+    e.g. ``'https://kiwifarms.st/threads/john-cameron-denton-atomwaffen-division-siegeculture.38120/page-1/'``
 
   """
 
-  url = 'https://kiwifarms.net/threads/' + filename[:-5].replace('_page','/page') + '/'
+  url = 'https://kiwifarms.st/threads/' + filename[:-5].replace('_page','/page') + '/'
 
   return url
 
@@ -67,7 +67,7 @@ def reaction_url_to_filename( url ):
   ----------
   url : str
     URL of a Kiwifarms forum post reaction list
-    e.g. ``'https://kiwifarms.net/posts/1234/reactions?reaction_id=0&list_only=1&page=1'``
+    e.g. ``'https://kiwifarms.st/posts/1234/reactions?reaction_id=0&list_only=1&page=1'``
 
   Returns
   -------
@@ -100,7 +100,7 @@ def reaction_filename_to_url( filename ):
   Returns
   -------
   str
-    e.g. ``'https://kiwifarms.net/posts/1234/reactions?reaction_id=0&list_only=1&page=1'``
+    e.g. ``'https://kiwifarms.st/posts/1234/reactions?reaction_id=0&list_only=1&page=1'``
 
   """
 
@@ -109,7 +109,7 @@ def reaction_filename_to_url( filename ):
   post_id = s[ 0 ]
   page = s[ -1 ][ 5 : -5 ]
 
-  url = f'https://kiwifarms.net/posts/{post_id}/reactions?reaction_id=0&list_only=1&page={page}'
+  url = f'https://kiwifarms.st/posts/{post_id}/reactions?reaction_id=0&list_only=1&page={page}'
 
   return url
 

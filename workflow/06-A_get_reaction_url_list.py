@@ -40,7 +40,7 @@ if __name__ == '__main__':
     sql = COMMAND,
     con = cnx )
 
-  to_url = lambda s : f'https://kiwifarms.net/posts/{s}/reactions?reaction_id=0&list_only=1&page=1'
+  to_url = lambda s : f'https://kiwifarms.st/posts/{s}/reactions?reaction_id=0&list_only=1&page=1'
   url_list = df[ 'post_id' ].apply( to_url )
 
   url_list.to_csv( OUTPUT_CSV, header = False, index = False )

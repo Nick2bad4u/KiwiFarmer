@@ -16,7 +16,7 @@ from bs4 import BeautifulSoup
 
 OUTPUT_DIR = '../../data_20210224/downloaded_members'
 
-LOGIN_URL = 'https://kiwifarms.net/login/'
+LOGIN_URL = 'https://kiwifarms.st/login/'
 
 URL_LIST_FILE = '../../data_20210224/member_url_list.txt'
 

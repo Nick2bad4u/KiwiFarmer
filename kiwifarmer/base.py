@@ -22,7 +22,7 @@ class Thread:
   ----------
   thread_url : str
     URL of thread page
-    e.g. ``'https://kiwifarms.net/threads/satanic-vampire-neo-nazis-atomwaffen-division-siegeculture.38120/'``
+    e.g. ``'https://kiwifarms.st/threads/satanic-vampire-neo-nazis-atomwaffen-division-siegeculture.38120/'``
 
   """
 
@@ -80,7 +80,7 @@ class Page:
   ----------
   page_url : str
     URL of a single page in a KiwiFarms thread
-    e.g. ``'https://kiwifarms.net/threads/satanic-vampire-neo-nazis-atomwaffen-division-siegeculture.38120/page-2/'``
+    e.g. ``'https://kiwifarms.st/threads/satanic-vampire-neo-nazis-atomwaffen-division-siegeculture.38120/page-2/'``
   """
 
   #---------------------------------------------------------------------------#
