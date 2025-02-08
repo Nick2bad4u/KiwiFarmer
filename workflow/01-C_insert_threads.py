@@ -6,6 +6,7 @@
 ###############################################################################
 
 import os
+import logging
 
 from bs4 import BeautifulSoup
 import mysql.connector
@@ -23,75 +24,90 @@ DATABASE = 'kiwifarms_20210224'
 
 ###############################################################################
 
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger()
+
 if __name__ == '__main__':
 
-  # Create database (you only need to do this once)
-  #---------------------------------------------------------------------------#
+    # Create database (you only need to do this once)
+    #---------------------------------------------------------------------------#
 
-  cnx = mysql.connector.connect(
-    user = os.getenv( 'KIWIFARMER_USER'),
-    passwd = os.getenv( 'KIWIFARMER_PASSWORD' ),
-    host = '127.0.0.1',
-    charset = 'utf8mb4',
-    collation = 'utf8mb4_bin',
-    use_unicode = True  )
+    cnx = mysql.connector.connect(
+        user=os.getenv('KIWIFARMER_USER'),
+        passwd=os.getenv('KIWIFARMER_PASSWORD'),
+        host='127.0.0.1',
+        charset='utf8mb4',
+        collation='utf8mb4_bin',
+        use_unicode=True
+    )
 
-  cursor = cnx.cursor()
-  cursor.execute(
-    f'CREATE DATABASE {DATABASE} character set utf8mb4 collate utf8mb4_bin' )
-
-  cnx.commit()
-
-  cursor.close()
-  cnx.close()
-
-  # Create tables in database (you only need to do this once)
-  #---------------------------------------------------------------------------#
-
-  cnx = mysql.connector.connect(
-    user = os.getenv( 'KIWIFARMER_USER'),
-    password = os.getenv( 'KIWIFARMER_PASSWORD' ),
-    host = '127.0.0.1',
-    database = DATABASE,
-    charset = 'utf8mb4',
-    collation = 'utf8mb4_bin',
-    use_unicode = True )
-
-  cursor = cnx.cursor()
-
-  for table_name in templates.TABLES.keys( ):
-    table_description = templates.TABLES[table_name]
+    cursor = cnx.cursor()
     try:
-      print("Creating table {}: ".format(table_name), end='')
-      cursor.execute(table_description)
+        logger.info(f'Creating database {DATABASE}')
+        cursor.execute(f'CREATE DATABASE {DATABASE} character set utf8mb4 collate utf8mb4_bin')
+        cnx.commit()
+        logger.info(f'Database {DATABASE} created successfully')
     except mysql.connector.Error as err:
-      if err.errno == errorcode.ER_TABLE_EXISTS_ERROR:
-        print("already exists.")
-      else:
-        print(err.msg)
-    else:
-      print("OK")
+        if err.errno == errorcode.ER_DB_CREATE_EXISTS:
+            logger.info(f'Database {DATABASE} already exists.')
+        else:
+            logger.error(f'Error creating database: {err.msg}')
+    finally:
+        cursor.close()
+        cnx.close()
 
-  # Process HTML files of threads, insert fields into `threads` table
-  #---------------------------------------------------------------------------#
+    # Create tables in database (you only need to do this once)
+    #---------------------------------------------------------------------------#
 
-  threads = os.listdir( THREAD_DIR )
-  N_threads = len( threads )
+    cnx = mysql.connector.connect(
+        user=os.getenv('KIWIFARMER_USER'),
+        password=os.getenv('KIWIFARMER_PASSWORD'),
+        host='127.0.0.1',
+        database=DATABASE,
+        charset='utf8mb4',
+        collation='utf8mb4_bin',
+        use_unicode=True
+    )
 
-  for i, thread_file in enumerate( threads[ START: ] ):
+    cursor = cnx.cursor()
 
-    print( f'[ {i + START} / {N_threads} ]', thread_file )
+    for table_name in templates.TABLES.keys():
+        table_description = templates.TABLES[table_name]
+        try:
+            logger.info(f'Creating table {table_name}')
+            cursor.execute(table_description)
+            logger.info(f'Table {table_name} created successfully')
+        except mysql.connector.Error as err:
+            if err.errno == errorcode.ER_TABLE_EXISTS_ERROR:
+                logger.info(f'Table {table_name} already exists.')
+            else:
+                logger.error(f'Error creating table {table_name}: {err.msg}')
 
-    with open( os.path.join( THREAD_DIR, thread_file ), 'r' ) as f:
+    # Process HTML files of threads, insert fields into `threads` table
+    #---------------------------------------------------------------------------#
 
-      thread_soup = BeautifulSoup( f.read( ), 'lxml' )
+    threads = os.listdir(THREAD_DIR)
+    N_threads = len(threads)
 
-    thread = base.Thread( thread_page = thread_soup )
+    for i, thread_file in enumerate(threads[START:]):
+        logger.info(f'[ {i + START} / {N_threads} ] Processing {thread_file}')
 
-    cursor.execute(templates.ADD_THREAD, thread.thread_insertion)
+        with open(os.path.join(THREAD_DIR, thread_file), 'r') as f:
+            thread_soup = BeautifulSoup(f.read(), 'lxml')
 
-  cnx.commit()
-  cursor.close()
-  cnx.close()
+        thread = base.Thread(thread_page=thread_soup)
+
+        try:
+            cursor.execute(templates.ADD_THREAD, thread.thread_insertion)
+            logger.info(f'Successfully inserted {thread_file} into database')
+        except mysql.connector.Error as err:
+            logger.error(f'Error inserting {thread_file} into database: {err.msg}')
+
+    cnx.commit()
+    cursor.close()
+    cnx.close()
+
+    logger.info('Script finished')
 
 ###############################################################################
