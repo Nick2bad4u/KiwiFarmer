@@ -2,6 +2,7 @@ import pytest
 import requests
 from bs4 import BeautifulSoup
 
+
 def get_thread_url_list(board_url, max_pages=2):
     """
     Retrieves a list of thread URLs from a given board URL, up to a maximum number of pages.
@@ -37,9 +38,11 @@ def get_thread_url_list(board_url, max_pages=2):
 
     return thread_urls
 
+
 # Example usage (you can uncomment this for testing):
 if __name__ == '__main__':
-    board_url = "https://kiwifarms.net/forums/internet-artifacts.21/"  # Replace with the actual board URL
+    # Replace with the actual board URL
+    board_url = "https://kiwifarms.net/forums/internet-artifacts.21/"
     thread_urls = get_thread_url_list(board_url)
     for url in thread_urls:
         print(url)
