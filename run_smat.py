@@ -9,8 +9,8 @@ from datetime import datetime as dt
 from bs4 import BeautifulSoup
 import requests
 
-import redis
-import elasticsearch
+import redis # type: ignore
+import elasticsearch # type: ignore
 
 import kiwifarmer
 

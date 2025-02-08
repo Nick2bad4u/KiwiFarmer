@@ -9,8 +9,8 @@ import os
 import csv
 
 from bs4 import BeautifulSoup
-import mysql.connector
-from mysql.connector import errorcode
+import mysql.connector # type: ignore
+from mysql.connector import errorcode # type: ignore
 import pandas as pd
 
 from kiwifarmer import base, templates
