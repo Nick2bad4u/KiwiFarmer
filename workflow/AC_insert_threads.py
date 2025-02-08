@@ -9,8 +9,8 @@ import os
 import logging
 
 from bs4 import BeautifulSoup
-import mysql.connector
-from mysql.connector import errorcode
+import mysql.connector  # type: ignore
+from mysql.connector import errorcode  # type: ignore
 
 from kiwifarmer import base, templates
 
@@ -25,13 +25,14 @@ DATABASE = 'kiwifarms_20210224'
 ###############################################################################
 
 # Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger()
 
 if __name__ == '__main__':
 
     # Create database (you only need to do this once)
-    #---------------------------------------------------------------------------#
+    # ---------------------------------------------------------------------------#
 
     cnx = mysql.connector.connect(
         user=os.getenv('KIWIFARMER_USER'),
@@ -45,7 +46,8 @@ if __name__ == '__main__':
     cursor = cnx.cursor()
     try:
         logger.info(f'Creating database {DATABASE}')
-        cursor.execute(f'CREATE DATABASE {DATABASE} character set utf8mb4 collate utf8mb4_bin')
+        cursor.execute(
+            f'CREATE DATABASE {DATABASE} character set utf8mb4 collate utf8mb4_bin')
         cnx.commit()
         logger.info(f'Database {DATABASE} created successfully')
     except mysql.connector.Error as err:
@@ -58,7 +60,7 @@ if __name__ == '__main__':
         cnx.close()
 
     # Create tables in database (you only need to do this once)
-    #---------------------------------------------------------------------------#
+    # ---------------------------------------------------------------------------#
 
     cnx = mysql.connector.connect(
         user=os.getenv('KIWIFARMER_USER'),
@@ -85,7 +87,7 @@ if __name__ == '__main__':
                 logger.error(f'Error creating table {table_name}: {err.msg}')
 
     # Process HTML files of threads, insert fields into `threads` table
-    #---------------------------------------------------------------------------#
+    # ---------------------------------------------------------------------------#
 
     threads = os.listdir(THREAD_DIR)
     N_threads = len(threads)
@@ -102,7 +104,8 @@ if __name__ == '__main__':
             cursor.execute(templates.ADD_THREAD, thread.thread_insertion)
             logger.info(f'Successfully inserted {thread_file} into database')
         except mysql.connector.Error as err:
-            logger.error(f'Error inserting {thread_file} into database: {err.msg}')
+            logger.error(
+                f'Error inserting {thread_file} into database: {err.msg}')
 
     cnx.commit()
     cursor.close()

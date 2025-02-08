@@ -1,18 +1,30 @@
+"""
+This module tests the functionality of the FC_preprocess_reactions script.
+It includes tests for the main function, ensuring that it correctly identifies
+files with reactions, excludes files without reactions or empty files,
+and writes the names of files with reactions to the output file.
+The tests use pytest fixtures and mocks to create a controlled environment
+for testing, including a temporary input directory with mock files and
+patching the script's dependencies on os.scandir and file I/O.
+"""
 import os
 import pytest
 from unittest.mock import patch, mock_open
 from workflow.FC_preprocess_reactions import INPUT_DIR, OUTPUT_FILE_GOOD, NO_REACTIONS_STR
 import workflow.FC_preprocess_reactions as fc_preprocess
 
+
 @pytest.fixture
 def mock_input_dir(tmpdir):
     """Creates a temporary directory and populates it with mock files."""
     input_dir = tmpdir.mkdir("input")
     # Create files with and without reactions
-    input_dir.join("file_with_reactions.txt").write("Some content with reactions.")
+    input_dir.join("file_with_reactions.txt").write(
+        "Some content with reactions.")
     input_dir.join("file_without_reactions.txt").write(NO_REACTIONS_STR)
     input_dir.join("empty_file.txt").write("")
     return str(input_dir)
+
 
 def test_main_function(mock_input_dir, tmpdir, caplog):
     """Tests the main function of the script."""
@@ -20,8 +32,8 @@ def test_main_function(mock_input_dir, tmpdir, caplog):
 
     # Patch the necessary variables and functions
     with patch("FC_preprocess_reactions.INPUT_DIR", mock_input_dir), \
-         patch("FC_preprocess_reactions.OUTPUT_FILE_GOOD", str(output_file)), \
-         patch("os.scandir") as mock_scandir:
+            patch("FC_preprocess_reactions.OUTPUT_FILE_GOOD", str(output_file)), \
+            patch("os.scandir") as mock_scandir:
 
         # Mock the return value of os.scandir to return a list of mock files
         class MockDirEntry:
@@ -34,9 +46,12 @@ def test_main_function(mock_input_dir, tmpdir, caplog):
                 return self._is_file
 
         mock_files = [
-            MockDirEntry("file_with_reactions.txt", os.path.join(mock_input_dir, "file_with_reactions.txt")),
-            MockDirEntry("file_without_reactions.txt", os.path.join(mock_input_dir, "file_without_reactions.txt")),
-            MockDirEntry("empty_file.txt", os.path.join(mock_input_dir, "empty_file.txt")),
+            MockDirEntry("file_with_reactions.txt", os.path.join(
+                mock_input_dir, "file_with_reactions.txt")),
+            MockDirEntry("file_without_reactions.txt", os.path.join(
+                mock_input_dir, "file_without_reactions.txt")),
+            MockDirEntry("empty_file.txt", os.path.join(
+                mock_input_dir, "empty_file.txt")),
         ]
         mock_scandir.return_value = mock_files
 

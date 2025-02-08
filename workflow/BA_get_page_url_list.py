@@ -20,8 +20,10 @@ PAGE_LIST_FILENAME = 'page_url_list.txt'
 ###############################################################################
 
 # Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger()
+
 
 def generate_page_urls(input_dir, output_dir, page_list_filename):
     files = sorted(os.listdir(input_dir))
@@ -36,7 +38,8 @@ def generate_page_urls(input_dir, output_dir, page_list_filename):
 
         last_page = functions.get_thread_last_page(thread_page=soup)
 
-        pages = [f'https://kiwifarms.st/threads/{file[:-5]}/page-{i}/' for i in range(1, last_page + 1)]
+        pages = [
+            f'https://kiwifarms.st/threads/{file[:-5]}/page-{i}/' for i in range(1, last_page + 1)]
         all_pages.extend(pages)
 
     output_url_list = os.path.join(output_dir, page_list_filename)
@@ -46,6 +49,7 @@ def generate_page_urls(input_dir, output_dir, page_list_filename):
             f.write(page + '\n')
 
     logger.info(f"Generated {len(all_pages)} page URLs")
+
 
 if __name__ == '__main__':
     logger.info("Script started")

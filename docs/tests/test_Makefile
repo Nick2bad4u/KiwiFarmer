@@ -1,0 +1,11 @@
+# Test for the Makefile
+
+# Test help target
+test_help:
+    @$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+# Test a generic target
+test_generic:
+    @$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+.PHONY: test_help test_generic

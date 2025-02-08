@@ -7,7 +7,7 @@
 
 import os
 import logging
-import mysql.connector
+import mysql.connector  # type: ignore
 import pandas as pd
 
 ###############################################################################
@@ -19,13 +19,14 @@ OUTPUT_CSV = '../../data_20210224/reaction_url_list.txt'
 ###############################################################################
 
 # Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger()
 
 if __name__ == '__main__':
 
     # Connect to database
-    #---------------------------------------------------------------------------#
+    # ---------------------------------------------------------------------------#
 
     try:
         cnx = mysql.connector.connect(
@@ -43,13 +44,14 @@ if __name__ == '__main__':
         exit(1)
 
     # Read column from table and export to CSV
-    #---------------------------------------------------------------------------#
+    # ---------------------------------------------------------------------------#
 
     try:
         df = pd.read_sql(sql=COMMAND, con=cnx)
         logger.info("Data read from database successfully")
 
-        to_url = lambda s: f'https://kiwifarms.st/posts/{s}/reactions?reaction_id=0&list_only=1&page=1'
+        def to_url(
+            s): return f'https://kiwifarms.st/posts/{s}/reactions?reaction_id=0&list_only=1&page=1'
         url_list = df['post_id'].apply(to_url)
         url_list.to_csv(OUTPUT_CSV, header=False, index=False)
         logger.info(f"Data exported to {OUTPUT_CSV} successfully")

@@ -11,15 +11,15 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from bs4 import BeautifulSoup
 import pandas as pd
-import mysql.connector
+import mysql.connector  # type: ignore
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
 from kiwifarmer.utils import (
-  reaction_filename_to_url,
-  reaction_url_to_filename,
+    reaction_filename_to_url,
+    reaction_url_to_filename,
 )
 from kiwifarmer import base, templates
 
@@ -35,16 +35,20 @@ START = 0
 ###############################################################################
 
 # Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger()
+
 
 def setup_selenium():
     options = Options()
     options.headless = True  # Run in headless mode
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    driver = webdriver.Chrome(service=Service(
+        ChromeDriverManager().install()), options=options)
     return driver
+
 
 def download_page(url, driver):
     try:
@@ -55,10 +59,12 @@ def download_page(url, driver):
         logger.error(f"Failed to download {url}: {e}")
         return None
 
+
 def save_content(content, output_dir, filename):
     output_file = os.path.join(output_dir, filename)
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(content)
+
 
 def process_reaction_page(page_file, output_dir, cursor):
     with open(os.path.join(output_dir, page_file), 'r', encoding='utf-8') as f:
@@ -72,7 +78,8 @@ def process_reaction_page(page_file, output_dir, cursor):
         reaction = base.Reaction(reaction=reaction, post_id=post_id)
         cursor.execute(templates.ADD_REACTION, reaction.reaction_insertion)
 
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+
 
 def get_url_list(page):
     try:
@@ -91,7 +98,8 @@ def get_url_list(page):
 
         rdf = _rdf.drop_duplicates()
         d = rdf.groupby('post_id')['post_id'].agg('count')
-        rerun = [post_id for post_id, count in d.items() if count >= (page * 50)]
+        rerun = [post_id for post_id, count in d.items() if count >=
+                 (page * 50)]
         urls = [URL_PATTERN.format(post_id, page + 1) for post_id in rerun]
 
         return urls
@@ -99,7 +107,8 @@ def get_url_list(page):
         logger.error(f"Error connecting to the database: {err}")
         return []
 
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+
 
 def run(page):
     output_dir = f'../../data_20210224/downloaded_reactions/page_{page + 1}'
@@ -109,7 +118,8 @@ def run(page):
 
     driver = setup_selenium()
     with ThreadPoolExecutor(max_workers=SEMAPHORE) as executor:
-        futures = [executor.submit(download_page, url, driver) for url in url_list]
+        futures = [executor.submit(download_page, url, driver)
+                   for url in url_list]
         for future in as_completed(futures):
             content = future.result()
             if content:
@@ -118,7 +128,7 @@ def run(page):
 
     driver.quit()
 
-    #---------------------------------------------------------------------------#
+    # ---------------------------------------------------------------------------#
 
     try:
         cnx = mysql.connector.connect(
@@ -133,7 +143,7 @@ def run(page):
         cursor = cnx.cursor()
 
         # Process all reaction pages
-        #---------------------------------------------------------------------------#
+        # ---------------------------------------------------------------------------#
 
         pages = os.listdir(output_dir)
         N_pages = len(pages)
@@ -154,6 +164,7 @@ def run(page):
         logger.error(f"Error connecting to the database: {err}")
 
 ###############################################################################
+
 
 for page in range(1, 20):
     run(page=page)

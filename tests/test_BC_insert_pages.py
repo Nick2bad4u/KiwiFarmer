@@ -5,12 +5,14 @@ from bs4 import BeautifulSoup
 from kiwifarmer import base, templates
 import logging
 
-import mysql.connector
+import mysql.connector  # type: ignore
+
 
 @pytest.fixture
 def mock_env(monkeypatch):
     monkeypatch.setenv('KIWIFARMER_USER', 'testuser')
     monkeypatch.setenv('KIWIFARMER_PASSWORD', 'testpass')
+
 
 @pytest.fixture
 def mock_db():
@@ -18,6 +20,7 @@ def mock_db():
     cursor = MagicMock()
     conn.cursor.return_value = cursor
     return conn, cursor
+
 
 @patch('os.listdir')
 @patch('builtins.open', new_callable=mock_open, read_data='<html></html>')
@@ -30,7 +33,8 @@ def test_insert_pages(mock_connect, mock_file, mock_listdir, mock_env, mock_db):
     # Mock base.Page and base.Post
     with patch.object(base, 'Page') as MockPage, patch.object(base, 'Post') as MockPost:
         mock_page_instance = MagicMock()
-        mock_page_instance.get_post_soups.return_value = ['post_soup1', 'post_soup2']
+        mock_page_instance.get_post_soups.return_value = [
+            'post_soup1', 'post_soup2']
         MockPage.return_value = mock_page_instance
 
         mock_post_instance = MagicMock()
@@ -41,11 +45,15 @@ def test_insert_pages(mock_connect, mock_file, mock_listdir, mock_env, mock_db):
         MockPost.return_value = mock_post_instance
 
         # Run script logic
-        import workflow._02_C_insert_pages  # The script should connect and process pages
+        import workflow.BC_insert_pages  # The script should connect and process pages
 
         assert mock_connect.called
         assert mock_listdir.called
-        cursor.execute.assert_any_call(templates.ADD_POST, mock_post_instance.post_insertion)
-        cursor.executemany.assert_any_call(templates.ADD_BLOCKQUOTE, mock_post_instance.blockquote_insertions)
-        cursor.executemany.assert_any_call(templates.ADD_LINK, mock_post_instance.link_insertions)
-        cursor.executemany.assert_any_call(templates.ADD_IMAGE, mock_post_instance.image_insertions)
+        cursor.execute.assert_any_call(
+            templates.ADD_POST, mock_post_instance.post_insertion)
+        cursor.executemany.assert_any_call(
+            templates.ADD_BLOCKQUOTE, mock_post_instance.blockquote_insertions)
+        cursor.executemany.assert_any_call(
+            templates.ADD_LINK, mock_post_instance.link_insertions)
+        cursor.executemany.assert_any_call(
+            templates.ADD_IMAGE, mock_post_instance.image_insertions)

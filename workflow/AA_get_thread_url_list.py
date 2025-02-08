@@ -38,8 +38,10 @@ MEMBER_LIST_FILENAME = 'member_url_list.txt'
 ###############################################################################
 
 # Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger()
+
 
 def download_sitemap_with_selenium(url):
     options = Options()
@@ -47,7 +49,8 @@ def download_sitemap_with_selenium(url):
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
 
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    driver = webdriver.Chrome(service=Service(
+        ChromeDriverManager().install()), options=options)
 
     try:
         driver.get(url)
@@ -60,6 +63,7 @@ def download_sitemap_with_selenium(url):
         return None
     finally:
         driver.quit()
+
 
 if __name__ == '__main__':
 
@@ -81,8 +85,10 @@ if __name__ == '__main__':
             urls = soup.find_all('url')
             urls = [url.find('loc').text for url in urls]
 
-            thread_urls = [url for url in urls if url.startswith(THREAD_PATTERN)]
-            member_urls = [url for url in urls if url.startswith(MEMBER_PATTERN)]
+            thread_urls = [
+                url for url in urls if url.startswith(THREAD_PATTERN)]
+            member_urls = [
+                url for url in urls if url.startswith(MEMBER_PATTERN)]
 
             # Ensure the thread_url_list and member_url_list are written correctly
             thread_url_list = os.path.join(OUTPUT_DIR, THREAD_LIST_FILENAME)
@@ -95,6 +101,7 @@ if __name__ == '__main__':
                 for url in member_urls:
                     f.write(url + '\n')
 
-            logger.info(f"Processed {sitemap}: {len(thread_urls)} thread URLs and {len(member_urls)} member URLs")
+            logger.info(
+                f"Processed {sitemap}: {len(thread_urls)} thread URLs and {len(member_urls)} member URLs")
 
 ###############################################################################

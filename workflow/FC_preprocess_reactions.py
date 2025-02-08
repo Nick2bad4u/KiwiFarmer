@@ -17,7 +17,8 @@ NO_REACTIONS_STR = "No one has reacted to this content yet."
 ###############################################################################
 
 # Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger()
 
 if __name__ == '__main__':
@@ -36,13 +37,15 @@ if __name__ == '__main__':
                         doc = fin.read()
                     if NO_REACTIONS_STR not in doc:
                         fout.write(file.name + '\n')
-                        logger.info(f"File {file.name} has reactions and is added to the list")
+                        logger.info(
+                            f"File {file.name} has reactions and is added to the list")
                     else:
                         logger.info(f"File {file.name} has no reactions")
                 except Exception as e:
                     logger.error(f"Failed to process file {file.name}: {e}")
 
-    logger.info(f"Filtered list of files with reactions saved to {OUTPUT_FILE_GOOD}")
+    logger.info(
+        f"Filtered list of files with reactions saved to {OUTPUT_FILE_GOOD}")
     logger.info("Script finished")
 
 ###############################################################################

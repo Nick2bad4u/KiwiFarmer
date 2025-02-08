@@ -1,48 +1,56 @@
-import pytest
-import requests
-from bs4 import BeautifulSoup
+import os
+import unittest
+from unittest.mock import patch, MagicMock
+from selenium.common.exceptions import WebDriverException
+from workflow.AA_get_thread_url_list import download_sitemap_with_selenium, OUTPUT_DIR, SITEMAPS, URL_PREFIX
+import workflow.AA_get_thread_url_list
 
+class TestDownloadSitemapWithSelenium(unittest.TestCase):
 
-def get_thread_url_list(board_url, max_pages=2):
-    """
-    Retrieves a list of thread URLs from a given board URL, up to a maximum number of pages.
+    @patch('AA_get_thread_url_list.webdriver.Chrome')
+    @patch('AA_get_thread_url_list.ChromeDriverManager')
+    def test_download_sitemap_with_selenium_success(self, mock_chrome_driver_manager, mock_chrome):
+        mock_driver = MagicMock()
+        mock_chrome.return_value = mock_driver
+        mock_driver.page_source = '<html></html>'
 
-    Args:
-        board_url (str): The URL of the board to scrape.
-        max_pages (int, optional): The maximum number of pages to scrape. Defaults to 2.
+        url = 'http://example.com'
+        content = download_sitemap_with_selenium(url)
 
-    Returns:
-        list: A list of thread URLs.
-    """
-    thread_urls = []
-    for page_num in range(1, max_pages + 1):
-        page_url = f"{board_url}?page={page_num}"
-        try:
-            response = requests.get(page_url)
-            response.raise_for_status()  # Raise HTTPError for bad responses (4xx or 5xx)
-            soup = BeautifulSoup(response.content, 'html.parser')
+        mock_chrome_driver_manager().install.assert_called_once()
+        mock_chrome.assert_called_once()
+        mock_driver.get.assert_called_once_with(url)
+        self.assertEqual(content, '<html></html>')
 
-            # Find all <a> tags within <li> tags that have the class "thread"
-            thread_links = soup.find_all('li', class_='thread')
-            for link in thread_links:
-                a_tag = link.find('a')
-                if a_tag:
-                    thread_url = a_tag['href']
-                    # Ensure the URL is absolute
-                    if not thread_url.startswith('http'):
-                        thread_url = board_url + thread_url
-                    thread_urls.append(thread_url)
-        except requests.exceptions.RequestException as e:
-            print(f"Error fetching page {page_num}: {e}")
-            continue  # Go to the next page in case of an error
+    @patch('AA_get_thread_url_list.webdriver.Chrome')
+    @patch('AA_get_thread_url_list.ChromeDriverManager')
+    def test_download_sitemap_with_selenium_failure(self, mock_chrome_driver_manager, mock_chrome):
+        mock_driver = MagicMock()
+        mock_chrome.return_value = mock_driver
+        mock_driver.get.side_effect = WebDriverException('Test Exception')
 
-    return thread_urls
+        url = 'http://example.com'
+        content = download_sitemap_with_selenium(url)
 
+        mock_chrome_driver_manager().install.assert_called_once()
+        mock_chrome.assert_called_once()
+        mock_driver.get.assert_called_once_with(url)
+        self.assertIsNone(content)
 
-# Example usage (you can uncomment this for testing):
+class TestMainFunctionality(unittest.TestCase):
+
+    @patch('AA_get_thread_url_list.download_sitemap_with_selenium')
+    @patch('builtins.open', new_callable=unittest.mock.mock_open)
+    @patch('os.makedirs')
+    def test_main_functionality(self, mock_makedirs, mock_open, mock_download_sitemap):
+        mock_download_sitemap.return_value = '<urlset><url><loc>https://kiwifarms.net/threads/123</loc></url><url><loc>https://kiwifarms.net/members/456</loc></url></urlset>'
+
+        # Simulate running the main block
+        with patch('AA_get_thread_url_list.__name__', '__main__'):
+            mock_makedirs.assert_called_once_with(OUTPUT_DIR, exist_ok=True)
+            self.assertEqual(mock_open.call_count, 4)  # 2 for writing sitemaps, 2 for writing URLs
+            mock_download_sitemap.assert_any_call(URL_PREFIX + SITEMAPS[0])
+            mock_download_sitemap.assert_any_call(URL_PREFIX + SITEMAPS[1])
+
 if __name__ == '__main__':
-    # Replace with the actual board URL
-    board_url = "https://kiwifarms.net/forums/internet-artifacts.21/"
-    thread_urls = get_thread_url_list(board_url)
-    for url in thread_urls:
-        print(url)
+    unittest.main()

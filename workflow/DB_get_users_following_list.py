@@ -20,17 +20,21 @@ CONNECTION_LIST = '../../data_20210224/connection_url_list.txt'
 ###############################################################################
 
 # Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger()
 
+
 def get_users(soup, category):
-    f = soup.find('h4', {'class': 'block-textHeader'}, text=re.compile(category))
+    f = soup.find('h4', {'class': 'block-textHeader'},
+                  text=re.compile(category))
     if f is None:
         return 0
     else:
         following = f.parent
         users = following.find_all('a', 'avatar avatar--s')
-        users = list(filter(None, [user.get('data-user-id') for user in users]))
+        users = list(
+            filter(None, [user.get('data-user-id') for user in users]))
         n_users = len(users)
         t = following.find('a', {'data-xf-click': 'overlay'})
         if t is None:
@@ -39,11 +43,14 @@ def get_users(soup, category):
             n_additional_users = int(t.text[8: -6])
         return n_users + n_additional_users
 
+
 def get_followers(soup):
     return get_users(soup=soup, category='Followers')
 
+
 def get_following(soup):
     return get_users(soup=soup, category='Following')
+
 
 def get_member_id(soup):
     meta_tag = soup.find('meta', {'property': 'og:url'})
@@ -58,6 +65,7 @@ def get_member_id(soup):
         logger.error("Meta tag with property 'og:url' not found")
         return None
 
+
 def get_data(soup):
     member_id = get_member_id(soup)
     if member_id is None:
@@ -68,6 +76,7 @@ def get_data(soup):
         'following': get_following(soup),
     }
     return d
+
 
 if __name__ == '__main__':
     files = os.listdir(MEMBER_DIR)
@@ -91,7 +100,7 @@ if __name__ == '__main__':
 
         ndf = df[(df['followers'] > 0) | (df['following'] > 0)]
 
-        get_num = lambda s: int(np.ceil(s / 50))
+        def get_num(s): return int(np.ceil(s / 50))
 
         ndf['followers_pages'] = ndf['followers'].apply(get_num)
         ndf['following_pages'] = ndf['following'].apply(get_num)

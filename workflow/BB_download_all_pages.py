@@ -3,7 +3,7 @@
 """Download all pages for all threads using Selenium.
 """
 
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 
 import os
 import logging
@@ -19,31 +19,36 @@ from kiwifarmer.utils import (
     page_url_to_filename,
 )
 
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 
 URL_LIST_FILE = '../../data_20210224/page_url_list.txt'
 OUTPUT_DIR = '../../data_20210224/downloaded_pages'
 NUM_THREADS = 5
 THRESHOLD_KB = 20
 
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 
 # Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger()
+
 
 def load_url_list(file_path):
     with open(file_path, 'r') as f:
         url_list = f.read().splitlines()
     return url_list
 
+
 def setup_selenium():
     options = Options()
     options.headless = True  # Run in headless mode
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    driver = webdriver.Chrome(service=Service(
+        ChromeDriverManager().install()), options=options)
     return driver
+
 
 def download_page(url, driver):
     try:
@@ -55,11 +60,13 @@ def download_page(url, driver):
         logger.error(f"Failed to download {url}: {e}")
         return None
 
+
 def save_content(content, url):
     filename = page_url_to_filename(url)
     output_file = os.path.join(OUTPUT_DIR, filename)
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(content)
+
 
 def process_url(url):
     driver = setup_selenium()
@@ -68,11 +75,13 @@ def process_url(url):
         save_content(content, url)
     driver.quit()
 
+
 def download_many_files(url_list):
     with ThreadPoolExecutor(max_workers=NUM_THREADS) as executor:
         futures = [executor.submit(process_url, url) for url in url_list]
         for future in as_completed(futures):
             future.result()
+
 
 if __name__ == '__main__':
     logger.info("Script started")
@@ -85,4 +94,4 @@ if __name__ == '__main__':
     logger.info("Completed download of pages")
     logger.info("Script finished")
 
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#

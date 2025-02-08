@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import numpy as np
 from workflow.DB_get_users_following_list import get_followers, get_following, get_member_id, get_data
 
+
 def test_get_followers():
     html_content = """
     <div>
@@ -23,6 +24,7 @@ def test_get_followers():
     """
     soup = BeautifulSoup(html_content, 'html.parser')
     assert get_followers(soup) == 0
+
 
 def test_get_following():
     html_content = """
@@ -45,6 +47,7 @@ def test_get_following():
     soup = BeautifulSoup(html_content, 'html.parser')
     assert get_following(soup) == 0
 
+
 def test_get_member_id():
     html_content = '<meta property="og:url" content="https://kiwifarms.st/members/.12345/"/>'
     soup = BeautifulSoup(html_content, 'html.parser')
@@ -57,6 +60,7 @@ def test_get_member_id():
     html_content = '<div></div>'
     soup = BeautifulSoup(html_content, 'html.parser')
     assert get_member_id(soup) is None
+
 
 def test_get_data():
     html_content = """

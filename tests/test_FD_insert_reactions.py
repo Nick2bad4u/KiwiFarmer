@@ -5,6 +5,7 @@ from unittest.mock import patch
 from workflow import FD_insert_reactions
 from workflow.FD_insert_reactions import process_reaction_page
 
+
 @pytest.fixture
 def mock_reaction_page_dir(tmpdir):
     """
@@ -16,16 +17,19 @@ def mock_reaction_page_dir(tmpdir):
     yield str(tmpdir)
     FD_insert_reactions.REACTION_PAGE_DIR = original_reaction_page_dir
 
+
 @pytest.fixture
 def mock_reaction_page_file(mock_reaction_page_dir):
     """
     Creates a dummy reaction page file within the mock REACTION_PAGE_DIR.
     """
     test_html_content = "<html><body><div class='reaction'><p>Test Reaction</p></div></body></html>"
-    test_file_path = os.path.join(mock_reaction_page_dir, "test_reaction_page.html")
+    test_file_path = os.path.join(
+        mock_reaction_page_dir, "test_reaction_page.html")
     with open(test_file_path, "w", encoding="utf-8") as f:
         f.write(test_html_content)
     return "test_reaction_page.html"
+
 
 def test_process_reaction_page(mock_reaction_page_dir, mock_reaction_page_file, mocker):
     """
@@ -37,13 +41,16 @@ def test_process_reaction_page(mock_reaction_page_dir, mock_reaction_page_file, 
 
     # Mock base.ReactionPage and base.Reaction to avoid external dependencies
     mock_reaction_page = mocker.MagicMock()
-    mock_reaction_page.get_reaction_soups.return_value = [BeautifulSoup("<div class='reaction'><p>Test Reaction</p></div>", 'lxml')]
+    mock_reaction_page.get_reaction_soups.return_value = [
+        BeautifulSoup("<div class='reaction'><p>Test Reaction</p></div>", 'lxml')]
     mock_reaction_page.post_id = 123
-    mocker.patch("workflow.FD_insert_reactions.base.ReactionPage", return_value=mock_reaction_page)
+    mocker.patch("workflow.FD_insert_reactions.base.ReactionPage",
+                 return_value=mock_reaction_page)
 
     mock_reaction = mocker.MagicMock()
     mock_reaction.reaction_insertion = {"test": "data"}
-    mocker.patch("workflow.FD_insert_reactions.base.Reaction", return_value=mock_reaction)
+    mocker.patch("workflow.FD_insert_reactions.base.Reaction",
+                 return_value=mock_reaction)
 
     # Call the function
     process_reaction_page(mock_reaction_page_file, mock_cursor)

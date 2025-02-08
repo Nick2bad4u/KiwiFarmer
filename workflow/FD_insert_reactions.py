@@ -8,8 +8,8 @@
 import os
 import logging
 from bs4 import BeautifulSoup
-import mysql.connector
-from mysql.connector import errorcode
+import mysql.connector  # type: ignore
+from mysql.connector import errorcode  # type: ignore
 import requests
 from kiwifarmer import base, templates, utils
 
@@ -23,8 +23,10 @@ DATABASE = 'kiwifarms_20210224'
 ###############################################################################
 
 # Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger()
+
 
 def process_reaction_page(page_file, cursor):
     with open(os.path.join(REACTION_PAGE_DIR, page_file), 'r', encoding='utf-8') as f:
@@ -40,9 +42,10 @@ def process_reaction_page(page_file, cursor):
 
 ###############################################################################
 
+
 if __name__ == '__main__':
     # Connect to MySQL database
-    #---------------------------------------------------------------------------#
+    # ---------------------------------------------------------------------------#
 
     try:
         cnx = mysql.connector.connect(
@@ -73,7 +76,7 @@ if __name__ == '__main__':
                 logger.error(err.msg)
 
     # Process HTML files of pages, insert fields into `post` table in database
-    #---------------------------------------------------------------------------#
+    # ---------------------------------------------------------------------------#
 
     with open(REACTION_FILTERED_LIST, 'r') as f:
         pages = f.read().split('\n')
@@ -97,7 +100,8 @@ if __name__ == '__main__':
                 process_reaction_page(page_file, cursor)
                 logger.info(f'Re-downloaded and processed {page_file}')
             except Exception as e:
-                logger.error(f'Failed to re-download and process {page_file}: {e}')
+                logger.error(
+                    f'Failed to re-download and process {page_file}: {e}')
 
     try:
         cnx.commit()

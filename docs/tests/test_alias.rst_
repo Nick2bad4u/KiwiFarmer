@@ -1,0 +1,21 @@
+.. testsetup::
+
+    from kiwifarmer import *
+
+.. Test that alias' work
+
+.. |PkgName| replace:: KiwiFarmer
+.. |PkgFullName| replace:: KiwiFarmer
+.. |PkgPyName| replace:: kiwifarmer
+.. |PkgVersion| replace:: 0.1
+.. |PkgReleaseDate| replace:: December 1, 2020
+.. |PkgTarBall| replace:: |PkgPyName|-|PkgVersion|.tar.gz
+
+This is a test to see if the alias' work:
+
+|PkgName|
+|PkgFullName|
+|PkgPyName|
+|PkgVersion|
+|PkgReleaseDate|
+|PkgTarBall|

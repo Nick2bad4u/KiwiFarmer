@@ -2,12 +2,14 @@ import unittest
 from unittest.mock import patch, mock_open, MagicMock
 from workflow import download_all_threads as dat
 
+
 class TestDownloadAllThreads(unittest.TestCase):
 
     @patch('builtins.open', new_callable=mock_open, read_data='http://example.com\nhttp://example.org')
     def test_load_url_list(self, mock_file):
         url_list = dat.load_url_list('dummy_path')
-        self.assertEqual(url_list, ['http://example.com', 'http://example.org'])
+        self.assertEqual(
+            url_list, ['http://example.com', 'http://example.org'])
         mock_file.assert_called_once_with('dummy_path', 'r')
 
     @patch('kiwifarmer.workflow.download_all_threads.webdriver.Chrome')
@@ -37,7 +39,8 @@ class TestDownloadAllThreads(unittest.TestCase):
     @patch('builtins.open', new_callable=mock_open)
     def test_save_content(self, mock_file, mock_url_to_filename):
         dat.save_content('<html></html>', 'http://example.com')
-        mock_file.assert_called_once_with('../../data_20210224/downloaded_threads/example.html', 'w', encoding='utf-8')
+        mock_file.assert_called_once_with(
+            '../../data_20210224/downloaded_threads/example.html', 'w', encoding='utf-8')
         mock_file().write.assert_called_once_with('<html></html>')
 
     @patch('kiwifarmer.workflow.download_all_threads.setup_selenium')
@@ -48,9 +51,12 @@ class TestDownloadAllThreads(unittest.TestCase):
         mock_setup_selenium.return_value = mock_driver
         dat.process_url('http://example.com')
         mock_setup_selenium.assert_called_once()
-        mock_download_page.assert_called_once_with('http://example.com', mock_driver)
-        mock_save_content.assert_called_once_with('<html></html>', 'http://example.com')
+        mock_download_page.assert_called_once_with(
+            'http://example.com', mock_driver)
+        mock_save_content.assert_called_once_with(
+            '<html></html>', 'http://example.com')
         mock_driver.quit.assert_called_once()
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -23,8 +23,10 @@ THRESHOLD_KB = 15
 ###############################################################################
 
 # Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger()
+
 
 def load_url_list(file_path):
     with open(file_path, 'r') as f:
@@ -32,13 +34,16 @@ def load_url_list(file_path):
     url_list = list(filter(None, url_list))
     return url_list
 
+
 def setup_selenium():
     options = Options()
     options.headless = True  # Run in headless mode
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    driver = webdriver.Chrome(service=Service(
+        ChromeDriverManager().install()), options=options)
     return driver
+
 
 def download_page(url, driver):
     try:
@@ -49,13 +54,16 @@ def download_page(url, driver):
         logger.error(f"Failed to download {url}: {e}")
         return None
 
+
 def save_content(content, filename):
     output_file = os.path.join(OUTPUT_DIR, filename)
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(content)
 
+
 def url_to_filename(url):
     return '_'.join(url.split('/')[-3:]) + '.html'
+
 
 def process_url(url):
     driver = setup_selenium()
@@ -65,11 +73,13 @@ def process_url(url):
         save_content(content, filename)
     driver.quit()
 
+
 def download_many_files(url_list):
     with ThreadPoolExecutor(max_workers=NUM_THREADS) as executor:
         futures = [executor.submit(process_url, url) for url in url_list]
         for future in as_completed(futures):
             future.result()
+
 
 if __name__ == '__main__':
     os.makedirs(OUTPUT_DIR, exist_ok=True)

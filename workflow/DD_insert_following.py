@@ -8,8 +8,8 @@
 import os
 import logging
 from bs4 import BeautifulSoup
-import mysql.connector
-from mysql.connector import errorcode
+import mysql.connector  # type: ignore
+from mysql.connector import errorcode  # type: ignore
 from kiwifarmer import base, templates
 
 ###############################################################################
@@ -21,13 +21,14 @@ DATABASE = 'kiwifarms_20210224'
 ###############################################################################
 
 # Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger()
 
 if __name__ == '__main__':
 
     # Connect to database
-    #---------------------------------------------------------------------------#
+    # ---------------------------------------------------------------------------#
 
     try:
         cnx = mysql.connector.connect(
@@ -46,7 +47,7 @@ if __name__ == '__main__':
         exit(1)
 
     # Process HTML files of pages, insert fields into `post` table in database
-    #---------------------------------------------------------------------------#
+    # ---------------------------------------------------------------------------#
 
     pages = os.listdir(PAGE_DIR)
     pages = [p for p in pages if p.split('_')[1] == 'following']
@@ -58,7 +59,8 @@ if __name__ == '__main__':
             with open(os.path.join(PAGE_DIR, page_file), 'r') as f:
                 following_page = BeautifulSoup(f.read(), 'lxml')
             following = base.Following(following_page=following_page)
-            cursor.executemany(templates.ADD_FOLLOWING, following.following_insertions)
+            cursor.executemany(templates.ADD_FOLLOWING,
+                               following.following_insertions)
             logger.info(f'Successfully processed {page_file}')
         except Exception as e:
             logger.error(f'Failed to process {page_file}: {e}')

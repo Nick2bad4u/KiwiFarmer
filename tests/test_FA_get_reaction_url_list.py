@@ -4,15 +4,20 @@ import pandas as pd
 from unittest.mock import patch
 from workflow import FA_get_reaction_url_list
 
-import mysql.connector
+import mysql.connector # type: ignore
+
 
 def test_to_url():
     """
     Test the to_url lambda function.
     """
-    to_url = lambda s: f'https://kiwifarms.st/posts/{s}/reactions?reaction_id=0&list_only=1&page=1'
-    assert to_url(123) == 'https://kiwifarms.st/posts/123/reactions?reaction_id=0&list_only=1&page=1'
-    assert to_url('456') == 'https://kiwifarms.st/posts/456/reactions?reaction_id=0&list_only=1&page=1'
+    def to_url(
+        s): return f'https://kiwifarms.st/posts/{s}/reactions?reaction_id=0&list_only=1&page=1'
+    assert to_url(
+        123) == 'https://kiwifarms.st/posts/123/reactions?reaction_id=0&list_only=1&page=1'
+    assert to_url(
+        '456') == 'https://kiwifarms.st/posts/456/reactions?reaction_id=0&list_only=1&page=1'
+
 
 @patch('workflow.FA_get_reaction_url_list.mysql.connector.connect')
 @patch('workflow.FA_get_reaction_url_list.pd.read_sql')
@@ -28,7 +33,8 @@ def test_main_success(mock_logger, mock_read_sql, mock_connect, tmpdir):
     # Mock environment variables
     with patch.dict(os.environ, {'KIWIFARMER_USER': 'test_user', 'KIWIFARMER_PASSWORD': 'test_password'}):
         # Call the main part of the script
-        FA_get_reaction_url_list.OUTPUT_CSV = str(tmpdir.join('test_output.txt'))
+        FA_get_reaction_url_list.OUTPUT_CSV = str(
+            tmpdir.join('test_output.txt'))
         FA_get_reaction_url_list.main()
 
     # Assertions
@@ -36,6 +42,7 @@ def test_main_success(mock_logger, mock_read_sql, mock_connect, tmpdir):
     mock_read_sql.assert_called_once()
     mock_logger.info.assert_called()
     assert os.path.exists(FA_get_reaction_url_list.OUTPUT_CSV)
+
 
 @patch('workflow.FA_get_reaction_url_list.mysql.connector.connect')
 @patch('workflow.FA_get_reaction_url_list.logger')
@@ -58,6 +65,7 @@ def test_main_connection_error(mock_logger, mock_connect):
     mock_connect.assert_called_once()
     mock_logger.error.assert_called()
 
+
 @patch('workflow.FA_get_reaction_url_list.mysql.connector.connect')
 @patch('workflow.FA_get_reaction_url_list.pd.read_sql')
 @patch('workflow.FA_get_reaction_url_list.logger')
@@ -72,7 +80,8 @@ def test_main_read_error(mock_logger, mock_read_sql, mock_connect, tmpdir):
     # Mock environment variables
     with patch.dict(os.environ, {'KIWIFARMER_USER': 'test_user', 'KIWIFARMER_PASSWORD': 'test_password'}):
         # Call the main part of the script
-        FA_get_reaction_url_list.OUTPUT_CSV = str(tmpdir.join('test_output.txt'))
+        FA_get_reaction_url_list.OUTPUT_CSV = str(
+            tmpdir.join('test_output.txt'))
         FA_get_reaction_url_list.main()
 
     # Assertions

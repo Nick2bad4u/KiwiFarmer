@@ -23,16 +23,20 @@ URL_LIST_FILE = '../../data_20210224/member_url_list.txt'
 ###############################################################################
 
 # Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger()
+
 
 def setup_selenium():
     options = Options()
     options.headless = False  # Change to True if you want to run headless
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    driver = webdriver.Chrome(service=Service(
+        ChromeDriverManager().install()), options=options)
     return driver
+
 
 def login_to_kiwifarms(driver):
     driver.get(LOGIN_URL)
@@ -41,14 +45,18 @@ def login_to_kiwifarms(driver):
         username_id = soup.find('input', {'autocomplete': 'username'})['id']
         password_id = soup.find('input', {'type': 'password'})['id']
 
-        driver.find_element_by_id(username_id).send_keys(os.getenv('KIWIFARMS_USERNAME'))
-        driver.find_element_by_id(password_id).send_keys(os.getenv('KIWIFARMS_PASSWORD'))
-        driver.find_element_by_css_selector('.button--primary.button.button--icon.button--icon--login').click()
+        driver.find_element_by_id(username_id).send_keys(
+            os.getenv('KIWIFARMS_USERNAME'))
+        driver.find_element_by_id(password_id).send_keys(
+            os.getenv('KIWIFARMS_PASSWORD'))
+        driver.find_element_by_css_selector(
+            '.button--primary.button.button--icon.button--icon--login').click()
         logger.info("Logged in successfully")
     except (NoSuchElementException, TimeoutException) as e:
         logger.error(f"Error during login: {e}")
         driver.quit()
         raise
+
 
 def download_member_pages(driver, url_list, output_dir):
     for i, url in enumerate(url_list):
@@ -60,6 +68,7 @@ def download_member_pages(driver, url_list, output_dir):
             logger.info(f"Successfully downloaded {url}")
         except Exception as e:
             logger.error(f"Failed to download {url}: {e}")
+
 
 if __name__ == '__main__':
     os.makedirs(OUTPUT_DIR, exist_ok=True)
