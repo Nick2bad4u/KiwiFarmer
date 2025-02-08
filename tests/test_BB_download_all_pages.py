@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch, mock_open, MagicMock
-from kiwifarmer.workflow import download_all_pages as dap
+from workflow import download_all_pages as dap
 
 class TestDownloadAllPages(unittest.TestCase):
 

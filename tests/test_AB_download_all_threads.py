@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch, mock_open, MagicMock
-from kiwifarmer.workflow import download_all_threads as dat
+from workflow import download_all_threads as dat
 
 class TestDownloadAllThreads(unittest.TestCase):
 

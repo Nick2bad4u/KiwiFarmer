@@ -2,7 +2,7 @@ import os
 import pytest
 from bs4 import BeautifulSoup
 from unittest.mock import patch, mock_open
-from kiwifarmer.workflow import generate_page_urls
+from workflow import generate_page_urls
 
 @pytest.fixture
 def mock_functions():
