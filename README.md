@@ -2,6 +2,8 @@
 KiwiFarmer
 ==========
 
+![Alt](https://repobeats.axiom.co/api/embed/3ab62a4d52db28cc259144d42f26e64742445948.svg "Repobeats analytics image")
+
 KiwiFarmer is a Python package for scraping KiwiFarms threads and posts, extracting field values, and storing the results in a created MySQL database.
 
 Run script
