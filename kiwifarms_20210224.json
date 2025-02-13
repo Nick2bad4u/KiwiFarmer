@@ -1,5 +1,5 @@
-[
-    {
+{
+    "29205": {
         "thread_id": 29205,
         "title": "Steven Bonnell II / Destiny / Destiny.gg | Kiwi Farms",
         "timestamp": 1489686662,
@@ -126,7 +126,45 @@
             }
         ]
     },
-    {
+    "10": {
+        "thread_id": 10,
+        "title": "The General forum rules | Kiwi Farms",
+        "timestamp": 1359897061,
+        "messages": [
+            {
+                "user_name": "champthom",
+                "user_id": "2",
+                "content": "I'm taking a big leap by having a General forum here. But the demand is there so I allow it. A few basic rules though:\n\n1) Keep your sperging to a minimum\n\nIf you like something, that's fine. But don't sperg out and tell us how you obsess over some children's cartoon or you write fanfiction where you rape some TV show character, that sort of thing. For the love of God, if you have any particular sexual fetishes or anything like that, DON'T SHARE THEM WITH US. \n\n2) Be careful about personal information\n\nThis forum sometimes attracts unsavory characters so be careful posting stuff like your real name, where you live and work, contact information tied with your real name, etc. This is for your safety.\n\nIf anything else needs to be addressed, I'll update this post.",
+                "timestamp": "2013-02-03T08:11:01-0500"
+            },
+            {
+                "user_name": "Niachu",
+                "user_id": "39",
+                "content": "champthom said:\n\t\t\t\n\t\t\n\n\n\t\t\t1) Keep your sperging to a minimum\n\nIf you like something, that's fine. But don't sperg out and tell us how you obsess over some children's cartoon or you write fanfiction where you rape some TV show character, that sort of thing. For the love of God, if you have any particular sexual fetishes or anything like that, DON'T SHARE THEM WITH US.\n\t\t\nClick to expand...\n\n\nI've been noticing a trend where people are being a little more...open about their preferences.\n\nGuys, it's cool that you feel comfortable enough to share things here, but on the whole try to keep it clean. If you wanna discuss your orientation and the like, cool, whatever helps you relate to each other, but  the things you find fap worthy do not need to be discussed. Not everyone likes to read that so be considerate. I don't think it will, but I'm gonna be watchdoggin' if it gets out of hand.",
+                "timestamp": "2013-02-27T10:11:22-0500"
+            },
+            {
+                "user_name": "NiggerDeathRay",
+                "user_id": "184622",
+                "content": "It's funny how despite being 12 years old these rules still hold up.\nApologies for the negrobump doe",
+                "timestamp": "2025-01-17T18:45:51-0500"
+            }
+        ]
+    },
+    "6": {
+        "thread_id": 6,
+        "title": "The Universal Rules | Kiwi Farms",
+        "timestamp": 1359895771,
+        "messages": [
+            {
+                "user_name": "champthom",
+                "user_id": "2",
+                "content": "This is a rule that applies to every forum here. I shouldn't really need to spell it out but I want to make it clear. It's:\n\n1) Respect one another and be civil.\n\nYou might not agree with everyone all the time, someone might rub you the wrong way, doesn't mean you need to be a dick about it. If they're bothering you, bring it up to a mod or admin. \n\nDon't call people names, don't libel people, that sort of shit. It's common sense really but I think I should spell it out. I think I also need to spell it out here because we sometimes attract would be trolls. This isn't 4chan or /cwc/, I won't tolerate people calling other people \"fags\" or other shit that might fly on a board like /b/. \n\n2) Save the drama for your mama\n\nDon't start drama and shit on here, we don't need it. If you get personally involved with another forum, and shit is happening between you and them, don't bring it onto the forum. We should all be adults here, we don't need childish shit like that going on.\n\nThat's about all I can think of for now and if I come up with other universal rules, I will update this thread.",
+                "timestamp": "2013-02-03T07:49:31-0500"
+            }
+        ]
+    },
+    "1": {
         "thread_id": 1,
         "title": "Welcome to the new Permanent CWCki Forums | Kiwi Farms",
         "timestamp": 1359531580,
@@ -253,4 +291,4 @@
             }
         ]
     }
-]
+}
