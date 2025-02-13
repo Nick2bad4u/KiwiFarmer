@@ -6,6 +6,11 @@
 ###############################################################################
 
 import re
+import os
+import sys
+
+# Add the parent directory to the sys.path to import kiwifarmer module
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from bs4 import BeautifulSoup
 
@@ -914,54 +919,71 @@ def get_user_role( user_page ):
 # Following field extraction functions
 ###############################################################################
 
-def get_following_user_id( following_page ):
+def get_following_user_id(following_page):
+    """Get the ID of the user, from BeautifulSoup of HTML document containing
+    user following information
 
-  """Get the ID of the user, from BeautifulSoup of HTML document containing
-  user following information
+    Parameters
+    ----------
+    following_page : bs4.element.Tag
+        BeautifulSoup of HTML snippet that contains user following information
 
-  Parameters
-  ----------
-  following_page : bs4.element.Tag
-    BeautifulSoup of HTML snippet that containins user following information
+    Returns
+    -------
+    int
+        Member ID of user
+        e.g. ``32976``
+    """
+    meta_tag = following_page.find('meta', {'property': 'og:url'})
+    if not meta_tag:
+        raise ValueError("Meta tag with property 'og:url' not found")
 
-  Returns
-  -------
-  int
-    Member ID of user
-    e.g. ``32976``
+    url = meta_tag.get('content', '')
+    if not url:
+        raise ValueError("Content attribute in meta tag is empty")
 
-  """
+    try:
+        user_id = int(url.split('/')[-3])
+    except (IndexError, ValueError) as e:
+        raise ValueError(f"Failed to extract user ID from URL: {url}") from e
 
-  url = following_page.find( 'meta', { 'property' : 'og:url' } )[ 'content' ]
-
-  return int( url.split( '/' )[ -3 ] )
+    return user_id
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 
-def get_following_following_ids( following_page ):
+def get_following_following_ids(following_page):
+    """Get the IDs of all users that the user follows, from BeautifulSoup of HTML
+    document containing user following information
 
-  """Get the IDs of all users that the user follows, from BeautifulSoup of HTML
-  document containing user following information
+    Parameters
+    ----------
+    following_page : bs4.element.Tag
+        BeautifulSoup of HTML snippet that contains user following information
 
-  Parameters
-  ----------
-  following_page : bs4.element.Tag
-    BeautifulSoup of HTML snippet that containins user following information
+    Returns
+    -------
+    list of int
+        List of member IDs for all users that the user follows
+        e.g. ``32976``
+    """
+    body = following_page.find('ol', {'class': 'block-body'})
+    if not body:
+        raise ValueError("Body with class 'block-body' not found")
 
-  Returns
-  -------
-  list of int
-    List of member IDs for all users that the user follows
-    e.g. ``32976``
+    users = body.find_all('li', {'class': 'block-row block-row--separated'})
+    user_ids = []
+    for user in users:
+        user_link = user.find('a', {'class': 'avatar avatar--s'})
+        if user_link and 'data-user-id' in user_link.attrs:
+            user_id = user_link['data-user-id']
+            if user_id.isdigit():
+                user_ids.append(int(user_id))
+            else:
+                raise ValueError(f"Non-numeric user ID found: {user_id}")
+        else:
+            raise ValueError("User link not found or does not contain 'data-user-id'")
 
-  """
-
-  body = following_page.find( 'ol', { 'class' : 'block-body' } )
-  users = body.find_all( 'li', { 'class' : 'block-row block-row--separated' } )
-  user_ids = [ int( user.find( 'a', { 'class' : 'username' } )[ 'data-user-id' ] ) for user in users ]
-
-  return user_ids
-
+    return user_ids
 # Trophy field extraction functions
 ###############################################################################
 

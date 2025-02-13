@@ -469,6 +469,45 @@ class Following:
             following_page=self.following_page)
         self.following_user_ids = functions.get_following_following_ids(
             following_page=self.following_page)
+        self.thread_page = thread_page
+
+        # get thread url from soup
+        self.thread_url = self.thread_page.find(
+            'link', {'rel': 'canonical'})['href']
+
+        # store thread ID as class variable
+        self.thread_id = functions.get_thread_id(thread_url=self.thread_url)
+
+        # extract thread title and store as class variable
+        self.thread_title = functions.get_thread_title(
+            thread_page=self.thread_page)
+        # extract thread last page and store as class variable
+        self.thread_last_page = functions.get_thread_last_page(
+            thread_page=self.thread_page)
+
+        # extract section of HTML containing thread creation information
+        self.creation = self.get_thread_creation(self.thread_page)
+
+        # extract thread creator username and store as class variable
+        self.thread_creator_username = functions.get_thread_creator_username(
+            creation=self.creation)
+        # extract thread creator user ID and store as class variable
+        self.thread_creator_user_id = functions.get_thread_creator_user_id(
+            creation=self.creation)
+        # extract thread creation timestamp and store as class variable
+        self.thread_timestamp = functions.get_thread_timestamp(
+            creation=self.creation)
+
+        # save all thread fields in a single dictionary, used for insertion into JSON file
+        self.thread_insertion = {
+            'thread_url': self.thread_url,
+            'thread_id': self.thread_id,
+            'thread_title': self.thread_title,
+            'last_page': self.thread_last_page,
+            'creator_username': self.thread_creator_username,
+            'creator_user_id': self.thread_creator_user_id,
+            'thread_timestamp': self.thread_timestamp
+        }
 
         # generate list of dicts for following fields
         # .........................................................................#
