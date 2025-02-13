@@ -115,26 +115,13 @@ def reaction_filename_to_url( filename ):
 
 ###############################################################################
 
-def string_to_int( s ):
-
-  """Convert a string representation of a number to an integer
-
-  Parameters
-  ----------
-  s : bs4.element.Tag
-    BeautifulSoup representation of a number.
-    e.g. ``'21,564'``
-
-  Returns
-  -------
-  int
-    Integer representation of the number.
-    e.g. ``21564``
-
-  """
-
-  return int( s.text.strip( '\n' ).replace( ',', '' ) )
-
+def string_to_int(s):
+    try:
+        return int(s)
+    except ValueError:
+        # Handle non-numeric values gracefully
+        s_cleaned = ''.join(filter(str.isdigit, s))
+        return int(s_cleaned) if s_cleaned else 0
 ###############################################################################
 
 async def make_request(

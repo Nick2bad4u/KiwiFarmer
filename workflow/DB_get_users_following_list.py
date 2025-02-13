@@ -32,7 +32,7 @@ logger = logging.getLogger()
 
 def get_users(soup, category):
     f = soup.find('h4', {'class': 'block-textHeader'},
-                  text=re.compile(category))
+                  string=re.compile(category))
     if f is None:
         return 0
     else:
@@ -92,7 +92,7 @@ if __name__ == '__main__':
     for i, file in enumerate(files):
         logger.info(f'[ {i} / {N_files} ] Processing {file}')
         try:
-            with open(os.path.join(MEMBER_DIR, file), 'r') as f:
+            with open(os.path.join(MEMBER_DIR, file), 'r', encoding='utf-8') as f:
                 soup = BeautifulSoup(f.read(), features="lxml")
             data = get_data(soup)
             if data is not None:
@@ -116,13 +116,13 @@ if __name__ == '__main__':
             row = ndf.iloc[i]
             member_id = row['member_id']
             for j in range(1, row['followers_pages'] + 1):
-                url = f'https://kiwifarms.st/members/{member_id}/followers/page-{j}'
+                url = f'https://kiwifarms.net/members/{member_id}/followers/page-{j}'
                 url_list.append(url)
             for j in range(1, row['following_pages'] + 1):
-                url = f'https://kiwifarms.st/members/{member_id}/following/page-{j}'
+                url = f'https://kiwifarms.net/members/{member_id}/following/page-{j}'
                 url_list.append(url)
 
-        with open(CONNECTION_LIST, 'w') as f:
+        with open(CONNECTION_LIST, 'w', encoding='utf-8') as f:
             for url in url_list:
                 f.write(url + '\n')
 

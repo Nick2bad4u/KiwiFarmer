@@ -22,12 +22,12 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 URL_LIST_FILE = os.path.join('..', '..', 'data_20210224', 'connection_url_list.txt')
 OUTPUT_DIR = os.path.join('..', '..', 'data_20210224', 'downloaded_members_connections')
-NUM_THREADS = 20
+NUM_THREADS = 1
 THRESHOLD_KB = 15
 
 ###############################################################################
 
-URL_BASE = 'https://kiwifarms.st/members/'
+URL_BASE = 'https://kiwifarms.net/members/'
 
 
 def filename_to_url(filename):
@@ -79,20 +79,20 @@ def save_content(content, filename):
         f.write(content)
 
 
-def process_url(url):
-    driver = setup_selenium()
+def process_url(url, driver):
     content = download_page(url, driver)
     if content:
         filename = url_to_filename(url)
         save_content(content, filename)
-    driver.quit()
 
 
 def download_many_files(url_list):
+    driver = setup_selenium()
     with ThreadPoolExecutor(max_workers=NUM_THREADS) as executor:
-        futures = [executor.submit(process_url, url) for url in url_list]
+        futures = [executor.submit(process_url, url, driver) for url in url_list]
         for future in as_completed(futures):
             future.result()
+    driver.quit()
 
 
 if __name__ == '__main__':

@@ -799,75 +799,31 @@ def get_user_image( user_page ):
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 
-def get_user_messages( user_page ):
+def get_user_messages(user_page):
+    messages_element = user_page.find('dl', class_='pairs pairs--rows pairs--rows--centered fauxBlockLink')
+    if messages_element:
+        message_count = messages_element.find('dd').find('a')
+        if message_count:
+            message_text = message_count.text.strip().replace('\n', '').replace('\t', '').replace(',', '')
+            return utils.string_to_int(message_text)
+    return 0
 
-  """Extract the number of messages from BeautifulSoup of HTML snippet
-  containing user information.
+def get_user_reaction_score(user_page):
+    reaction_score_element = user_page.find('dl', class_='pairs pairs--rows pairs--rows--centered')
+    if reaction_score_element:
+        score = reaction_score_element.find('dd')
+        if score:
+            score_text = score.text.strip().replace('\n', '').replace('\t', '').replace(',', '')
+            return score_text  # Return the text directly as it's not a numeric value
+    return "Unknown"
 
-  Parameters
-  ----------
-  user_page : bs4.element.Tag
-    BeautifulSoup of HTML snippet that containins user information
-
-  Returns
-  -------
-  int
-    Number of messages user has made
-    e.g. ``21564``
-
-  """
-
-  messages = user_page.find('a', {'class' : 'fauxBlockLink-linkRow u-concealed' } )
-
-  return utils.string_to_int( messages )
-
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
-
-def get_user_reaction_score( user_page ):
-
-  """Extract the reaction score from BeautifulSoup of HTML snippet
-  containing user information.
-
-  Parameters
-  ----------
-  user_page : bs4.element.Tag
-    BeautifulSoup of HTML snippet that containins user information
-
-  Returns
-  -------
-  int
-    Reaction score of user.
-    e.g. ``625981``
-
-  """
-
-  score = user_page.find('dl', {'class' : 'pairs pairs--rows pairs--rows--centered'}).find('dd')
-
-  return utils.string_to_int( score )
-
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
-
-def get_user_points( user_page ):
-
-  """Extract the number of points from BeautifulSoup of HTML snippet
-  containing user information.
-
-  Parameters
-  ----------
-  user_page : bs4.element.Tag
-    BeautifulSoup of HTML snippet that containins user information
-
-  Returns
-  -------
-  int
-    Number of points for user
-    e.g. ``345``
-
-  """
-
-  points = user_page.find_all('a', {'class' : 'fauxBlockLink-linkRow u-concealed'})[ 1 ]
-
-  return utils.string_to_int( points )
+def get_user_points(user_page):
+    points_elements = user_page.find_all('a', {'class': 'fauxBlockLink-linkRow u-concealed'})
+    if len(points_elements) > 1:
+        points_text = points_elements[1].text.strip().replace('\n', '').replace('\t', '').replace(',', '')
+        return utils.string_to_int(points_text)
+    else:
+        return 0
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 

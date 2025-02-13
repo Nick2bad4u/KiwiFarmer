@@ -48,8 +48,7 @@ def setup_selenium():
     options.headless = True  # Run in headless mode
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
-    driver = webdriver.Chrome(service=Service(
-        ChromeDriverManager().install()), options=options)
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
     return driver
 
 
@@ -70,23 +69,23 @@ def save_content(content, filename):
         f.write(content)
 
 
-def process_url(url, filename):
-    driver = setup_selenium()
+def process_url(url, filename, driver):
     content = download_page(url, driver)
     if content:
         save_content(content, filename)
-    driver.quit()
 
 
 def download_many_files(url_list):
     filename_list = [str(i) + '.html' for i in range(len(url_list))]
     url_to_filename = dict(zip(url_list, filename_list))
 
+    driver = setup_selenium()
     with ThreadPoolExecutor(max_workers=NUM_THREADS) as executor:
         futures = [executor.submit(
-            process_url, url, url_to_filename[url]) for url in url_list]
+            process_url, url, url_to_filename[url], driver) for url in url_list]
         for future in as_completed(futures):
             future.result()
+    driver.quit()
 
 
 if __name__ == '__main__':

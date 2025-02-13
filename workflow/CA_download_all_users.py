@@ -83,7 +83,7 @@ if __name__ == '__main__':
 
     driver = setup_selenium()
     try:
-        login_to_kiwifarms(driver)
+        # login_to_kiwifarms(driver)
         download_member_pages(driver, url_list, OUTPUT_DIR)
     finally:
         driver.quit()
