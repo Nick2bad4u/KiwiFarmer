@@ -12,4 +12,4 @@ selenium==4.28.1
 setuptools==75.1.0
 Sphinx==8.1.3
 webdriver_manager==4.0.2
-lxml==4.6.3
+lxml==4.9.1
