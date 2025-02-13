@@ -1,0 +1,244 @@
+2025-02-13 17:23:36,444 - INFO - Loading existing data from kiwifarms_following_20210224.json...
+2025-02-13 17:23:36,445 - INFO - Loaded data for 1 users.
+2025-02-13 17:23:36,445 - INFO - Found 6 HTML files to process.
+2025-02-13 17:23:36,445 - INFO - Processing file: 1_followers_page-10.html (User ID: 1)
+2025-02-13 17:23:36,474 - INFO - Found 50 followers for user 1.
+2025-02-13 17:23:36,475 - INFO - Updating existing user 1.
+2025-02-13 17:23:36,475 - INFO - Added 0 new followers for user 1.
+2025-02-13 17:23:36,475 - INFO - Processing file: 1_followers_page-11.html (User ID: 1)
+2025-02-13 17:23:36,502 - INFO - Found 50 followers for user 1.
+2025-02-13 17:23:36,502 - INFO - Updating existing user 1.
+2025-02-13 17:23:36,502 - INFO - Added 0 new followers for user 1.
+2025-02-13 17:23:36,502 - INFO - Processing file: 1_followers_page-6.html (User ID: 1)
+2025-02-13 17:23:36,530 - INFO - Found 50 followers for user 1.
+2025-02-13 17:23:36,530 - INFO - Updating existing user 1.
+2025-02-13 17:23:36,530 - INFO - Added 0 new followers for user 1.
+2025-02-13 17:23:36,530 - INFO - Processing file: 1_followers_page-7.html (User ID: 1)
+2025-02-13 17:23:36,558 - INFO - Found 50 followers for user 1.
+2025-02-13 17:23:36,558 - INFO - Updating existing user 1.
+2025-02-13 17:23:36,558 - INFO - Added 0 new followers for user 1.
+2025-02-13 17:23:36,558 - INFO - Processing file: 1_followers_page-8.html (User ID: 1)
+2025-02-13 17:23:36,585 - INFO - Found 50 followers for user 1.
+2025-02-13 17:23:36,585 - INFO - Updating existing user 1.
+2025-02-13 17:23:36,585 - INFO - Added 0 new followers for user 1.
+2025-02-13 17:23:36,585 - INFO - Processing file: 1_followers_page-9.html (User ID: 1)
+2025-02-13 17:23:36,619 - INFO - Found 50 followers for user 1.
+2025-02-13 17:23:36,619 - INFO - Updating existing user 1.
+2025-02-13 17:23:36,619 - INFO - Added 0 new followers for user 1.
+2025-02-13 17:23:36,619 - INFO - Writing data to kiwifarms_following_20210224.json...
+2025-02-13 17:23:36,620 - INFO - Data saved successfully. Total users in dataset: 1.
+2025-02-13 17:23:49,945 - INFO - Loading existing data from kiwifarms_following_20210224.json...
+2025-02-13 17:23:49,945 - INFO - Loaded data for 1 users.
+2025-02-13 17:23:49,946 - INFO - Found 6 HTML files to process.
+2025-02-13 17:23:49,946 - INFO - Processing file: 1_followers_page-10.html (User ID: 1)
+2025-02-13 17:23:49,975 - INFO - Found 50 followers for user 1.
+2025-02-13 17:23:49,975 - INFO - Updating existing user 1.
+2025-02-13 17:23:49,975 - INFO - Added 0 new followers for user 1.
+2025-02-13 17:23:49,975 - INFO - Processing file: 1_followers_page-11.html (User ID: 1)
+2025-02-13 17:23:50,001 - INFO - Found 50 followers for user 1.
+2025-02-13 17:23:50,002 - INFO - Updating existing user 1.
+2025-02-13 17:23:50,002 - INFO - Added 0 new followers for user 1.
+2025-02-13 17:23:50,002 - INFO - Processing file: 1_followers_page-6.html (User ID: 1)
+2025-02-13 17:23:50,029 - INFO - Found 50 followers for user 1.
+2025-02-13 17:23:50,029 - INFO - Updating existing user 1.
+2025-02-13 17:23:50,029 - INFO - Added 0 new followers for user 1.
+2025-02-13 17:23:50,029 - INFO - Processing file: 1_followers_page-7.html (User ID: 1)
+2025-02-13 17:23:50,056 - INFO - Found 50 followers for user 1.
+2025-02-13 17:23:50,056 - INFO - Updating existing user 1.
+2025-02-13 17:23:50,056 - INFO - Added 0 new followers for user 1.
+2025-02-13 17:23:50,056 - INFO - Processing file: 1_followers_page-8.html (User ID: 1)
+2025-02-13 17:23:50,084 - INFO - Found 50 followers for user 1.
+2025-02-13 17:23:50,085 - INFO - Updating existing user 1.
+2025-02-13 17:23:50,085 - INFO - Added 0 new followers for user 1.
+2025-02-13 17:23:50,085 - INFO - Processing file: 1_followers_page-9.html (User ID: 1)
+2025-02-13 17:23:50,118 - INFO - Found 50 followers for user 1.
+2025-02-13 17:23:50,119 - INFO - Updating existing user 1.
+2025-02-13 17:23:50,119 - INFO - Added 0 new followers for user 1.
+2025-02-13 17:23:50,119 - INFO - Writing data to kiwifarms_following_20210224.json...
+2025-02-13 17:23:50,119 - INFO - Data saved successfully. Total users in dataset: 1.
+2025-02-13 17:23:58,356 - INFO - Loading existing data from kiwifarms_following_20210224.json...
+2025-02-13 17:23:58,357 - INFO - Loaded data for 1 users.
+2025-02-13 17:23:58,357 - INFO - Found 6 HTML files to process.
+2025-02-13 17:23:58,357 - INFO - Processing file: 1_followers_page-10.html (User ID: 1)
+2025-02-13 17:23:58,385 - INFO - Found 50 followers for user 1.
+2025-02-13 17:23:58,386 - INFO - Updating existing user 1.
+2025-02-13 17:23:58,386 - INFO - Added 0 new followers for user 1.
+2025-02-13 17:23:58,386 - INFO - Processing file: 1_followers_page-11.html (User ID: 1)
+2025-02-13 17:23:58,413 - INFO - Found 50 followers for user 1.
+2025-02-13 17:23:58,413 - INFO - Updating existing user 1.
+2025-02-13 17:23:58,413 - INFO - Added 0 new followers for user 1.
+2025-02-13 17:23:58,413 - INFO - Processing file: 1_followers_page-6.html (User ID: 1)
+2025-02-13 17:23:58,440 - INFO - Found 50 followers for user 1.
+2025-02-13 17:23:58,440 - INFO - Updating existing user 1.
+2025-02-13 17:23:58,440 - INFO - Added 0 new followers for user 1.
+2025-02-13 17:23:58,440 - INFO - Processing file: 1_followers_page-7.html (User ID: 1)
+2025-02-13 17:23:58,468 - INFO - Found 50 followers for user 1.
+2025-02-13 17:23:58,468 - INFO - Updating existing user 1.
+2025-02-13 17:23:58,468 - INFO - Added 0 new followers for user 1.
+2025-02-13 17:23:58,468 - INFO - Processing file: 1_followers_page-8.html (User ID: 1)
+2025-02-13 17:23:58,495 - INFO - Found 50 followers for user 1.
+2025-02-13 17:23:58,495 - INFO - Updating existing user 1.
+2025-02-13 17:23:58,495 - INFO - Added 0 new followers for user 1.
+2025-02-13 17:23:58,495 - INFO - Processing file: 1_followers_page-9.html (User ID: 1)
+2025-02-13 17:23:58,532 - INFO - Found 50 followers for user 1.
+2025-02-13 17:23:58,532 - INFO - Updating existing user 1.
+2025-02-13 17:23:58,532 - INFO - Added 1 new followers for user 1.
+2025-02-13 17:23:58,532 - INFO - Writing data to kiwifarms_following_20210224.json...
+2025-02-13 17:23:58,533 - INFO - Data saved successfully. Total users in dataset: 1.
+2025-02-13 17:27:26,388 - INFO - Loading existing data from kiwifarms_following_20210224.json...
+2025-02-13 17:27:26,388 - INFO - Loaded data for 1 users.
+2025-02-13 17:27:26,389 - INFO - Found 6 HTML files to process.
+2025-02-13 17:27:26,389 - INFO - Processing file: 1_followers_page-10.html (User ID: 1)
+2025-02-13 17:27:26,424 - INFO - Found 350 followers for user 1.
+2025-02-13 17:27:26,424 - INFO - Processing file: 1_followers_page-11.html (User ID: 1)
+2025-02-13 17:27:26,459 - INFO - Found 400 followers for user 1.
+2025-02-13 17:27:26,459 - INFO - Processing file: 1_followers_page-6.html (User ID: 1)
+2025-02-13 17:27:26,497 - INFO - Found 450 followers for user 1.
+2025-02-13 17:27:26,498 - INFO - Processing file: 1_followers_page-7.html (User ID: 1)
+2025-02-13 17:27:26,532 - INFO - Found 500 followers for user 1.
+2025-02-13 17:27:26,533 - INFO - Processing file: 1_followers_page-8.html (User ID: 1)
+2025-02-13 17:27:26,565 - INFO - Found 550 followers for user 1.
+2025-02-13 17:27:26,565 - INFO - Processing file: 1_followers_page-9.html (User ID: 1)
+2025-02-13 17:27:26,606 - INFO - Found 600 followers for user 1.
+2025-02-13 17:27:26,606 - INFO - Writing data to kiwifarms_following_20210224.json...
+2025-02-13 17:27:26,609 - INFO - Data saved successfully. Total users in dataset: 1.
+2025-02-13 17:27:40,985 - INFO - Loading existing data from kiwifarms_following_20210224.json...
+2025-02-13 17:28:01,616 - INFO - Loading existing data from kiwifarms_following_20210224.json...
+2025-02-13 17:28:01,617 - INFO - Loaded data for 1 users.
+2025-02-13 17:28:01,617 - INFO - Found 6 HTML files to process.
+2025-02-13 17:28:01,618 - INFO - Processing file: 1_followers_page-10.html (User ID: 1)
+2025-02-13 17:28:01,652 - INFO - Found 350 followers for user 1.
+2025-02-13 17:28:01,653 - INFO - Processing file: 1_followers_page-11.html (User ID: 1)
+2025-02-13 17:28:01,686 - INFO - Found 400 followers for user 1.
+2025-02-13 17:28:01,686 - INFO - Processing file: 1_followers_page-6.html (User ID: 1)
+2025-02-13 17:28:01,720 - INFO - Found 450 followers for user 1.
+2025-02-13 17:28:01,720 - INFO - Processing file: 1_followers_page-7.html (User ID: 1)
+2025-02-13 17:28:01,753 - INFO - Found 500 followers for user 1.
+2025-02-13 17:28:01,753 - INFO - Processing file: 1_followers_page-8.html (User ID: 1)
+2025-02-13 17:28:01,788 - INFO - Found 550 followers for user 1.
+2025-02-13 17:28:01,788 - INFO - Processing file: 1_followers_page-9.html (User ID: 1)
+2025-02-13 17:28:01,828 - INFO - Found 600 followers for user 1.
+2025-02-13 17:28:01,828 - INFO - Writing data to kiwifarms_following_20210224.json...
+2025-02-13 17:28:01,833 - INFO - Data saved successfully. Total users in dataset: 1.
+2025-02-13 17:38:34,087 - INFO - Loading existing data from kiwifarms_following_20210224.json...
+2025-02-13 17:38:34,088 - INFO - Loaded data for 1 users.
+2025-02-13 17:38:34,088 - INFO - Found 6 HTML files to process.
+2025-02-13 17:38:34,088 - INFO - Processing file: 1_followers_page-10.html (User ID: 1)
+2025-02-13 17:38:34,121 - INFO - Found 650 followers for user 1.
+2025-02-13 17:38:34,121 - INFO - Processing file: 1_followers_page-11.html (User ID: 1)
+2025-02-13 17:38:34,154 - INFO - Found 700 followers for user 1.
+2025-02-13 17:38:34,154 - INFO - Processing file: 1_followers_page-6.html (User ID: 1)
+2025-02-13 17:38:34,188 - INFO - Found 750 followers for user 1.
+2025-02-13 17:38:34,188 - INFO - Processing file: 1_followers_page-7.html (User ID: 1)
+2025-02-13 17:38:34,222 - INFO - Found 800 followers for user 1.
+2025-02-13 17:38:34,222 - INFO - Processing file: 1_followers_page-8.html (User ID: 1)
+2025-02-13 17:38:34,255 - INFO - Found 850 followers for user 1.
+2025-02-13 17:38:34,256 - INFO - Processing file: 1_followers_page-9.html (User ID: 1)
+2025-02-13 17:38:34,295 - INFO - Found 900 followers for user 1.
+2025-02-13 17:38:34,296 - INFO - Writing data to kiwifarms_following_20210224.json...
+2025-02-13 17:38:34,302 - INFO - Data saved successfully. Total users in dataset: 1.
+2025-02-13 17:41:07,725 - INFO - Loading existing data from kiwifarms_following_20210224.json...
+2025-02-13 17:41:07,727 - INFO - Loaded data for 1 users.
+2025-02-13 17:41:07,728 - INFO - Found 6 HTML files to process.
+2025-02-13 17:41:07,728 - INFO - Processing file: 1_followers_page-10.html (User ID: 1)
+2025-02-13 17:41:07,760 - INFO - Found 950 followers for user 1.
+2025-02-13 17:41:07,760 - INFO - Processing file: 1_followers_page-11.html (User ID: 1)
+2025-02-13 17:41:07,793 - INFO - Found 1000 followers for user 1.
+2025-02-13 17:41:07,793 - INFO - Processing file: 1_followers_page-6.html (User ID: 1)
+2025-02-13 17:41:07,827 - INFO - Found 1050 followers for user 1.
+2025-02-13 17:41:07,827 - INFO - Processing file: 1_followers_page-7.html (User ID: 1)
+2025-02-13 17:41:07,858 - INFO - Found 1100 followers for user 1.
+2025-02-13 17:41:07,859 - INFO - Processing file: 1_followers_page-8.html (User ID: 1)
+2025-02-13 17:41:07,897 - INFO - Found 1150 followers for user 1.
+2025-02-13 17:41:07,898 - INFO - Processing file: 1_followers_page-9.html (User ID: 1)
+2025-02-13 17:41:07,930 - INFO - Found 1200 followers for user 1.
+2025-02-13 17:41:07,930 - INFO - Writing data to kiwifarms_following_20210224.json...
+2025-02-13 17:41:07,938 - INFO - Data saved successfully. Total users in dataset: 1.
+2025-02-13 17:41:12,023 - INFO - Loading existing data from kiwifarms_following_20210224.json...
+2025-02-13 17:41:15,608 - INFO - Loading existing data from kiwifarms_following_20210224.json...
+2025-02-13 17:41:30,201 - INFO - Loading existing data from kiwifarms_following_20210224.json...
+2025-02-13 17:41:30,201 - INFO - Loaded data for 0 users.
+2025-02-13 17:41:30,201 - INFO - Found 6 HTML files to process.
+2025-02-13 17:41:30,201 - INFO - Processing file: 1_followers_page-10.html (User ID: 1)
+2025-02-13 17:41:30,234 - INFO - Found 50 followers for user 1.
+2025-02-13 17:41:30,234 - INFO - Processing file: 1_followers_page-11.html (User ID: 1)
+2025-02-13 17:41:30,266 - INFO - Found 100 followers for user 1.
+2025-02-13 17:41:30,266 - INFO - Processing file: 1_followers_page-6.html (User ID: 1)
+2025-02-13 17:41:30,298 - INFO - Found 150 followers for user 1.
+2025-02-13 17:41:30,299 - INFO - Processing file: 1_followers_page-7.html (User ID: 1)
+2025-02-13 17:41:30,330 - INFO - Found 200 followers for user 1.
+2025-02-13 17:41:30,330 - INFO - Processing file: 1_followers_page-8.html (User ID: 1)
+2025-02-13 17:41:30,361 - INFO - Found 250 followers for user 1.
+2025-02-13 17:41:30,361 - INFO - Processing file: 1_followers_page-9.html (User ID: 1)
+2025-02-13 17:41:30,400 - INFO - Found 300 followers for user 1.
+2025-02-13 17:41:30,400 - INFO - Writing data to kiwifarms_following_20210224.json...
+2025-02-13 17:41:30,402 - INFO - Data saved successfully. Total users in dataset: 1.
+2025-02-13 17:47:03,731 - INFO - Loading existing data from kiwifarms_following_20210224.json...
+2025-02-13 17:47:03,732 - INFO - Loaded data for 0 users.
+2025-02-13 17:47:03,732 - INFO - Found 6 HTML files to process.
+2025-02-13 17:47:03,732 - INFO - Processing file: 1_followers_page-10.html (User ID: 1)
+2025-02-13 17:47:03,764 - INFO - Found 50 followers for user 1.
+2025-02-13 17:47:03,764 - INFO - Processing file: 1_followers_page-11.html (User ID: 1)
+2025-02-13 17:47:03,797 - INFO - Found 100 followers for user 1.
+2025-02-13 17:47:03,797 - INFO - Processing file: 1_followers_page-6.html (User ID: 1)
+2025-02-13 17:47:03,829 - INFO - Found 150 followers for user 1.
+2025-02-13 17:47:03,829 - INFO - Processing file: 1_followers_page-7.html (User ID: 1)
+2025-02-13 17:47:03,861 - INFO - Found 200 followers for user 1.
+2025-02-13 17:47:03,862 - INFO - Processing file: 1_followers_page-8.html (User ID: 1)
+2025-02-13 17:47:03,892 - INFO - Found 250 followers for user 1.
+2025-02-13 17:47:03,892 - INFO - Processing file: 1_followers_page-9.html (User ID: 1)
+2025-02-13 17:47:03,929 - INFO - Found 300 followers for user 1.
+2025-02-13 17:47:03,929 - INFO - Writing data to kiwifarms_following_20210224.json...
+2025-02-13 17:47:03,932 - INFO - Data saved successfully. Total users in dataset: 1.
+2025-02-13 17:47:48,576 - INFO - Loading existing data from kiwifarms_following_20210224.json...
+2025-02-13 17:47:48,577 - INFO - Loaded data for 0 users.
+2025-02-13 17:47:48,577 - INFO - Found 6 HTML files to process.
+2025-02-13 17:47:48,577 - INFO - Processing file: 1_followers_page-10.html (User ID: 1)
+2025-02-13 17:47:48,605 - INFO - Found 50 followers for user 1.
+2025-02-13 17:47:48,605 - INFO - Processing file: 1_followers_page-11.html (User ID: 1)
+2025-02-13 17:47:48,632 - INFO - Found 100 followers for user 1.
+2025-02-13 17:47:48,632 - INFO - Processing file: 1_followers_page-6.html (User ID: 1)
+2025-02-13 17:47:48,660 - INFO - Found 150 followers for user 1.
+2025-02-13 17:47:48,661 - INFO - Processing file: 1_followers_page-7.html (User ID: 1)
+2025-02-13 17:47:48,689 - INFO - Found 200 followers for user 1.
+2025-02-13 17:47:48,689 - INFO - Processing file: 1_followers_page-8.html (User ID: 1)
+2025-02-13 17:47:48,716 - INFO - Found 250 followers for user 1.
+2025-02-13 17:47:48,717 - INFO - Processing file: 1_followers_page-9.html (User ID: 1)
+2025-02-13 17:47:48,751 - INFO - Found 300 followers for user 1.
+2025-02-13 17:47:48,752 - INFO - Writing data to kiwifarms_following_20210224.json...
+2025-02-13 17:47:48,753 - INFO - Data saved successfully. Total users in dataset: 1.
+2025-02-13 17:48:37,426 - INFO - Loading existing data from kiwifarms_following_20210224.json...
+2025-02-13 17:48:37,427 - INFO - Loaded data for 0 users.
+2025-02-13 17:48:37,427 - INFO - Found 6 HTML files to process.
+2025-02-13 17:48:37,427 - INFO - Processing file: 1_followers_page-10.html (User ID: 1_followers_page-10.html)
+2025-02-13 17:48:37,455 - INFO - Found 50 followers for user 1_followers_page-10.html.
+2025-02-13 17:48:37,456 - INFO - Processing file: 1_followers_page-11.html (User ID: 1_followers_page-11.html)
+2025-02-13 17:48:37,483 - INFO - Found 50 followers for user 1_followers_page-11.html.
+2025-02-13 17:48:37,483 - INFO - Processing file: 1_followers_page-6.html (User ID: 1_followers_page-6.html)
+2025-02-13 17:48:37,510 - INFO - Found 50 followers for user 1_followers_page-6.html.
+2025-02-13 17:48:37,511 - INFO - Processing file: 1_followers_page-7.html (User ID: 1_followers_page-7.html)
+2025-02-13 17:48:37,539 - INFO - Found 50 followers for user 1_followers_page-7.html.
+2025-02-13 17:48:37,539 - INFO - Processing file: 1_followers_page-8.html (User ID: 1_followers_page-8.html)
+2025-02-13 17:48:37,566 - INFO - Found 50 followers for user 1_followers_page-8.html.
+2025-02-13 17:48:37,566 - INFO - Processing file: 1_followers_page-9.html (User ID: 1_followers_page-9.html)
+2025-02-13 17:48:37,599 - INFO - Found 50 followers for user 1_followers_page-9.html.
+2025-02-13 17:48:37,599 - INFO - Writing data to kiwifarms_following_20210224.json...
+2025-02-13 17:48:37,601 - INFO - Data saved successfully. Total users in dataset: 6.
+2025-02-13 17:48:53,056 - INFO - Loading existing data from kiwifarms_following_20210224.json...
+2025-02-13 17:48:58,508 - INFO - Loading existing data from kiwifarms_following_20210224.json...
+2025-02-13 17:48:58,508 - INFO - Loaded data for 0 users.
+2025-02-13 17:48:58,509 - INFO - Found 6 HTML files to process.
+2025-02-13 17:48:58,509 - INFO - Processing file: 1_followers_page-10.html (User ID: 1)
+2025-02-13 17:48:58,538 - INFO - Found 50 followers for user 1.
+2025-02-13 17:48:58,539 - INFO - Processing file: 1_followers_page-11.html (User ID: 1)
+2025-02-13 17:48:58,569 - INFO - Found 100 followers for user 1.
+2025-02-13 17:48:58,569 - INFO - Processing file: 1_followers_page-6.html (User ID: 1)
+2025-02-13 17:48:58,597 - INFO - Found 150 followers for user 1.
+2025-02-13 17:48:58,597 - INFO - Processing file: 1_followers_page-7.html (User ID: 1)
+2025-02-13 17:48:58,624 - INFO - Found 200 followers for user 1.
+2025-02-13 17:48:58,624 - INFO - Processing file: 1_followers_page-8.html (User ID: 1)
+2025-02-13 17:48:58,652 - INFO - Found 250 followers for user 1.
+2025-02-13 17:48:58,653 - INFO - Processing file: 1_followers_page-9.html (User ID: 1)
+2025-02-13 17:48:58,686 - INFO - Found 300 followers for user 1.
+2025-02-13 17:48:58,686 - INFO - Writing data to kiwifarms_following_20210224.json...
+2025-02-13 17:48:58,687 - INFO - Data saved successfully. Total users in dataset: 1.

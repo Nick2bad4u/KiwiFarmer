@@ -823,13 +823,21 @@ def get_user_reaction_score(user_page):
     return "Unknown"
 
 def get_user_points(user_page):
-    points_elements = user_page.find_all('a', {'class': 'fauxBlockLink-linkRow u-concealed'})
-    if len(points_elements) > 1:
-        points_text = points_elements[1].text.strip().replace('\n', '').replace('\t', '').replace(',', '')
-        return utils.string_to_int(points_text)
-    else:
-        return 0
+    # Find all <dl> elements with the class 'pairs pairs--inline'
+    points_elements = user_page.find_all('dl', {'class': 'pairs pairs--inline'})
 
+    # Iterate through the elements to find the one with "Points"
+    for element in points_elements:
+        dt = element.find('dt')
+        if dt and dt.text.strip() == "Points":
+            dd = element.find('dd')
+            if dd:
+                # Extract the points value and clean it
+                points_text = dd.text.strip().replace('\n', '').replace('\t', '').replace(',', '')
+                return utils.string_to_int(points_text)
+
+    # If no points element is found, return 0
+    return 0
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 
 def get_user_timestamps( user_page ):

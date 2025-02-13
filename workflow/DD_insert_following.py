@@ -1,130 +1,99 @@
-# -*- coding: UTF-8 -*-
-
-"""Test initialization of the `Following` class.
-"""
-
-###############################################################################
-
-import os
-import logging
-import sys
 import json
-
-# Add the parent directory to the sys.path to import kiwifarmer module
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
+import os
+import glob
+import logging
 from bs4 import BeautifulSoup
-from kiwifarmer import base  # Ensure this module and class are correctly implemented and imported
-
-###############################################################################
-
-PAGE_DIR = os.path.join('..', '..', 'data_20210224', 'downloaded_members_connections')
-START = 0
-DATABASE_FILE = 'kiwifarms_following_20210224.json'
-
-###############################################################################
 
 # Configure logging
-logging.basicConfig(level=logging.DEBUG,  # Set to DEBUG to capture more detailed logs
-                    format='%(asctime)s - %(levelname)s - %(message)s')
-logger = logging.getLogger()
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('script.log'),  # Log to a file
+        logging.StreamHandler()  # Log to the console
+    ]
+)
 
-def load_existing_data(file_path):
-    if os.path.exists(file_path):
-        with open(file_path, 'r', encoding='utf-8') as file:
-            try:
-                data = json.load(file)
-                if not isinstance(data, dict):
-                    logger.error(f"Existing data file {file_path} contains data of type {type(data)}, expected dict. Overwriting with empty dict.")
-                    return {}
-                return data
-            except json.JSONDecodeError:
-                logger.error(f"Existing data file {file_path} is corrupt. Overwriting with empty dict.")
-                return {}
-    return {}
+# Define the directory containing the HTML files and the output JSON file
+PAGE_DIR = os.path.join('..', '..', 'data_20210224', 'downloaded_members_connections')
+DATABASE_FILE = 'kiwifarms_following_20210224.json'
 
-def save_data(file_path, data):
-    with open(file_path, 'w', encoding='utf-8') as file:
-        json.dump(data, file, indent=4)
-    logger.info(f"Data saved to {file_path}")
+# Initialize a dictionary to store all user-following relationships
+all_data = {}
 
-if __name__ == '__main__':
-    # Load existing data as a dictionary with member_id as the key
-    existing_data = load_existing_data(DATABASE_FILE)
-    logger.debug(f"Loaded existing data: {existing_data}")
+# Load existing data from the JSON file (if it exists)
+if os.path.exists(DATABASE_FILE):
+    logging.info(f"Loading existing data from {DATABASE_FILE}...")
+    with open(DATABASE_FILE, 'r', encoding='utf-8') as json_file:
+        all_data = json.load(json_file)
+    logging.info(f"Loaded data for {len(all_data)} users.")
+else:
+    logging.info(f"No existing data found. Starting from scratch.")
 
-    # Process HTML files of pages, insert fields into JSON
-    # ---------------------------------------------------------------------------#
+# Get a list of all HTML files in the directory
+html_files = glob.glob(os.path.join(PAGE_DIR, '*.html'))
+logging.info(f"Found {len(html_files)} HTML files to process.")
 
-    if not os.path.exists(PAGE_DIR):
-        logger.error(f"PAGE_DIR does not exist: {PAGE_DIR}")
-    else:
-        pages = os.listdir(PAGE_DIR)
-        logger.debug(f"Pages found in PAGE_DIR: {pages}")
+# Process each HTML file
+for html_file in html_files:
+    try:
+        # Extract the user_id from the filename (first number in the filename)
+        filename = os.path.basename(html_file)
+        user_id = filename.split('_')[0]  # Assumes filenames are like "12345_followers_page-1.html"
+        logging.info(f"Processing file: {filename} (User ID: {user_id})")
 
-        pages = [p for p in pages if '_followers' in p]
-        N_pages = len(pages)
-        logger.debug(f"Filtered pages: {pages}")
-        logger.debug(f"Found {N_pages} pages to process")
+        # Load the HTML content from the file
+        with open(html_file, 'r', encoding='utf-8') as file:
+            html_content = file.read()
 
-        for i, page_file in enumerate(pages[START:]):
-            logger.info(f'[ {i + START} / {N_pages} ] Processing {page_file}')
-            try:
-                with open(os.path.join(PAGE_DIR, page_file), 'r', encoding='utf-8') as f:
-                    following_page = BeautifulSoup(f.read(), 'lxml')
-                    logger.debug(f"Loaded HTML content for {page_file}")
+        # Parse the HTML content using BeautifulSoup
+        soup = BeautifulSoup(html_content, 'html.parser')
 
-                # Ensure the updated script to match new HTML structure
-                body = following_page.find('ol', {'class': 'block-body'})
-                if body:
-                    users = body.find_all('li', {'class': 'block-row block-row--separated'})
-                    user_ids = []
-                    for user in users:
-                        user_link = user.find('a', {'class': 'avatar avatar--s'})
-                        if user_link and 'data-user-id' in user_link.attrs:
-                            user_id = user_link['data-user-id']
-                            if user_id.isdigit():
-                                user_ids.append(int(user_id))
-                                logger.debug(f"Found user ID: {user_id}")
-                            else:
-                                logger.warning(f"Non-numeric user ID found: {user_id}")
-                        else:
-                            logger.warning(f"User link not found or does not contain 'data-user-id': {user}")
+        # Extract the following_user_ids and additional details from the list of followers
+        followers_list = soup.find('ol', class_='block-body')
+        if followers_list:
+            for follower in followers_list.find_all('li', class_='block-row'):
+                follower_data = {}
+                follower_link = follower.find('a', href=True)
+                if follower_link:
+                    # Extract user_id from the URL
+                    following_user_id = follower_link['href'].split('/')[-2]
+                    follower_data['user_id'] = following_user_id
 
-                    logger.debug(f"Extracted user IDs: {user_ids}")
+                    # # Extract message count, points, and referrals
+                    # content_row_minor = follower.find('div', class_='contentRow-minor')
+                    # if content_row_minor:
+                    #     pairs = content_row_minor.find_all('dl', class_='pairs pairs--inline')
+                    #     for pair in pairs:
+                    #         key = pair.find('dt').text.strip().lower()
+                    #         value = pair.find('dd').text.strip()
+                    #         follower_data[key] = value
 
-                    # Create the Following object
-                    try:
-                        following = base.Following(following_page=following_page)  # Ensure this class is implemented correctly
-                    except Exception as e:
-                        logger.error(f"Error initializing Following object: {e}")
-                        continue
+                    # # Extract location (if available)
+                    # content_row_lesser = follower.find('div', class_='contentRow-lesser')
+                    # if content_row_lesser:
+                    #     location = content_row_lesser.find('a', class_='u-concealed')
+                    #     if location:
+                    #         follower_data['location'] = location.text.strip()
+                    #     else:
+                    #         follower_data['location'] = None
 
-                    # Convert following details to a dictionary
-                    following_data = {
-                        'member_id': following.member_id,
-                        'following_list': following.following_list
-                    }
-                    logger.debug(f"Following data: {following_data}")
+                    # Add the follower data to the list
+                    if user_id not in all_data:
+                        all_data[user_id] = []
+                    all_data[user_id].append(follower_data)
 
-                    # Check if the member already exists in the data
-                    if following.member_id in existing_data:
-                        # Update the existing member's data
-                        existing_data[following.member_id].update(following_data)
-                        logger.info(f'Updated existing member {following.member_id}')
-                    else:
-                        # Add a new member entry
-                        existing_data[following.member_id] = following_data
-                        logger.info(f'Added new member {following.member_id} to data list')
-                else:
-                    logger.warning(f'No block-body found in {page_file}')
+            logging.info(f"Found {len(all_data[user_id])} followers for user {user_id}.")
+        else:
+            logging.warning(f"No followers list found in file: {filename}")
 
-            except Exception as e:
-                logger.error(f'Failed to process {page_file}: {e}')
+    except Exception as e:
+        logging.error(f"Error processing file {filename}: {e}")
 
-        # Save all data to JSON file
-        save_data(DATABASE_FILE, existing_data)
+# Write the updated data to the JSON file
+logging.info(f"Writing data to {DATABASE_FILE}...")
+with open(DATABASE_FILE, 'w', encoding='utf-8') as json_file:
+    json.dump(all_data, json_file, indent=4)
+logging.info(f"Data saved successfully. Total users in dataset: {len(all_data)}.")
 
-    logger.info("Script finished")
-
-###############################################################################
+print(f"Data extracted and saved to {DATABASE_FILE}")
