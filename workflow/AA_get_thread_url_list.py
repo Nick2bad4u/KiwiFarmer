@@ -6,8 +6,12 @@
 ###############################################################################
 
 import os
+import sys
 import time
 import logging
+
+# Add the parent directory to the sys.path to import kiwifarmer module
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -20,7 +24,7 @@ from kiwifarmer import base, templates
 
 ###############################################################################
 
-OUTPUT_DIR = '../../data_20210224'
+OUTPUT_DIR = os.path.join('..', '..', 'data_20210224')
 
 SITEMAPS = [
     'sitemap-1.xml',
@@ -79,7 +83,7 @@ if __name__ == '__main__':
             with open(output_sitemap, 'w', encoding='utf-8') as f:
                 f.write(sitemap_content)
 
-            with open(output_sitemap, 'r') as f:
+            with open(output_sitemap, 'r', encoding='utf-8') as f:
                 soup = BeautifulSoup(f.read(), 'xml')
 
             urls = soup.find_all('url')

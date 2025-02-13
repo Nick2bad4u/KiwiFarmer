@@ -8,14 +8,19 @@
 import os
 import re
 import logging
+import sys
+
+# Add the parent directory to the sys.path to import kiwifarmer module
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from bs4 import BeautifulSoup
 import pandas as pd
 import numpy as np
 
 ###############################################################################
 
-MEMBER_DIR = '../../data_20210224/downloaded_members_about'
-CONNECTION_LIST = '../../data_20210224/connection_url_list.txt'
+MEMBER_DIR = os.path.join('..', '..', 'data_20210224', 'downloaded_members_about')
+CONNECTION_LIST = os.path.join('..', '..', 'data_20210224', 'connection_url_list.txt')
 
 ###############################################################################
 

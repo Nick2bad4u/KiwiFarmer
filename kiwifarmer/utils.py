@@ -29,7 +29,7 @@ def page_url_to_filename( url ):
     e.g. ``'john-cameron-denton-atomwaffen-division-siegeculture.38120_page-1.html'``
   """
 
-  filename = url[ 30 : -1 ].replace('/page', '_page') + '.html'
+  filename = url.split('threads/')[1].replace('/page', '_page').rstrip('/') + '.html'
 
   return filename
 

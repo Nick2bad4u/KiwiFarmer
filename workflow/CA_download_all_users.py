@@ -7,6 +7,11 @@
 
 import os
 import logging
+import sys
+
+# Add the parent directory to the sys.path to import kiwifarmer module
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -16,9 +21,9 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException
 
 ###############################################################################
 
-OUTPUT_DIR = '../../data_20210224/downloaded_members'
+OUTPUT_DIR = os.path.join('..', '..', 'data_20210224', 'downloaded_members')
 LOGIN_URL = 'https://kiwifarms.st/login/'
-URL_LIST_FILE = '../../data_20210224/member_url_list.txt'
+URL_LIST_FILE = os.path.join('..', '..', 'data_20210224', 'member_url_list.txt')
 
 ###############################################################################
 

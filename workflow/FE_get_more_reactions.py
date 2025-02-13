@@ -7,6 +7,11 @@
 
 import os
 import logging
+import sys
+
+# Add the parent directory to the sys.path to import kiwifarmer module
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from bs4 import BeautifulSoup
@@ -111,7 +116,7 @@ def get_url_list(page):
 
 
 def run(page):
-    output_dir = f'../../data_20210224/downloaded_reactions/page_{page + 1}'
+    output_dir = os.path.join('..', '..', 'data_20210224', f'downloaded_reactions', f'page_{page + 1}')
     os.makedirs(output_dir, exist_ok=True)
 
     url_list = get_url_list(page)

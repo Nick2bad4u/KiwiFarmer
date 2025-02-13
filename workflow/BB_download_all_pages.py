@@ -1,5 +1,3 @@
-# -*- coding: UTF-8 -*-
-
 """Download all pages for all threads using Selenium.
 """
 
@@ -7,6 +5,11 @@
 
 import os
 import logging
+import sys
+
+# Add the parent directory to the sys.path to import kiwifarmer module
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -21,9 +24,9 @@ from kiwifarmer.utils import (
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 
-URL_LIST_FILE = '../../data_20210224/page_url_list.txt'
-OUTPUT_DIR = '../../data_20210224/downloaded_pages'
-NUM_THREADS = 5
+URL_LIST_FILE = os.path.join('..', '..', 'data_20210224', 'page_url_list.txt')
+OUTPUT_DIR = os.path.join('..', '..', 'data_20210224', 'downloaded_pages')
+NUM_THREADS = 1
 THRESHOLD_KB = 20
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
@@ -68,17 +71,18 @@ def save_content(content, url):
         f.write(content)
 
 
-def process_url(url):
+def process_urls(url_list):
     driver = setup_selenium()
-    content = download_page(url, driver)
-    if content:
-        save_content(content, url)
+    for url in url_list:
+        content = download_page(url, driver)
+        if content:
+            save_content(content, url)
     driver.quit()
 
 
 def download_many_files(url_list):
     with ThreadPoolExecutor(max_workers=NUM_THREADS) as executor:
-        futures = [executor.submit(process_url, url) for url in url_list]
+        futures = [executor.submit(process_urls, url_list)]
         for future in as_completed(futures):
             future.result()
 

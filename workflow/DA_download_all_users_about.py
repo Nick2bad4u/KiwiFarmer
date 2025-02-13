@@ -7,6 +7,11 @@
 
 import os
 import logging
+import sys
+
+# Add the parent directory to the sys.path to import kiwifarmer module
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -17,9 +22,9 @@ from bs4 import BeautifulSoup
 
 ###############################################################################
 
-URL_LIST_FILE = '../../data_20210224/member_url_list.txt'
-OUTPUT_DIR = '../../data_20210224/downloaded_members_about'
-NUM_THREADS = 5
+URL_LIST_FILE = os.path.join('..', '..', 'data_20210224', 'member_url_list.txt')
+OUTPUT_DIR = os.path.join('..', '..', 'data_20210224', 'downloaded_members_about')
+NUM_THREADS = 1
 THRESHOLD_KB = 15
 
 ###############################################################################

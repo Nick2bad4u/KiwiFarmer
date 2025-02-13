@@ -6,87 +6,71 @@
 ###############################################################################
 
 import os
+import sys
 import logging
+import json
+
+# Add the parent directory to the sys.path to import kiwifarmer module
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from bs4 import BeautifulSoup
-import mysql.connector  # type: ignore
-from mysql.connector import errorcode  # type: ignore
 
-from kiwifarmer import base, templates
+from kiwifarmer import base
 
 ###############################################################################
 
-THREAD_DIR = '../../data_20210224/downloaded_threads'
+THREAD_DIR = os.path.join('..', '..', 'data_20210224', 'downloadedThreads')
 
 START = 0
 
-DATABASE = 'kiwifarms_20210224'
+DATABASE_FILE = 'kiwifarms_20210224.json'
 
 ###############################################################################
 
 # Configure logging
-logging.basicConfig(level=logging.INFO,
+logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger()
 
+def load_existing_data(file_path):
+    if os.path.exists(file_path):
+        with open(file_path, 'r') as file:
+            return json.load(file)
+    return []
+
+def save_data(file_path, data):
+    with open(file_path, 'w') as file:
+        json.dump(data, file, indent=4)
+
+def extract_messages(thread_soup):
+    messages = []
+    for message in thread_soup.find_all('article', class_='message--post'):
+        user = message.find('a', class_='username')
+        user_name = user.text.strip() if user else 'Unknown'
+        user_id = user['data-user-id'] if user and 'data-user-id' in user.attrs else 'Unknown'
+
+        content = message.find('div', class_='bbWrapper')
+        content_text = content.text.strip() if content else 'No content'
+
+        timestamp = message.find('time', class_='u-dt')
+        timestamp_text = timestamp['datetime'] if timestamp else 'Unknown'
+
+        message_data = {
+            'user_name': user_name,
+            'user_id': user_id,
+            'content': content_text,
+            'timestamp': timestamp_text,
+        }
+        messages.append(message_data)
+
+    return messages
+
 if __name__ == '__main__':
 
-    # Create database (you only need to do this once)
-    # ---------------------------------------------------------------------------#
+    # Load existing data
+    data = load_existing_data(DATABASE_FILE)
 
-    cnx = mysql.connector.connect(
-        user=os.getenv('KIWIFARMER_USER'),
-        passwd=os.getenv('KIWIFARMER_PASSWORD'),
-        host='127.0.0.1',
-        charset='utf8mb4',
-        collation='utf8mb4_bin',
-        use_unicode=True
-    )
-
-    cursor = cnx.cursor()
-    try:
-        logger.info(f'Creating database {DATABASE}')
-        cursor.execute(
-            f'CREATE DATABASE {DATABASE} character set utf8mb4 collate utf8mb4_bin')
-        cnx.commit()
-        logger.info(f'Database {DATABASE} created successfully')
-    except mysql.connector.Error as err:
-        if err.errno == errorcode.ER_DB_CREATE_EXISTS:
-            logger.info(f'Database {DATABASE} already exists.')
-        else:
-            logger.error(f'Error creating database: {err.msg}')
-    finally:
-        cursor.close()
-        cnx.close()
-
-    # Create tables in database (you only need to do this once)
-    # ---------------------------------------------------------------------------#
-
-    cnx = mysql.connector.connect(
-        user=os.getenv('KIWIFARMER_USER'),
-        password=os.getenv('KIWIFARMER_PASSWORD'),
-        host='127.0.0.1',
-        database=DATABASE,
-        charset='utf8mb4',
-        collation='utf8mb4_bin',
-        use_unicode=True
-    )
-
-    cursor = cnx.cursor()
-
-    for table_name in templates.TABLES.keys():
-        table_description = templates.TABLES[table_name]
-        try:
-            logger.info(f'Creating table {table_name}')
-            cursor.execute(table_description)
-            logger.info(f'Table {table_name} created successfully')
-        except mysql.connector.Error as err:
-            if err.errno == errorcode.ER_TABLE_EXISTS_ERROR:
-                logger.info(f'Table {table_name} already exists.')
-            else:
-                logger.error(f'Error creating table {table_name}: {err.msg}')
-
-    # Process HTML files of threads, insert fields into `threads` table
+    # Process HTML files of threads, insert fields into JSON
     # ---------------------------------------------------------------------------#
 
     threads = os.listdir(THREAD_DIR)
@@ -95,21 +79,30 @@ if __name__ == '__main__':
     for i, thread_file in enumerate(threads[START:]):
         logger.info(f'[ {i + START} / {N_threads} ] Processing {thread_file}')
 
-        with open(os.path.join(THREAD_DIR, thread_file), 'r') as f:
+        with open(os.path.join(THREAD_DIR, thread_file), 'r', encoding='utf-8') as f:
             thread_soup = BeautifulSoup(f.read(), 'lxml')
 
         thread = base.Thread(thread_page=thread_soup)
 
-        try:
-            cursor.execute(templates.ADD_THREAD, thread.thread_insertion)
-            logger.info(f'Successfully inserted {thread_file} into database')
-        except mysql.connector.Error as err:
-            logger.error(
-                f'Error inserting {thread_file} into database: {err.msg}')
+        if thread.thread_timestamp is not None:
+            # Extract messages from the thread
+            messages = extract_messages(thread_soup)
 
-    cnx.commit()
-    cursor.close()
-    cnx.close()
+            # Convert thread details to a dictionary
+            thread_data = {
+                'thread_id': thread.thread_id,
+                'title': thread.thread_title,
+                'timestamp': thread.thread_timestamp,
+                'messages': messages,
+            }
+
+            data.append(thread_data)
+            logger.info(f'Successfully added {thread_file} to data list')
+        else:
+            logger.error(f'Failed to process {thread_file} due to missing timestamp')
+
+    # Save all data to JSON file
+    save_data(DATABASE_FILE, data)
 
     logger.info('Script finished')
 

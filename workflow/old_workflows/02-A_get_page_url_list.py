@@ -20,7 +20,7 @@ from kiwifarmer import functions
 
 INPUT_DIR = '../../data_20210224/downloaded_threads/'
 
-OUTPUT_DIR = '../../data_20210224'
+OUTPUT_DIR = os.path.join('..', '..', 'data_20210224')
 
 PAGE_LIST_FILENAME = 'page_url_list.txt'
 

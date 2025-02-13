@@ -166,25 +166,20 @@ def get_thread_creator_user_id( creation ):
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 
-def get_thread_timestamp( creation ):
+import logging
 
-  """Extract thread creation timestamp from BeautifulSoup of HTML snippet
-  containing creation information.
+logger = logging.getLogger()
 
-  Parameters
-  ----------
-  creation : bs4.element.Tag
-    BeautifulSoup of HTML snippet that containins creation information
-
-  Returns
-  -------
-  int
-    Timestamp of thread creation
-    e.g. ``1515211698``
-
-  """
-
-  return int( creation.find('time', {'class' : 'u-dt'})['data-time'] )
+def get_thread_timestamp(creation):
+    try:
+        logger.debug(f"Creation content: {creation}")
+        if creation:
+            return int(creation['data-time'])
+        else:
+            logger.error("Time tag with class 'u-dt' not found.")
+    except Exception as e:
+        logger.error(f"Exception occurred while getting thread timestamp: {e}")
+    return None
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 

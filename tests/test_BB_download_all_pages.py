@@ -1,6 +1,7 @@
 import unittest
 from unittest.mock import patch, mock_open, MagicMock
 from workflow import download_all_pages as dap
+import os
 
 
 class TestDownloadAllPages(unittest.TestCase):
@@ -32,8 +33,7 @@ class TestDownloadAllPages(unittest.TestCase):
     @patch('kiwifarmer.workflow.download_all_pages.page_url_to_filename', return_value='dummy_filename.html')
     def test_save_content(self, mock_page_url_to_filename, mock_file):
         dap.save_content('<html></html>', 'http://example.com')
-        mock_file.assert_called_once_with(
-            '../../data_20210224/downloaded_pages/dummy_filename.html', 'w', encoding='utf-8')
+        mock_file.assert_called_once_with(os.path.join('..', '..', 'data_20210224', 'downloaded_pages', 'dummy_filename.html'), 'w', encoding='utf-8')
         mock_file().write.assert_called_once_with('<html></html>')
 
     @patch('kiwifarmer.workflow.download_all_pages.setup_selenium')

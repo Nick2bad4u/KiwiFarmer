@@ -7,6 +7,11 @@
 
 import os
 import logging
+import sys
+
+# Add the parent directory to the sys.path to import kiwifarmer module
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from bs4 import BeautifulSoup
 import mysql.connector  # type: ignore
 from mysql.connector import errorcode  # type: ignore
@@ -14,7 +19,7 @@ from kiwifarmer import base, templates
 
 ###############################################################################
 
-PAGE_DIR = '../../data_20210224/downloaded_members'
+PAGE_DIR = os.path.join('..', '..', 'data_20210224', 'downloaded_members')
 START = 0
 DATABASE = 'kiwifarms_20210224'
 

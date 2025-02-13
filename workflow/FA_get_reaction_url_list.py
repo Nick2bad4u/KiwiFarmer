@@ -7,6 +7,11 @@
 
 import os
 import logging
+import sys
+
+# Add the parent directory to the sys.path to import kiwifarmer module
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 import mysql.connector  # type: ignore
 import pandas as pd
 
@@ -14,7 +19,7 @@ import pandas as pd
 
 COMMAND = 'SELECT post_id FROM posts'
 DATABASE = 'kiwifarms_20210224'
-OUTPUT_CSV = '../../data_20210224/reaction_url_list.txt'
+OUTPUT_CSV = os.path.join('..', '..', 'data_20210224', 'reaction_url_list.txt')
 
 ###############################################################################
 

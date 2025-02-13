@@ -21,7 +21,7 @@ COMMAND = 'SELECT * FROM posts'
 
 DATABASE = 'kiwifarms_20210224'
 
-OUTPUT_CSV = '../../data_20210224/posts_20210224.csv'
+OUTPUT_CSV = os.path.join('..', '..', 'data_20210224', 'posts_20210224.csv')
 
 ###############################################################################
 

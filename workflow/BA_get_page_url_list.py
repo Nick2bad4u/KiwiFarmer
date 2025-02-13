@@ -7,14 +7,19 @@ containing the HTML files for all threads.
 ###############################################################################
 
 import os
+import sys
 import logging
+
+# Add the parent directory to the sys.path to import kiwifarmer module
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from bs4 import BeautifulSoup
 from kiwifarmer import functions
 
 ###############################################################################
 
-INPUT_DIR = '../../data_20210224/downloaded_threads/'
-OUTPUT_DIR = '../../data_20210224'
+INPUT_DIR = os.path.join('..', '..', 'data_20210224', 'downloadedThreads')
+OUTPUT_DIR = os.path.join('..', '..', 'data_20210224')
 PAGE_LIST_FILENAME = 'page_url_list.txt'
 
 ###############################################################################
@@ -33,7 +38,7 @@ def generate_page_urls(input_dir, output_dir, page_list_filename):
         thread_output_dir = file[:-5]
         logger.info(f"Processing {file}")
 
-        with open(os.path.join(input_dir, file), 'r') as f:
+        with open(os.path.join(input_dir, file), 'r', encoding='utf-8') as f:
             soup = BeautifulSoup(f.read(), 'lxml')
 
         last_page = functions.get_thread_last_page(thread_page=soup)
@@ -44,7 +49,7 @@ def generate_page_urls(input_dir, output_dir, page_list_filename):
 
     output_url_list = os.path.join(output_dir, page_list_filename)
 
-    with open(output_url_list, 'w') as f:
+    with open(output_url_list, 'w', encoding='utf-8') as f:
         for page in all_pages:
             f.write(page + '\n')
 

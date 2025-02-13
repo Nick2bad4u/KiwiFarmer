@@ -7,11 +7,16 @@
 
 import os
 import logging
+import sys
+
+# Add the parent directory to the sys.path to import kiwifarmer module
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 
 ###############################################################################
 
-INPUT_DIR = '../../data_20210224/downloaded_reactions'
-OUTPUT_FILE_GOOD = '../../data_20210224/downloaded_reactions_filtered.txt'
+INPUT_DIR = os.path.join('..', '..', 'data_20210224', 'downloaded_reactions')
+OUTPUT_FILE_GOOD = os.path.join('..', '..', 'data_20210224', 'downloaded_reactions_filtered.txt')
 NO_REACTIONS_STR = "No one has reacted to this content yet."
 
 ###############################################################################
