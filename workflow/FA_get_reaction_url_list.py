@@ -9,7 +9,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 ###############################################################################
 
-OUTPUT_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloadedThreads'))
+OUTPUT_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_threads'))
 OUTPUT_JSON =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'reaction_data.json'))
 REACTION_OUTPUT_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data'))
 REACTION_URL_LIST = os.path.join(REACTION_OUTPUT_DIR, 'reaction_url_list.txt')

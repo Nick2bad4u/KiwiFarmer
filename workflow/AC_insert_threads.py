@@ -19,7 +19,7 @@ from kiwifarmer import base
 
 ###############################################################################
 
-THREAD_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloadedThreads'))
+THREAD_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_threads'))
 
 START = 0
 

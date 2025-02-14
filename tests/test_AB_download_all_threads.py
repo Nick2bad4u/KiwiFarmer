@@ -40,7 +40,7 @@ class TestDownloadAllThreads(unittest.TestCase):
     @patch('builtins.open', new_callable=mock_open)
     def test_save_content(self, mock_file, mock_url_to_filename):
         dat.save_content('<html></html>', 'http://example.com')
-        mock_file.assert_called_once_with(os.path.join('..', '..', 'data_20210224', 'downloadedThreads', 'example.html'), 'w', encoding='utf-8')
+        mock_file.assert_called_once_with(os.path.join('..', '..', 'data_20210224', 'downloaded_threads', 'example.html'), 'w', encoding='utf-8')
         mock_file().write.assert_called_once_with('<html></html>')
 
     @patch('kiwifarmer.workflow.download_all_threads.setup_selenium')
