@@ -8,6 +8,7 @@
 import os
 import logging
 import sys
+from urllib.parse import urlparse
 
 # Add the parent directory to the sys.path to import kiwifarmer module
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -29,13 +30,14 @@ THRESHOLD_KB = 15
 
 URL_BASE = 'https://kiwifarms.net/members/'
 
-
-def filename_to_url(filename):
-    return URL_BASE + '/'.join(filename.split('.')[0].split('_'))
-
-
-def url_to_filename(url):
-    return '_'.join(url.split('/')[-3:]) + '.html'
+def get_filename_from_url(url):
+    parsed_url = urlparse(url)
+    path_parts = parsed_url.path.strip('/').split('/')
+    user_id = path_parts[1]
+    connection_type = path_parts[2]
+    page_number = path_parts[3].replace('page-', '')
+    filename = f"{user_id}.{connection_type}.connections.page{page_number}.html"
+    return filename
 
 ###############################################################################
 
@@ -82,7 +84,7 @@ def save_content(content, filename):
 def process_url(url, driver):
     content = download_page(url, driver)
     if content:
-        filename = url_to_filename(url)
+        filename = get_filename_from_url(url)
         save_content(content, filename)
 
 
@@ -106,5 +108,3 @@ if __name__ == '__main__':
     download_many_files(url_list)
     logger.info("Completed download of connection pages")
     logger.info("Script finished")
-
-###############################################################################

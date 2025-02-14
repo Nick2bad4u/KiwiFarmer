@@ -19,13 +19,13 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from bs4 import BeautifulSoup
+from urllib.parse import urlparse, parse_qs
 
 ###############################################################################
 
 URL_LIST_FILE = os.path.join('..', '..', 'data_20210224', 'member_url_list.txt')
 OUTPUT_DIR = os.path.join('..', '..', 'data_20210224', 'downloaded_members_about')
 NUM_THREADS = 1
-THRESHOLD_KB = 15
 
 ###############################################################################
 
@@ -39,7 +39,7 @@ def load_url_list(file_path):
     with open(file_path, 'r') as f:
         url_list = f.read().splitlines()
     url_list = list(filter(None, url_list))
-    url_list = [url + 'about' for url in url_list]
+    url_list = [url.rstrip('/') + '/about' for url in url_list]
     return url_list
 
 
@@ -63,26 +63,36 @@ def download_page(url, driver):
         return None
 
 
+def get_filename_from_url(url):
+    parsed_url = urlparse(url)
+    user_id = parsed_url.path.split('/')[-3:-1]
+    filename = '.'.join(user_id) + '.about.html'
+    return filename
+
+
 def save_content(content, filename):
     output_file = os.path.join(OUTPUT_DIR, filename)
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(content)
 
 
-def process_url(url, filename, driver):
-    content = download_page(url, driver)
-    if content:
-        save_content(content, filename)
+def process_url(url, driver):
+    filename = get_filename_from_url(url)
+    output_file = os.path.join(OUTPUT_DIR, filename)
+
+    # Check if the file already exists
+    if not os.path.exists(output_file):
+        content = download_page(url, driver)
+        if content:
+            save_content(content, filename)
+    else:
+        logger.info(f"Skipping {url}, already downloaded")
 
 
 def download_many_files(url_list):
-    filename_list = [str(i) + '.html' for i in range(len(url_list))]
-    url_to_filename = dict(zip(url_list, filename_list))
-
     driver = setup_selenium()
     with ThreadPoolExecutor(max_workers=NUM_THREADS) as executor:
-        futures = [executor.submit(
-            process_url, url, url_to_filename[url], driver) for url in url_list]
+        futures = [executor.submit(process_url, url, driver) for url in url_list]
         for future in as_completed(futures):
             future.result()
     driver.quit()

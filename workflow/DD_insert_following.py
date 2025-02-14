@@ -37,10 +37,10 @@ logging.info(f"Found {len(html_files)} HTML files to process.")
 # Process each HTML file
 for html_file in html_files:
     try:
-        # Extract the user_id from the filename (first number in the filename)
+        # Extract the username and user_id from the filename
         filename = os.path.basename(html_file)
-        user_id = filename.split('_')[0]  # Assumes filenames are like "12345_followers_page-1.html"
-        logging.info(f"Processing file: {filename} (User ID: {user_id})")
+        user_info = filename.replace('members.', '').replace('.about.html', '')
+        logging.info(f"Processing file: {filename} (User Info: {user_info})")
 
         # Load the HTML content from the file
         with open(html_file, 'r', encoding='utf-8') as file:
@@ -79,11 +79,11 @@ for html_file in html_files:
                     #         follower_data['location'] = None
 
                     # Add the follower data to the list
-                    if user_id not in all_data:
-                        all_data[user_id] = []
-                    all_data[user_id].append(follower_data)
+                    if user_info not in all_data:
+                        all_data[user_info] = []
+                    all_data[user_info].append(follower_data)
 
-            logging.info(f"Found {len(all_data[user_id])} followers for user {user_id}.")
+            logging.info(f"Found {len(all_data[user_info])} followers for user {user_info}.")
         else:
             logging.warning(f"No followers list found in file: {filename}")
 
@@ -93,7 +93,9 @@ for html_file in html_files:
 # Write the updated data to the JSON file
 logging.info(f"Writing data to {DATABASE_FILE}...")
 with open(DATABASE_FILE, 'w', encoding='utf-8') as json_file:
-    json.dump(all_data, json_file, indent=4)
-logging.info(f"Data saved successfully. Total users in dataset: {len(all_data)}.")
+    # Modify the keys to remove the extra parts and keep only the user_id
+    cleaned_data = {key.split('.')[0]: value for key, value in all_data.items()}
+    json.dump(cleaned_data, json_file, indent=4)
+logging.info(f"Data saved successfully. Total users in dataset: {len(cleaned_data)}.")
 
 print(f"Data extracted and saved to {DATABASE_FILE}")

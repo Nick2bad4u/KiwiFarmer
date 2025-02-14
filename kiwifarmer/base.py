@@ -497,65 +497,49 @@ class Following:
 
 
 class TrophyPage:
-
-    """Class for initializing the scrape of all trophies of a single KiwiFarms user.
-
-    Parameters
-    ----------
-    user_page : bs4.element.Tag
-      BeautifulSoup HTML snippet that contains a KiwiFarms user page
-
-    """
-
-    # ---------------------------------------------------------------------------#
-
-    def __init__(self,
-                 user_page):
-
-        # store BeautifulSoup HTML document as class variable
+    def __init__(self, user_page):
         self.user_page = user_page
+        self.member_id = self._extract_member_id()
+        self.trophies = self._extract_trophies()
 
-        # store user ID as class variable
-        self.user_id = functions.get_user_id(user_page=self.user_page)
+    def _extract_member_id(self):
+        # Extract member ID from the URL or other relevant part of the page
+        # For example, if the URL is "/members/null.1/about", the member ID is "1"
+        # This is just a placeholder, adjust according to your actual HTML structure
+        title_div = self.user_page.find('div', {'class': 'p-title'})
+        if title_div:
+            title_h1 = title_div.find('h1')
+            if title_h1:
+                return title_h1.text.strip()
+        return None
 
-        self.get_trophy_soups()
-
-        _trophy_insertions = list()
-
-        for trophy in self.trophies:
-
-            _d = {
-                'user_id': self.user_id,
-                'trophy_name': functions.get_trophy_name(trophy),
-                'trophy_description': functions.get_trophy_description(trophy),
-                'trophy_points': functions.get_trophy_points(trophy),
-                'trophy_time': functions.get_trophy_time(trophy), }
-
-            _trophy_insertions.append(_d)
-
-        self.trophy_insertions = _trophy_insertions
-
-    # ---------------------------------------------------------------------------#
-
-    def get_trophy_soups(self):
-        """Generate a list of BeautifulSoup HTML snippets that each contain a
-        trophy for a KiwiFarms post.
-
-        Returns
-        -------
-        list:
-          List of BeautifulSoup HTML snippets that each contain a trophy for a
-          KiwiFarms user.
-
-        """
-
+    def _extract_trophies(self):
+        trophies = []
         trophy_list = self.user_page.find('ol', {'class': 'listPlain'})
-        if trophy_list is None:
-            self.trophies = list()
-        else:
-            trophies = trophy_list.find_all('li', {'class': 'block-row'})
-            self.trophies = trophies
-
+        if trophy_list:
+            for trophy in trophy_list.find_all('li', {'class': 'block-row'}):
+                trophy_data = {}
+                # Extract trophy points
+                points = trophy.find('span', {'class': 'contentRow-figure--text'})
+                if points:
+                    try:
+                        trophy_data['points'] = int(points.text.strip())
+                    except ValueError:
+                        trophy_data['points'] = 0  # Default to 0 if parsing fails
+                # Extract trophy name
+                name = trophy.find('h2', {'class': 'contentRow-header'})
+                if name:
+                    trophy_data['name'] = name.text.strip()
+                # Extract trophy description
+                description = trophy.find('div', {'class': 'contentRow-minor'})
+                if description:
+                    trophy_data['description'] = description.text.strip()
+                # Extract trophy date
+                date = trophy.find('time', {'class': 'u-dt'})
+                if date:
+                    trophy_data['date'] = date.get('datetime', '')
+                trophies.append(trophy_data)
+        return trophies
         # .........................................................................#
 
     # ---------------------------------------------------------------------------#

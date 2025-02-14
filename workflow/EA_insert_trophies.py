@@ -14,10 +14,11 @@ import json
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from bs4 import BeautifulSoup
+from urllib.parse import urlparse
 
 ###############################################################################
 
-PAGE_DIR = os.path.join('..', '..', 'data_20210224', 'downloaded_members')
+PAGE_DIR = os.path.join('..', '..', 'data_20210224', 'downloaded_members_about')
 START = 0
 DATABASE_FILE = 'kiwifarms_trophies_20210224.json'
 
@@ -91,6 +92,11 @@ class TrophyPage:
                 trophies.append(trophy_data)
         return trophies
 
+def get_user_id_from_url(page_file):
+    # Extract member ID from the filename, assuming the format "members.username.1.about.html"
+    user_id = page_file.split('.')[2]
+    return user_id
+
 if __name__ == '__main__':
     # Load existing data as a dictionary with member_id as the key
     existing_data = load_existing_data(DATABASE_FILE)
@@ -113,21 +119,23 @@ if __name__ == '__main__':
                 logger.error(f'TrophyPage object has no valid member_id for {page_file}')
                 continue
 
+            user_id = get_user_id_from_url(page_file)
+
             # Convert trophy_page details to a dictionary
             trophy_data = {
-                'member_id': trophy_page.member_id,
+                'user_id': user_id,
                 'trophies': trophy_page.trophies
             }
 
             # Check if the member already exists in the data
-            if trophy_page.member_id in existing_data:
+            if user_id in existing_data:
                 # Update the existing member's data
-                existing_data[trophy_page.member_id].update(trophy_data)
-                logger.info(f'Updated existing member {trophy_page.member_id}')
+                existing_data[user_id].update(trophy_data)
+                logger.info(f'Updated existing member {user_id}')
             else:
                 # Add a new member entry
-                existing_data[trophy_page.member_id] = trophy_data
-                logger.info(f'Added new member {trophy_page.member_id} to data list')
+                existing_data[user_id] = trophy_data
+                logger.info(f'Added new member {user_id} to data list')
 
         except Exception as e:
             logger.error(f'Failed to process {page_file}: {e}')
@@ -136,5 +144,3 @@ if __name__ == '__main__':
     save_data(DATABASE_FILE, existing_data)
 
     logger.info("Script finished")
-
-###############################################################################

@@ -242,3 +242,192 @@
 2025-02-13 17:48:58,686 - INFO - Found 300 followers for user 1.
 2025-02-13 17:48:58,686 - INFO - Writing data to kiwifarms_following_20210224.json...
 2025-02-13 17:48:58,687 - INFO - Data saved successfully. Total users in dataset: 1.
+2025-02-13 23:06:18,320 - INFO - Loading existing data from kiwifarms_following_20210224.json...
+2025-02-13 23:06:18,320 - INFO - Loaded data for 0 users.
+2025-02-13 23:06:18,320 - INFO - Found 6 HTML files to process.
+2025-02-13 23:06:18,320 - INFO - Processing file: 1_followers_page-10.html (User Info: 1_followers_page-10.html)
+2025-02-13 23:06:18,350 - INFO - Found 50 followers for user 1_followers_page-10.html.
+2025-02-13 23:06:18,350 - INFO - Processing file: 1_followers_page-11.html (User Info: 1_followers_page-11.html)
+2025-02-13 23:06:18,378 - INFO - Found 50 followers for user 1_followers_page-11.html.
+2025-02-13 23:06:18,378 - INFO - Processing file: 1_followers_page-6.html (User Info: 1_followers_page-6.html)
+2025-02-13 23:06:18,407 - INFO - Found 50 followers for user 1_followers_page-6.html.
+2025-02-13 23:06:18,407 - INFO - Processing file: 1_followers_page-7.html (User Info: 1_followers_page-7.html)
+2025-02-13 23:06:18,438 - INFO - Found 50 followers for user 1_followers_page-7.html.
+2025-02-13 23:06:18,438 - INFO - Processing file: 1_followers_page-8.html (User Info: 1_followers_page-8.html)
+2025-02-13 23:06:18,468 - INFO - Found 50 followers for user 1_followers_page-8.html.
+2025-02-13 23:06:18,468 - INFO - Processing file: 1_followers_page-9.html (User Info: 1_followers_page-9.html)
+2025-02-13 23:06:18,504 - INFO - Found 50 followers for user 1_followers_page-9.html.
+2025-02-13 23:06:18,504 - INFO - Writing data to kiwifarms_following_20210224.json...
+2025-02-13 23:06:18,505 - INFO - Data saved successfully. Total users in dataset: 6.
+2025-02-13 23:15:53,790 - INFO - Loading existing data from kiwifarms_following_20210224.json...
+2025-02-13 23:15:53,790 - INFO - Loaded data for 6 users.
+2025-02-13 23:15:53,791 - INFO - Found 19 HTML files to process.
+2025-02-13 23:15:53,791 - INFO - Processing file: 1.followers.connections.page11.html (User Info: 1.followers.connections.page11.html)
+2025-02-13 23:15:53,818 - INFO - Found 50 followers for user 1.followers.connections.page11.html.
+2025-02-13 23:15:53,818 - INFO - Processing file: 1.followers.connections.page12.html (User Info: 1.followers.connections.page12.html)
+2025-02-13 23:15:53,846 - INFO - Found 50 followers for user 1.followers.connections.page12.html.
+2025-02-13 23:15:53,846 - INFO - Processing file: 1.followers.connections.page13.html (User Info: 1.followers.connections.page13.html)
+2025-02-13 23:15:53,874 - INFO - Found 50 followers for user 1.followers.connections.page13.html.
+2025-02-13 23:15:53,874 - INFO - Processing file: 1.followers.connections.page14.html (User Info: 1.followers.connections.page14.html)
+2025-02-13 23:15:53,901 - INFO - Found 50 followers for user 1.followers.connections.page14.html.
+2025-02-13 23:15:53,903 - INFO - Processing file: 1.followers.connections.page15.html (User Info: 1.followers.connections.page15.html)
+2025-02-13 23:15:53,930 - INFO - Found 50 followers for user 1.followers.connections.page15.html.
+2025-02-13 23:15:53,930 - INFO - Processing file: 1.followers.connections.page16.html (User Info: 1.followers.connections.page16.html)
+2025-02-13 23:15:53,963 - INFO - Found 50 followers for user 1.followers.connections.page16.html.
+2025-02-13 23:15:53,963 - INFO - Processing file: 1.followers.connections.page17.html (User Info: 1.followers.connections.page17.html)
+2025-02-13 23:15:53,989 - INFO - Found 50 followers for user 1.followers.connections.page17.html.
+2025-02-13 23:15:53,989 - INFO - Processing file: 1.followers.connections.page18.html (User Info: 1.followers.connections.page18.html)
+2025-02-13 23:15:54,017 - INFO - Found 50 followers for user 1.followers.connections.page18.html.
+2025-02-13 23:15:54,017 - INFO - Processing file: 1.followers.connections.page19.html (User Info: 1.followers.connections.page19.html)
+2025-02-13 23:15:54,044 - INFO - Found 50 followers for user 1.followers.connections.page19.html.
+2025-02-13 23:15:54,044 - INFO - Processing file: 1.followers.connections.page20.html (User Info: 1.followers.connections.page20.html)
+2025-02-13 23:15:54,071 - INFO - Found 50 followers for user 1.followers.connections.page20.html.
+2025-02-13 23:15:54,071 - INFO - Processing file: 1.followers.connections.page21.html (User Info: 1.followers.connections.page21.html)
+2025-02-13 23:15:54,098 - INFO - Found 50 followers for user 1.followers.connections.page21.html.
+2025-02-13 23:15:54,099 - INFO - Processing file: 1.followers.connections.page22.html (User Info: 1.followers.connections.page22.html)
+2025-02-13 23:15:54,126 - INFO - Found 50 followers for user 1.followers.connections.page22.html.
+2025-02-13 23:15:54,126 - INFO - Processing file: 1.followers.connections.page23.html (User Info: 1.followers.connections.page23.html)
+2025-02-13 23:15:54,166 - INFO - Found 50 followers for user 1.followers.connections.page23.html.
+2025-02-13 23:15:54,166 - INFO - Processing file: 1.followers.connections.page24.html (User Info: 1.followers.connections.page24.html)
+2025-02-13 23:15:54,192 - INFO - Found 50 followers for user 1.followers.connections.page24.html.
+2025-02-13 23:15:54,192 - INFO - Processing file: 1.followers.connections.page25.html (User Info: 1.followers.connections.page25.html)
+2025-02-13 23:15:54,220 - INFO - Found 50 followers for user 1.followers.connections.page25.html.
+2025-02-13 23:15:54,220 - INFO - Processing file: 1.followers.connections.page26.html (User Info: 1.followers.connections.page26.html)
+2025-02-13 23:15:54,246 - INFO - Found 50 followers for user 1.followers.connections.page26.html.
+2025-02-13 23:15:54,246 - INFO - Processing file: 1.followers.connections.page27.html (User Info: 1.followers.connections.page27.html)
+2025-02-13 23:15:54,273 - INFO - Found 50 followers for user 1.followers.connections.page27.html.
+2025-02-13 23:15:54,273 - INFO - Processing file: 1.followers.connections.page28.html (User Info: 1.followers.connections.page28.html)
+2025-02-13 23:15:54,299 - INFO - Found 50 followers for user 1.followers.connections.page28.html.
+2025-02-13 23:15:54,300 - INFO - Processing file: 1.followers.connections.page29.html (User Info: 1.followers.connections.page29.html)
+2025-02-13 23:15:54,328 - INFO - Found 50 followers for user 1.followers.connections.page29.html.
+2025-02-13 23:15:54,329 - INFO - Writing data to kiwifarms_following_20210224.json...
+2025-02-13 23:15:54,332 - INFO - Data saved successfully. Total users in dataset: 25.
+2025-02-13 23:16:06,703 - INFO - Loading existing data from kiwifarms_following_20210224.json...
+2025-02-13 23:16:06,703 - INFO - Loaded data for 0 users.
+2025-02-13 23:16:06,703 - INFO - Found 19 HTML files to process.
+2025-02-13 23:16:06,704 - INFO - Processing file: 1.followers.connections.page11.html (User Info: 1.followers.connections.page11.html)
+2025-02-13 23:16:06,732 - INFO - Found 50 followers for user 1.followers.connections.page11.html.
+2025-02-13 23:16:06,732 - INFO - Processing file: 1.followers.connections.page12.html (User Info: 1.followers.connections.page12.html)
+2025-02-13 23:16:06,761 - INFO - Found 50 followers for user 1.followers.connections.page12.html.
+2025-02-13 23:16:06,761 - INFO - Processing file: 1.followers.connections.page13.html (User Info: 1.followers.connections.page13.html)
+2025-02-13 23:16:06,789 - INFO - Found 50 followers for user 1.followers.connections.page13.html.
+2025-02-13 23:16:06,790 - INFO - Processing file: 1.followers.connections.page14.html (User Info: 1.followers.connections.page14.html)
+2025-02-13 23:16:06,818 - INFO - Found 50 followers for user 1.followers.connections.page14.html.
+2025-02-13 23:16:06,819 - INFO - Processing file: 1.followers.connections.page15.html (User Info: 1.followers.connections.page15.html)
+2025-02-13 23:16:06,847 - INFO - Found 50 followers for user 1.followers.connections.page15.html.
+2025-02-13 23:16:06,847 - INFO - Processing file: 1.followers.connections.page16.html (User Info: 1.followers.connections.page16.html)
+2025-02-13 23:16:06,882 - INFO - Found 50 followers for user 1.followers.connections.page16.html.
+2025-02-13 23:16:06,882 - INFO - Processing file: 1.followers.connections.page17.html (User Info: 1.followers.connections.page17.html)
+2025-02-13 23:16:06,909 - INFO - Found 50 followers for user 1.followers.connections.page17.html.
+2025-02-13 23:16:06,909 - INFO - Processing file: 1.followers.connections.page18.html (User Info: 1.followers.connections.page18.html)
+2025-02-13 23:16:06,937 - INFO - Found 50 followers for user 1.followers.connections.page18.html.
+2025-02-13 23:16:06,937 - INFO - Processing file: 1.followers.connections.page19.html (User Info: 1.followers.connections.page19.html)
+2025-02-13 23:16:06,964 - INFO - Found 50 followers for user 1.followers.connections.page19.html.
+2025-02-13 23:16:06,964 - INFO - Processing file: 1.followers.connections.page20.html (User Info: 1.followers.connections.page20.html)
+2025-02-13 23:16:06,991 - INFO - Found 50 followers for user 1.followers.connections.page20.html.
+2025-02-13 23:16:06,992 - INFO - Processing file: 1.followers.connections.page21.html (User Info: 1.followers.connections.page21.html)
+2025-02-13 23:16:07,018 - INFO - Found 50 followers for user 1.followers.connections.page21.html.
+2025-02-13 23:16:07,019 - INFO - Processing file: 1.followers.connections.page22.html (User Info: 1.followers.connections.page22.html)
+2025-02-13 23:16:07,047 - INFO - Found 50 followers for user 1.followers.connections.page22.html.
+2025-02-13 23:16:07,048 - INFO - Processing file: 1.followers.connections.page23.html (User Info: 1.followers.connections.page23.html)
+2025-02-13 23:16:07,091 - INFO - Found 50 followers for user 1.followers.connections.page23.html.
+2025-02-13 23:16:07,092 - INFO - Processing file: 1.followers.connections.page24.html (User Info: 1.followers.connections.page24.html)
+2025-02-13 23:16:07,119 - INFO - Found 50 followers for user 1.followers.connections.page24.html.
+2025-02-13 23:16:07,119 - INFO - Processing file: 1.followers.connections.page25.html (User Info: 1.followers.connections.page25.html)
+2025-02-13 23:16:07,146 - INFO - Found 50 followers for user 1.followers.connections.page25.html.
+2025-02-13 23:16:07,146 - INFO - Processing file: 1.followers.connections.page26.html (User Info: 1.followers.connections.page26.html)
+2025-02-13 23:16:07,174 - INFO - Found 50 followers for user 1.followers.connections.page26.html.
+2025-02-13 23:16:07,174 - INFO - Processing file: 1.followers.connections.page27.html (User Info: 1.followers.connections.page27.html)
+2025-02-13 23:16:07,201 - INFO - Found 50 followers for user 1.followers.connections.page27.html.
+2025-02-13 23:16:07,201 - INFO - Processing file: 1.followers.connections.page28.html (User Info: 1.followers.connections.page28.html)
+2025-02-13 23:16:07,229 - INFO - Found 50 followers for user 1.followers.connections.page28.html.
+2025-02-13 23:16:07,229 - INFO - Processing file: 1.followers.connections.page29.html (User Info: 1.followers.connections.page29.html)
+2025-02-13 23:16:07,257 - INFO - Found 50 followers for user 1.followers.connections.page29.html.
+2025-02-13 23:16:07,257 - INFO - Writing data to kiwifarms_following_20210224.json...
+2025-02-13 23:16:07,260 - INFO - Data saved successfully. Total users in dataset: 19.
+2025-02-13 23:18:00,644 - INFO - Loading existing data from kiwifarms_following_20210224.json...
+2025-02-13 23:18:00,645 - INFO - Loaded data for 0 users.
+2025-02-13 23:18:00,645 - INFO - Found 19 HTML files to process.
+2025-02-13 23:18:00,645 - INFO - Processing file: 1.followers.connections.page11.html (User Info: 1.followers.connections.page11.html)
+2025-02-13 23:18:00,675 - INFO - Found 50 followers for user 1.followers.connections.page11.html.
+2025-02-13 23:18:00,675 - INFO - Processing file: 1.followers.connections.page12.html (User Info: 1.followers.connections.page12.html)
+2025-02-13 23:18:00,704 - INFO - Found 50 followers for user 1.followers.connections.page12.html.
+2025-02-13 23:18:00,704 - INFO - Processing file: 1.followers.connections.page13.html (User Info: 1.followers.connections.page13.html)
+2025-02-13 23:18:00,733 - INFO - Found 50 followers for user 1.followers.connections.page13.html.
+2025-02-13 23:18:00,733 - INFO - Processing file: 1.followers.connections.page14.html (User Info: 1.followers.connections.page14.html)
+2025-02-13 23:18:00,763 - INFO - Found 50 followers for user 1.followers.connections.page14.html.
+2025-02-13 23:18:00,763 - INFO - Processing file: 1.followers.connections.page15.html (User Info: 1.followers.connections.page15.html)
+2025-02-13 23:18:00,793 - INFO - Found 50 followers for user 1.followers.connections.page15.html.
+2025-02-13 23:18:00,793 - INFO - Processing file: 1.followers.connections.page16.html (User Info: 1.followers.connections.page16.html)
+2025-02-13 23:18:00,829 - INFO - Found 50 followers for user 1.followers.connections.page16.html.
+2025-02-13 23:18:00,829 - INFO - Processing file: 1.followers.connections.page17.html (User Info: 1.followers.connections.page17.html)
+2025-02-13 23:18:00,855 - INFO - Found 50 followers for user 1.followers.connections.page17.html.
+2025-02-13 23:18:00,855 - INFO - Processing file: 1.followers.connections.page18.html (User Info: 1.followers.connections.page18.html)
+2025-02-13 23:18:00,881 - INFO - Found 50 followers for user 1.followers.connections.page18.html.
+2025-02-13 23:18:00,881 - INFO - Processing file: 1.followers.connections.page19.html (User Info: 1.followers.connections.page19.html)
+2025-02-13 23:18:00,909 - INFO - Found 50 followers for user 1.followers.connections.page19.html.
+2025-02-13 23:18:00,909 - INFO - Processing file: 1.followers.connections.page20.html (User Info: 1.followers.connections.page20.html)
+2025-02-13 23:18:00,936 - INFO - Found 50 followers for user 1.followers.connections.page20.html.
+2025-02-13 23:18:00,936 - INFO - Processing file: 1.followers.connections.page21.html (User Info: 1.followers.connections.page21.html)
+2025-02-13 23:18:00,965 - INFO - Found 50 followers for user 1.followers.connections.page21.html.
+2025-02-13 23:18:00,966 - INFO - Processing file: 1.followers.connections.page22.html (User Info: 1.followers.connections.page22.html)
+2025-02-13 23:18:00,998 - INFO - Found 50 followers for user 1.followers.connections.page22.html.
+2025-02-13 23:18:00,998 - INFO - Processing file: 1.followers.connections.page23.html (User Info: 1.followers.connections.page23.html)
+2025-02-13 23:18:01,041 - INFO - Found 50 followers for user 1.followers.connections.page23.html.
+2025-02-13 23:18:01,041 - INFO - Processing file: 1.followers.connections.page24.html (User Info: 1.followers.connections.page24.html)
+2025-02-13 23:18:01,070 - INFO - Found 50 followers for user 1.followers.connections.page24.html.
+2025-02-13 23:18:01,070 - INFO - Processing file: 1.followers.connections.page25.html (User Info: 1.followers.connections.page25.html)
+2025-02-13 23:18:01,097 - INFO - Found 50 followers for user 1.followers.connections.page25.html.
+2025-02-13 23:18:01,097 - INFO - Processing file: 1.followers.connections.page26.html (User Info: 1.followers.connections.page26.html)
+2025-02-13 23:18:01,125 - INFO - Found 50 followers for user 1.followers.connections.page26.html.
+2025-02-13 23:18:01,126 - INFO - Processing file: 1.followers.connections.page27.html (User Info: 1.followers.connections.page27.html)
+2025-02-13 23:18:01,152 - INFO - Found 50 followers for user 1.followers.connections.page27.html.
+2025-02-13 23:18:01,152 - INFO - Processing file: 1.followers.connections.page28.html (User Info: 1.followers.connections.page28.html)
+2025-02-13 23:18:01,178 - INFO - Found 50 followers for user 1.followers.connections.page28.html.
+2025-02-13 23:18:01,178 - INFO - Processing file: 1.followers.connections.page29.html (User Info: 1.followers.connections.page29.html)
+2025-02-13 23:18:01,204 - INFO - Found 50 followers for user 1.followers.connections.page29.html.
+2025-02-13 23:18:01,205 - INFO - Writing data to kiwifarms_following_20210224.json...
+2025-02-13 23:18:01,205 - INFO - Data saved successfully. Total users in dataset: 1.
+2025-02-13 23:18:09,171 - INFO - Loading existing data from kiwifarms_following_20210224.json...
+2025-02-13 23:18:09,171 - INFO - Loaded data for 1 users.
+2025-02-13 23:18:09,172 - INFO - Found 19 HTML files to process.
+2025-02-13 23:18:09,172 - INFO - Processing file: 1.followers.connections.page11.html (User Info: 1.followers.connections.page11.html)
+2025-02-13 23:18:09,200 - INFO - Found 50 followers for user 1.followers.connections.page11.html.
+2025-02-13 23:18:09,200 - INFO - Processing file: 1.followers.connections.page12.html (User Info: 1.followers.connections.page12.html)
+2025-02-13 23:18:09,227 - INFO - Found 50 followers for user 1.followers.connections.page12.html.
+2025-02-13 23:18:09,228 - INFO - Processing file: 1.followers.connections.page13.html (User Info: 1.followers.connections.page13.html)
+2025-02-13 23:18:09,256 - INFO - Found 50 followers for user 1.followers.connections.page13.html.
+2025-02-13 23:18:09,256 - INFO - Processing file: 1.followers.connections.page14.html (User Info: 1.followers.connections.page14.html)
+2025-02-13 23:18:09,284 - INFO - Found 50 followers for user 1.followers.connections.page14.html.
+2025-02-13 23:18:09,284 - INFO - Processing file: 1.followers.connections.page15.html (User Info: 1.followers.connections.page15.html)
+2025-02-13 23:18:09,312 - INFO - Found 50 followers for user 1.followers.connections.page15.html.
+2025-02-13 23:18:09,312 - INFO - Processing file: 1.followers.connections.page16.html (User Info: 1.followers.connections.page16.html)
+2025-02-13 23:18:09,350 - INFO - Found 50 followers for user 1.followers.connections.page16.html.
+2025-02-13 23:18:09,350 - INFO - Processing file: 1.followers.connections.page17.html (User Info: 1.followers.connections.page17.html)
+2025-02-13 23:18:09,376 - INFO - Found 50 followers for user 1.followers.connections.page17.html.
+2025-02-13 23:18:09,376 - INFO - Processing file: 1.followers.connections.page18.html (User Info: 1.followers.connections.page18.html)
+2025-02-13 23:18:09,403 - INFO - Found 50 followers for user 1.followers.connections.page18.html.
+2025-02-13 23:18:09,403 - INFO - Processing file: 1.followers.connections.page19.html (User Info: 1.followers.connections.page19.html)
+2025-02-13 23:18:09,429 - INFO - Found 50 followers for user 1.followers.connections.page19.html.
+2025-02-13 23:18:09,429 - INFO - Processing file: 1.followers.connections.page20.html (User Info: 1.followers.connections.page20.html)
+2025-02-13 23:18:09,464 - INFO - Found 50 followers for user 1.followers.connections.page20.html.
+2025-02-13 23:18:09,464 - INFO - Processing file: 1.followers.connections.page21.html (User Info: 1.followers.connections.page21.html)
+2025-02-13 23:18:09,493 - INFO - Found 50 followers for user 1.followers.connections.page21.html.
+2025-02-13 23:18:09,493 - INFO - Processing file: 1.followers.connections.page22.html (User Info: 1.followers.connections.page22.html)
+2025-02-13 23:18:09,521 - INFO - Found 50 followers for user 1.followers.connections.page22.html.
+2025-02-13 23:18:09,522 - INFO - Processing file: 1.followers.connections.page23.html (User Info: 1.followers.connections.page23.html)
+2025-02-13 23:18:09,562 - INFO - Found 50 followers for user 1.followers.connections.page23.html.
+2025-02-13 23:18:09,562 - INFO - Processing file: 1.followers.connections.page24.html (User Info: 1.followers.connections.page24.html)
+2025-02-13 23:18:09,590 - INFO - Found 50 followers for user 1.followers.connections.page24.html.
+2025-02-13 23:18:09,590 - INFO - Processing file: 1.followers.connections.page25.html (User Info: 1.followers.connections.page25.html)
+2025-02-13 23:18:09,617 - INFO - Found 50 followers for user 1.followers.connections.page25.html.
+2025-02-13 23:18:09,617 - INFO - Processing file: 1.followers.connections.page26.html (User Info: 1.followers.connections.page26.html)
+2025-02-13 23:18:09,645 - INFO - Found 50 followers for user 1.followers.connections.page26.html.
+2025-02-13 23:18:09,646 - INFO - Processing file: 1.followers.connections.page27.html (User Info: 1.followers.connections.page27.html)
+2025-02-13 23:18:09,673 - INFO - Found 50 followers for user 1.followers.connections.page27.html.
+2025-02-13 23:18:09,674 - INFO - Processing file: 1.followers.connections.page28.html (User Info: 1.followers.connections.page28.html)
+2025-02-13 23:18:09,701 - INFO - Found 50 followers for user 1.followers.connections.page28.html.
+2025-02-13 23:18:09,701 - INFO - Processing file: 1.followers.connections.page29.html (User Info: 1.followers.connections.page29.html)
+2025-02-13 23:18:09,729 - INFO - Found 50 followers for user 1.followers.connections.page29.html.
+2025-02-13 23:18:09,729 - INFO - Writing data to kiwifarms_following_20210224.json...
+2025-02-13 23:18:09,730 - INFO - Data saved successfully. Total users in dataset: 1.
