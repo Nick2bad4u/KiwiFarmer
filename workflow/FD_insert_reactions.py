@@ -20,8 +20,8 @@ from kiwifarmer import base, templates, utils
 
 ###############################################################################
 
-REACTION_PAGE_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_reactions')
-REACTION_FILTERED_LIST =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_reactions_filtered.txt')
+REACTION_PAGE_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_reactions'))
+REACTION_FILTERED_LIST =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_reactions_filtered.txt'))
 START = 0
 DATABASE = 'kiwifarms_20210224'
 
