@@ -18,7 +18,7 @@ from kiwifarmer import base
 
 ###############################################################################
 
-USER_PAGE_DIR = os.path.join('..', '..', 'data_20210224', 'downloaded_members')
+USER_PAGE_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_members'))
 START = 0
 DATABASE_FILE = 'kiwifarms_users_20210224.json'
 

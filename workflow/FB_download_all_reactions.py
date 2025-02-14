@@ -21,8 +21,8 @@ import time
 
 ###############################################################################
 
-URL_LIST_FILE = os.path.join('..', '..', 'data_20210224', 'reaction_url_list.txt')
-OUTPUT_DIR = os.path.join('..', '..', 'data_20210224', 'downloaded_reactions')
+URL_LIST_FILE =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'reaction_url_list.txt'))
+OUTPUT_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_reactions'))
 NUM_THREADS = 1
 THRESHOLD_KB = 7
 MAX_RETRIES = 3

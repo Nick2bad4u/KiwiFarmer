@@ -116,7 +116,7 @@ def get_url_list(page):
 
 
 def run(page):
-    output_dir = os.path.join('..', '..', 'data_20210224', f'downloaded_reactions', f'page_{page + 1}')
+    output_dir =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', f'downloaded_reactions', f'page_{page + 1}')
     os.makedirs(output_dir, exist_ok=True)
 
     url_list = get_url_list(page)

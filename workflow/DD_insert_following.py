@@ -15,7 +15,7 @@ logging.basicConfig(
 )
 
 # Define the directory containing the HTML files and the output JSON file
-PAGE_DIR = os.path.join('..', '..', 'data_20210224', 'downloaded_members_connections')
+PAGE_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_members_connections'))
 DATABASE_FILE = 'kiwifarms_following_20210224.json'
 
 # Initialize a dictionary to store all user-following relationships

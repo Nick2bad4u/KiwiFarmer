@@ -23,8 +23,8 @@ from urllib.parse import urlparse, parse_qs
 
 ###############################################################################
 
-URL_LIST_FILE = os.path.join('..', '..', 'data_20210224', 'member_url_list.txt')
-OUTPUT_DIR = os.path.join('..', '..', 'data_20210224', 'downloaded_members_about')
+URL_LIST_FILE =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'member_url_list.txt'))
+OUTPUT_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_members_about'))
 NUM_THREADS = 1
 
 ###############################################################################

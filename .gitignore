@@ -81,4 +81,7 @@ venv.bak/
 
 # pytype static type analyzer
 .pytype/
+
+# custom local environment variables
 .history/
+data/

@@ -21,8 +21,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 ###############################################################################
 
-URL_LIST_FILE = os.path.join('..', '..', 'data_20210224', 'connection_url_list.txt')
-OUTPUT_DIR = os.path.join('..', '..', 'data_20210224', 'downloaded_members_connections')
+URL_LIST_FILE =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'connection_url_list.txt'))
+OUTPUT_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_members_connections'))
 NUM_THREADS = 1
 THRESHOLD_KB = 15
 

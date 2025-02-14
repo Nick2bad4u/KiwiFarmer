@@ -18,7 +18,7 @@ from urllib.parse import urlparse
 
 ###############################################################################
 
-PAGE_DIR = os.path.join('..', '..', 'data_20210224', 'downloaded_members_about')
+PAGE_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_members_about'))
 START = 0
 DATABASE_FILE = 'kiwifarms_trophies_20210224.json'
 

@@ -21,9 +21,9 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException
 
 ###############################################################################
 
-OUTPUT_DIR = os.path.join('..', '..', 'data_20210224', 'downloaded_members')
+OUTPUT_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_members'))
 LOGIN_URL = 'https://kiwifarms.st/login/'
-URL_LIST_FILE = os.path.join('..', '..', 'data_20210224', 'member_url_list.txt')
+URL_LIST_FILE =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'member_url_list.txt'))
 
 ###############################################################################
 

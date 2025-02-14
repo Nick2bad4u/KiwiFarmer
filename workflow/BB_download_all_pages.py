@@ -24,8 +24,8 @@ from kiwifarmer.utils import (
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 
-URL_LIST_FILE = os.path.join('..', '..', 'data_20210224', 'page_url_list.txt')
-OUTPUT_DIR = os.path.join('..', '..', 'data_20210224', 'downloaded_pages')
+URL_LIST_FILE =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'page_url_list.txt'))
+OUTPUT_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_pages'))
 NUM_THREADS = 1
 THRESHOLD_KB = 20
 

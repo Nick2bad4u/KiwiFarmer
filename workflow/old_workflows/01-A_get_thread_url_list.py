@@ -14,7 +14,7 @@ from kiwifarmer import base, templates
 
 ###############################################################################
 
-OUTPUT_DIR = os.path.join('..', '..', 'data_20210224')
+OUTPUT_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data')
 
 SITEMAPS = [
   'sitemap-1.xml',

@@ -11,8 +11,8 @@ from kiwifarmer import base
 
 ###############################################################################
 
-PAGE_DIR = os.path.join('..', '..', 'data_20210224', 'downloaded_pages')
-THREAD_DIR = os.path.join('..', '..', 'data_20210224', 'downloadedThreads')
+PAGE_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_pages'))
+THREAD_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloadedThreads'))
 START = 0
 DATABASE_FILE = 'kiwifarms_20210224.json'
 

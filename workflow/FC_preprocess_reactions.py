@@ -15,8 +15,8 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 ###############################################################################
 
-INPUT_DIR = os.path.join('..', '..', 'data_20210224', 'downloaded_reactions')
-OUTPUT_FILE_GOOD = os.path.join('..', '..', 'data_20210224', 'downloaded_reactions_filtered.txt')
+INPUT_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_reactions')
+OUTPUT_FILE_GOOD =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_reactions_filtered.txt')
 NO_REACTIONS_STR = "No one has reacted to this content yet."
 
 ###############################################################################

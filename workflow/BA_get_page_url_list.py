@@ -18,8 +18,8 @@ from kiwifarmer import functions
 
 ###############################################################################
 
-INPUT_DIR = os.path.join('..', '..', 'data_20210224', 'downloadedThreads')
-OUTPUT_DIR = os.path.join('..', '..', 'data_20210224')
+INPUT_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloadedThreads'))
+OUTPUT_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data'))
 PAGE_LIST_FILENAME = 'page_url_list.txt'
 
 ###############################################################################

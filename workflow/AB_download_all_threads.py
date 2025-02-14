@@ -28,8 +28,8 @@ from kiwifarmer.utils import (
 
 ###############################################################################
 
-URL_LIST_FILE = os.path.join('..', '..', 'data_20210224', 'thread_url_list.txt')
-OUTPUT_DIR = os.path.join('..', '..', 'data_20210224', 'downloadedThreads')
+URL_LIST_FILE =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'thread_url_list.txt'))
+OUTPUT_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloadedThreads'))
 NUM_THREADS = 1
 THRESHOLD_KB = 20
 MAX_RETRIES = 3

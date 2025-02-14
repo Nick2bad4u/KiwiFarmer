@@ -19,8 +19,8 @@ import numpy as np
 
 ###############################################################################
 
-MEMBER_DIR = os.path.join('..', '..', 'data_20210224', 'downloaded_members_about')
-CONNECTION_LIST = os.path.join('..', '..', 'data_20210224', 'connection_url_list.txt')
+MEMBER_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_members_about'))
+CONNECTION_LIST =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'connection_url_list.txt'))
 
 ###############################################################################
 
