@@ -125,7 +125,7 @@ def plot_follower_network(data, output_dir):
                     follower_name = follower_info['user_name']
                     user_name = user_info['user_username']
                     G.add_edge(user_name, follower_name)
-        plt.figure(figsize=(12, 8))
+        plt.figure(figsize=(30, 16))
         pos = nx.spring_layout(G, k=0.1)
         nx.draw(G, pos, with_labels=True, node_size=500, node_color="skyblue", font_size=8, font_weight="bold", edge_color='gray')
         plt.title('Follower Network')
