@@ -1,523 +1,143 @@
 {
-    "users": {
-        "12": {
-            "user_username": "introman",
-            "user_id": 12,
-            "user_image": "//uploads.kiwifarms.st/data/avatars/o/0/12.jpg?1558400182",
-            "user_messages": 1601,
-            "user_reaction_score": "Positive",
-            "user_points": 0,
-            "user_joined": 1359899125,
-            "user_last_seen": 1664825499,
-            "user_blurb": "Great Value™ Portable Pizza Pocket",
-            "user_role": "Retired Staff"
-        },
-        "13": {
-            "user_username": "cwcthinker",
-            "user_id": 13,
-            "user_image": "//uploads.kiwifarms.st/data/avatars/o/0/13.jpg?1394010477",
-            "user_messages": 16,
-            "user_reaction_score": "Positive",
-            "user_points": 0,
-            "user_joined": 1359899943,
-            "user_last_seen": 1449431297,
-            "user_blurb": null,
-            "user_role": null
-        },
-        "14": {
-            "user_username": "the-hunter",
-            "user_id": 14,
-            "user_image": "//uploads.kiwifarms.st/data/avatars/o/0/14.jpg?1418003294",
-            "user_messages": 2641,
-            "user_reaction_score": "Positive",
-            "user_points": 0,
-            "user_joined": 1359899961,
-            "user_last_seen": null,
-            "user_blurb": "Border Hopping Taco Bender",
-            "user_role": "Retired Staff"
-        },
-        "4": {
-            "user_username": "freecell",
-            "user_id": 4,
-            "user_image": "//uploads.kiwifarms.st/data/avatars/o/0/4.jpg?1420671081",
-            "user_messages": 70,
-            "user_reaction_score": "Positive",
-            "user_points": 0,
-            "user_joined": 1359636381,
-            "user_last_seen": 1498679430,
-            "user_blurb": null,
-            "user_role": "Retired Staff"
-        },
-        "6": {
-            "user_username": "dunsparce",
-            "user_id": 6,
-            "user_image": "//uploads.kiwifarms.st/data/avatars/o/0/6.jpg?1394010477",
-            "user_messages": 1371,
-            "user_reaction_score": "Positive",
-            "user_points": 0,
-            "user_joined": 1359670480,
-            "user_last_seen": null,
-            "user_blurb": "Out of Control",
-            "user_role": "Retired Staff"
-        },
-        "7": {
-            "user_username": "dark-mirror-hole",
-            "user_id": 7,
-            "user_image": "//uploads.kiwifarms.st/data/avatars/o/0/7.jpg?1557671839",
-            "user_messages": 630,
-            "user_reaction_score": "Positive",
-            "user_points": 0,
-            "user_joined": 1359897969,
-            "user_last_seen": null,
-            "user_blurb": "I don't use this site anymore",
-            "user_role": null
-        },
-        "8": {
-            "user_username": "jose-mourinho",
-            "user_id": 8,
-            "user_image": "//uploads.kiwifarms.st/data/avatars/o/0/8.jpg?1733376432",
-            "user_messages": 13578,
-            "user_reaction_score": "Positive",
-            "user_points": 0,
-            "user_joined": 1359898439,
-            "user_last_seen": null,
-            "user_blurb": "The Special One",
-            "user_role": "Retired Staff"
-        },
-        "9": {
-            "user_username": "darkhorse816",
-            "user_id": 9,
-            "user_image": "//uploads.kiwifarms.st/data/avatars/o/0/9.jpg?1545827001",
-            "user_messages": 971,
-            "user_reaction_score": "Positive",
-            "user_points": 0,
-            "user_joined": 1359898684,
-            "user_last_seen": 1568085302,
-            "user_blurb": "WOOF!",
-            "user_role": null
-        },
-        "10": {
-            "user_username": "thiaf",
-            "user_id": 10,
-            "user_image": "//uploads.kiwifarms.st/data/avatars/o/0/10.jpg?1394010477",
-            "user_messages": 11,
-            "user_reaction_score": "Positive",
-            "user_points": 0,
-            "user_joined": 1359898775,
-            "user_last_seen": null,
-            "user_blurb": null,
-            "user_role": null
-        },
-        "11": {
-            "user_username": "j09506",
-            "user_id": 11,
-            "user_image": null,
-            "user_messages": 6,
-            "user_reaction_score": "Positive",
-            "user_points": 0,
-            "user_joined": 1359898834,
-            "user_last_seen": null,
-            "user_blurb": null,
-            "user_role": null
-        },
-        "1": {
-            "following": [
-                {
-                    "user_id": "kahluacream.69913"
-                },
-                {
-                    "user_id": "kaini-industries.75740"
-                },
-                {
-                    "user_id": "kaliyuga.46557"
-                },
-                {
-                    "user_id": "kami-neko.150357"
-                },
-                {
-                    "user_id": "kandinsky.133233"
-                },
-                {
-                    "user_id": "kandinskycandle.89780"
-                },
-                {
-                    "user_id": "kant-havand.58253"
-                },
-                {
-                    "user_id": "karamel.67540"
-                },
-                {
-                    "user_id": "karen.3184"
-                },
-                {
-                    "user_id": "karognis.131796"
-                },
-                {
-                    "user_id": "kate-tokamak.191033"
-                },
-                {
-                    "user_id": "katsmakeover.22479"
-                },
-                {
-                    "user_id": "kattzeow.102912"
-                },
-                {
-                    "user_id": "kawaii-supremacy.136146"
-                },
-                {
-                    "user_id": "kawaiiburgers.13189"
-                },
-                {
-                    "user_id": "kazuichi-souda.16253"
-                },
-                {
-                    "user_id": "kazuya-mishima.105194"
-                },
-                {
-                    "user_id": "keepyourmoneysusan.101025"
-                },
-                {
-                    "user_id": "kekifornian.30462"
-                },
-                {
-                    "user_id": "kellys-yeeted-legs.89096"
-                },
-                {
-                    "user_id": "kenysu.18076"
-                },
-                {
-                    "user_id": "kenzie006.42100"
-                },
-                {
-                    "user_id": "kept-ya-waiting-huh.147145"
-                },
-                {
-                    "user_id": "kermie.129825"
-                },
-                {
-                    "user_id": "kermit-jizz.76982"
-                },
-                {
-                    "user_id": "ketamine-kat.20684"
-                },
-                {
-                    "user_id": "kevinkarlklebold.160105"
-                },
-                {
-                    "user_id": "keyblade.171995"
-                },
-                {
-                    "user_id": "kheapathic.28011"
-                },
-                {
-                    "user_id": "khunstipated.179608"
-                },
-                {
-                    "user_id": "kibasrain.181910"
-                },
-                {
-                    "user_id": "kiboshkosh.153157"
-                },
-                {
-                    "user_id": "kifflomkween.66031"
-                },
-                {
-                    "user_id": "kiioru.98675"
-                },
-                {
-                    "user_id": "killerchud.161287"
-                },
-                {
-                    "user_id": "kim-jong-liu.84774"
-                },
-                {
-                    "user_id": "king-fructose.90762"
-                },
-                {
-                    "user_id": "king-metalia.103586"
-                },
-                {
-                    "user_id": "king-nigger-the-3rd.27867"
-                },
-                {
-                    "user_id": "kingframpt.37337"
-                },
-                {
-                    "user_id": "kinggeedorah.5687"
-                },
-                {
-                    "user_id": "kingharkinian.85652"
-                },
-                {
-                    "user_id": "kingpoisson.24111"
-                },
-                {
-                    "user_id": "kinkshamer.12025"
-                },
-                {
-                    "user_id": "kinoplex-robert.45445"
-                },
-                {
-                    "user_id": "kirby-inhaled-my-dick.70001"
-                },
-                {
-                    "user_id": "kirklandwarrior.127479"
-                },
-                {
-                    "user_id": "kit.121622"
-                },
-                {
-                    "user_id": "kitanai2.149322"
-                },
-                {
-                    "user_id": "kitsunehime.60227"
-                }
-            ],
-            "trophies": [
-                {
-                    "points": 25,
-                    "name": "Phase 3: Shitpost",
-                    "description": "Survive Phase 2 of #DropKiwifarms.\nRegister before August 30th, 2022 and be active in the month of August.",
-                    "date": "2022-08-31T15:40:44-0400"
-                },
-                {
-                    "points": 40,
-                    "name": "Talent Finder",
-                    "description": "Create a Lolcow thread that receives over 100,000 views.\nThis trophy is manually given.",
-                    "date": "2015-09-28T04:37:43-0400"
-                },
-                {
-                    "points": 5,
-                    "name": "Extremely Helpful Gamer",
-                    "description": "Complete a feat of strength in service of Deagle Nation.",
-                    "date": "2015-08-18T05:24:15-0400"
-                },
-                {
-                    "points": 10,
-                    "name": "I Want To Get Off Mr. Jan's Wild Ride",
-                    "description": "Survive Deagle Nation.\n(Register before the February 22nd \"Jace is a hoax.\" thread.)",
-                    "date": "2015-03-02T19:40:39-0500"
-                },
-                {
-                    "points": 15,
-                    "name": "CWCki Sperg!",
-                    "description": "Join the forums before March 1st, 2014 -- the creation of the Parkourdude91 board.",
-                    "date": "2014-12-15T23:20:46-0500"
-                },
-                {
-                    "points": 15,
-                    "name": "Christorian",
-                    "description": "Join the forums before March 1st, 2013 -- the first month that the Lolcow board existed.",
-                    "date": "2014-12-15T23:20:46-0500"
-                },
-                {
-                    "points": 10,
-                    "name": "(Charity) Semper Fidelis to All Are Armed Forces",
-                    "description": "2014 Charity: Injured Marine Semper Fi Fund",
-                    "date": "2014-11-16T21:21:16-0500"
-                },
-                {
-                    "points": 10,
-                    "name": "(Charity) A-U-T-I-S-M",
-                    "description": "2014 Charity: Autism Research Institute\n\"A-U-T-I-S-M: what does it mean? Silence and friends unseen! A few brains as well: that is autism! And that makes us seem special to you!\"",
-                    "date": "2014-11-06T22:40:10-0500"
-                },
-                {
-                    "points": 20,
-                    "name": "Jerkief",
-                    "description": "\"Aroo, maybe so.\" - President Richard Nixon during the 3000 presidential election",
-                    "date": "2014-08-27T21:40:48-0400"
-                },
-                {
-                    "points": 20,
-                    "name": "Fire Relief Fund Contributor",
-                    "description": "Donated to the January 2014 fund to send Chris a \"big box of stuff\".",
-                    "date": "2014-08-27T14:38:54-0400"
-                },
-                {
-                    "points": 15,
-                    "name": "Hitler's Paintbrush",
-                    "description": "Make a serious artistic contribution to the site.",
-                    "date": "2014-08-20T19:40:23-0400"
-                },
-                {
-                    "points": 5,
-                    "name": "Voice of Spergatory",
-                    "description": "Do a reading of a forum post.",
-                    "date": "2014-04-17T16:50:14-0400"
-                },
-                {
-                    "points": 50,
-                    "name": "Loyal Sonichu Fan",
-                    "description": "An esteemed trophy for the world's most dedicated Sonichu fans.",
-                    "date": "2014-04-10T07:40:30-0400"
-                },
-                {
-                    "points": 25,
-                    "name": "Online socialization is a bust!",
-                    "description": "Meet another member of the forums offline.",
-                    "date": "2014-03-12T23:04:28-0400"
-                },
-                {
-                    "points": 25,
-                    "name": "Inspiration that hard to come by",
-                    "description": "Receive 250 Likes on your posts or messages.",
-                    "date": "2014-03-05T19:52:31-0500"
-                },
-                {
-                    "points": 15,
-                    "name": "Your thoughts have been inputed",
-                    "description": "Receive 100 Likes on your posts or messages.",
-                    "date": "2014-03-05T19:52:31-0500"
-                },
-                {
-                    "points": 10,
-                    "name": "Mm, yeah",
-                    "description": "Receive 50 Likes on your posts or messages.",
-                    "date": "2014-03-05T19:52:31-0500"
-                },
-                {
-                    "points": 75,
-                    "name": "Inspirational",
-                    "description": "Have over 1000 posts with at least a 1:1 ratio of Likes.",
-                    "date": "2014-03-05T19:52:31-0500"
-                }
-            ]
-        },
-        "3": {
-            "trophies": [
-                {
-                    "points": 25,
-                    "name": "The Line, Held",
-                    "description": "Survive the Innaguration of President Donald J. Trump.",
-                    "date": "2020-04-17T00:15:42-0400"
-                },
-                {
-                    "points": 15,
-                    "name": "CWCki Sperg!",
-                    "description": "Join the forums before March 1st, 2014 -- the creation of the Parkourdude91 board.",
-                    "date": "2015-11-01T22:29:53-0500"
-                },
-                {
-                    "points": 15,
-                    "name": "Christorian",
-                    "description": "Join the forums before March 1st, 2013 -- the first month that the Lolcow board existed.",
-                    "date": "2015-11-01T22:29:53-0500"
-                },
-                {
-                    "points": 50,
-                    "name": "Thought Provoking",
-                    "description": "Have 500 or more posts with at least a 1:1 ratio of Likes.",
-                    "date": "2014-04-14T14:40:12-0400"
-                },
-                {
-                    "points": 20,
-                    "name": "Jerkief",
-                    "description": "\"Aroo, maybe so.\" - President Richard Nixon during the 3000 presidential election",
-                    "date": "2014-03-07T12:40:11-0500"
-                },
-                {
-                    "points": 25,
-                    "name": "Inspiration that hard to come by",
-                    "description": "Receive 250 Likes on your posts or messages.",
-                    "date": "2014-03-05T19:52:31-0500"
-                },
-                {
-                    "points": 15,
-                    "name": "Your thoughts have been inputed",
-                    "description": "Receive 100 Likes on your posts or messages.",
-                    "date": "2014-03-05T19:52:31-0500"
-                },
-                {
-                    "points": 10,
-                    "name": "Mm, yeah",
-                    "description": "Receive 50 Likes on your posts or messages.",
-                    "date": "2014-03-05T19:52:31-0500"
-                }
-            ]
-        },
-        "2": {
-            "trophies": [
-                {
-                    "points": 25,
-                    "name": "The Line, Held",
-                    "description": "Survive the Innaguration of President Donald J. Trump.",
-                    "date": "2017-02-10T19:29:49-0500"
-                },
-                {
-                    "points": 75,
-                    "name": "Inspirational",
-                    "description": "Have over 1000 posts with at least a 1:1 ratio of Likes.",
-                    "date": "2015-03-29T12:40:17-0400"
-                },
-                {
-                    "points": 10,
-                    "name": "I Want To Get Off Mr. Jan's Wild Ride",
-                    "description": "Survive Deagle Nation.\n(Register before the February 22nd \"Jace is a hoax.\" thread.)",
-                    "date": "2015-03-02T21:40:44-0500"
-                },
-                {
-                    "points": 25,
-                    "name": "Online socialization is a bust!",
-                    "description": "Meet another member of the forums offline.",
-                    "date": "2015-02-06T07:40:54-0500"
-                },
-                {
-                    "points": 15,
-                    "name": "CWCki Sperg!",
-                    "description": "Join the forums before March 1st, 2014 -- the creation of the Parkourdude91 board.",
-                    "date": "2014-12-16T08:40:41-0500"
-                },
-                {
-                    "points": 15,
-                    "name": "Christorian",
-                    "description": "Join the forums before March 1st, 2013 -- the first month that the Lolcow board existed.",
-                    "date": "2014-12-16T08:40:41-0500"
-                },
-                {
-                    "points": 20,
-                    "name": "Fire Relief Fund Contributor",
-                    "description": "Donated to the January 2014 fund to send Chris a \"big box of stuff\".",
-                    "date": "2014-08-28T08:40:44-0400"
-                },
-                {
-                    "points": 50,
-                    "name": "Thought Provoking",
-                    "description": "Have 500 or more posts with at least a 1:1 ratio of Likes.",
-                    "date": "2014-06-02T17:40:22-0400"
-                },
-                {
-                    "points": 100,
-                    "name": "Christorical Figure",
-                    "description": "Have played a role in the story of Christian Weston Chandler.",
-                    "date": "2014-03-12T23:59:34-0400"
-                },
-                {
-                    "points": 20,
-                    "name": "Jerkief",
-                    "description": "\"Aroo, maybe so.\" - President Richard Nixon during the 3000 presidential election",
-                    "date": "2014-03-07T07:40:39-0500"
-                },
-                {
-                    "points": 25,
-                    "name": "Inspiration that hard to come by",
-                    "description": "Receive 250 Likes on your posts or messages.",
-                    "date": "2014-03-06T04:41:17-0500"
-                },
-                {
-                    "points": 15,
-                    "name": "Your thoughts have been inputed",
-                    "description": "Receive 100 Likes on your posts or messages.",
-                    "date": "2014-03-06T04:41:17-0500"
-                },
-                {
-                    "points": 10,
-                    "name": "Mm, yeah",
-                    "description": "Receive 50 Likes on your posts or messages.",
-                    "date": "2014-03-06T04:41:17-0500"
-                }
-            ]
-        }
+    "12": {
+        "user_username": "introman",
+        "user_id": 12,
+        "user_image": "//uploads.kiwifarms.st/data/avatars/o/0/12.jpg?1558400182",
+        "user_messages": 1601,
+        "user_reaction_score": "Positive",
+        "user_points": 0,
+        "user_joined": 1359899125,
+        "user_last_seen": 1664825499,
+        "user_blurb": "Great Value™ Portable Pizza Pocket",
+        "user_role": "Retired Staff",
+        "following": [],
+        "trophies": []
+    },
+    "13": {
+        "user_username": "cwcthinker",
+        "user_id": 13,
+        "user_image": "//uploads.kiwifarms.st/data/avatars/o/0/13.jpg?1394010477",
+        "user_messages": 16,
+        "user_reaction_score": "Positive",
+        "user_points": 0,
+        "user_joined": 1359899943,
+        "user_last_seen": 1449431297,
+        "user_blurb": null,
+        "user_role": null,
+        "following": [],
+        "trophies": []
+    },
+    "14": {
+        "user_username": "the-hunter",
+        "user_id": 14,
+        "user_image": "//uploads.kiwifarms.st/data/avatars/o/0/14.jpg?1418003294",
+        "user_messages": 2641,
+        "user_reaction_score": "Positive",
+        "user_points": 0,
+        "user_joined": 1359899961,
+        "user_last_seen": null,
+        "user_blurb": "Border Hopping Taco Bender",
+        "user_role": "Retired Staff",
+        "following": [],
+        "trophies": []
+    },
+    "4": {
+        "user_username": "freecell",
+        "user_id": 4,
+        "user_image": "//uploads.kiwifarms.st/data/avatars/o/0/4.jpg?1420671081",
+        "user_messages": 70,
+        "user_reaction_score": "Positive",
+        "user_points": 0,
+        "user_joined": 1359636381,
+        "user_last_seen": 1498679430,
+        "user_blurb": null,
+        "user_role": "Retired Staff",
+        "following": [],
+        "trophies": []
+    },
+    "6": {
+        "user_username": "dunsparce",
+        "user_id": 6,
+        "user_image": "//uploads.kiwifarms.st/data/avatars/o/0/6.jpg?1394010477",
+        "user_messages": 1371,
+        "user_reaction_score": "Positive",
+        "user_points": 0,
+        "user_joined": 1359670480,
+        "user_last_seen": null,
+        "user_blurb": "Out of Control",
+        "user_role": "Retired Staff",
+        "following": [],
+        "trophies": []
+    },
+    "7": {
+        "user_username": "dark-mirror-hole",
+        "user_id": 7,
+        "user_image": "//uploads.kiwifarms.st/data/avatars/o/0/7.jpg?1557671839",
+        "user_messages": 630,
+        "user_reaction_score": "Positive",
+        "user_points": 0,
+        "user_joined": 1359897969,
+        "user_last_seen": null,
+        "user_blurb": "I don't use this site anymore",
+        "user_role": null,
+        "following": [],
+        "trophies": []
+    },
+    "8": {
+        "user_username": "jose-mourinho",
+        "user_id": 8,
+        "user_image": "//uploads.kiwifarms.st/data/avatars/o/0/8.jpg?1733376432",
+        "user_messages": 13578,
+        "user_reaction_score": "Positive",
+        "user_points": 0,
+        "user_joined": 1359898439,
+        "user_last_seen": null,
+        "user_blurb": "The Special One",
+        "user_role": "Retired Staff",
+        "following": [],
+        "trophies": []
+    },
+    "9": {
+        "user_username": "darkhorse816",
+        "user_id": 9,
+        "user_image": "//uploads.kiwifarms.st/data/avatars/o/0/9.jpg?1545827001",
+        "user_messages": 971,
+        "user_reaction_score": "Positive",
+        "user_points": 0,
+        "user_joined": 1359898684,
+        "user_last_seen": 1568085302,
+        "user_blurb": "WOOF!",
+        "user_role": null,
+        "following": [],
+        "trophies": []
+    },
+    "10": {
+        "user_username": "thiaf",
+        "user_id": 10,
+        "user_image": "//uploads.kiwifarms.st/data/avatars/o/0/10.jpg?1394010477",
+        "user_messages": 11,
+        "user_reaction_score": "Positive",
+        "user_points": 0,
+        "user_joined": 1359898775,
+        "user_last_seen": null,
+        "user_blurb": null,
+        "user_role": null,
+        "following": [],
+        "trophies": []
+    },
+    "11": {
+        "user_username": "j09506",
+        "user_id": 11,
+        "user_image": null,
+        "user_messages": 6,
+        "user_reaction_score": "Positive",
+        "user_points": 0,
+        "user_joined": 1359898834,
+        "user_last_seen": null,
+        "user_blurb": null,
+        "user_role": null,
+        "following": [],
+        "trophies": []
     },
     "threads": {
         "29205": {

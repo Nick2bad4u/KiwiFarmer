@@ -9,6 +9,7 @@ import os
 import sys
 import logging
 import json
+from datetime import datetime
 
 # Add the parent directory to the sys.path to import kiwifarmer module
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -19,7 +20,7 @@ from kiwifarmer import base
 
 ###############################################################################
 
-THREAD_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_threads'))
+THREAD_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_threads'))
 
 START = 0
 
@@ -34,13 +35,21 @@ logger = logging.getLogger()
 
 def load_existing_data(file_path):
     if os.path.exists(file_path):
-        with open(file_path, 'r') as file:
+        with open(file_path, 'r', encoding='utf-8') as file:
             return json.load(file)
-    return []
+    return {}
 
 def save_data(file_path, data):
-    with open(file_path, 'w') as file:
+    with open(file_path, 'w', encoding='utf-8') as file:
         json.dump(data, file, indent=4)
+
+def convert_timestamp_to_human_readable(timestamp_str):
+    """Convert ISO timestamp string to human-readable format (YYYY-MM-DD HH:MM:SS)."""
+    try:
+        dt = datetime.fromisoformat(timestamp_str)
+        return dt.strftime('%Y-%m-%d %H:%M:%S')
+    except ValueError:
+        return 'Unknown'
 
 def extract_messages(thread_soup):
     messages = []
@@ -49,17 +58,24 @@ def extract_messages(thread_soup):
         user_name = user.text.strip() if user else 'Unknown'
         user_id = user['data-user-id'] if user and 'data-user-id' in user.attrs else 'Unknown'
 
+        # Convert user_id to integer if it's a digit
+        if user_id.isdigit():
+            user_id = int(user_id)
+
         content = message.find('div', class_='bbWrapper')
         content_text = content.text.strip() if content else 'No content'
 
         timestamp = message.find('time', class_='u-dt')
         timestamp_text = timestamp['datetime'] if timestamp else 'Unknown'
 
+        # Convert timestamp to human-readable format
+        timestamp_human_readable = convert_timestamp_to_human_readable(timestamp_text)
+
         message_data = {
             'user_name': user_name,
-            'user_id': user_id,
+            'user_id': user_id,  # user_id is now an integer (if it's a digit)
             'content': content_text,
-            'timestamp': timestamp_text,
+            'timestamp': timestamp_human_readable,  # Human-readable timestamp
         }
         messages.append(message_data)
 
@@ -96,8 +112,12 @@ if __name__ == '__main__':
                 'messages': messages,
             }
 
-            data.append(thread_data)
-            logger.info(f'Successfully added {thread_file} to data list')
+            # Add thread data to the existing data
+            if str(thread.thread_id) not in data:
+                data[str(thread.thread_id)] = thread_data
+                logger.info(f'Successfully added {thread_file} to data list')
+            else:
+                logger.info(f'Thread {thread.thread_id} already exists in the data list')
         else:
             logger.error(f'Failed to process {thread_file} due to missing timestamp')
 

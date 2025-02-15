@@ -1,251 +1,253 @@
 {
-    "3": {
-        "user_id": "3",
-        "trophies": [
-            {
-                "points": 25,
-                "name": "The Line, Held",
-                "description": "Survive the Innaguration of President Donald J. Trump.",
-                "date": "2020-04-17T00:15:42-0400"
-            },
-            {
-                "points": 15,
-                "name": "CWCki Sperg!",
-                "description": "Join the forums before March 1st, 2014 -- the creation of the Parkourdude91 board.",
-                "date": "2015-11-01T22:29:53-0500"
-            },
-            {
-                "points": 15,
-                "name": "Christorian",
-                "description": "Join the forums before March 1st, 2013 -- the first month that the Lolcow board existed.",
-                "date": "2015-11-01T22:29:53-0500"
-            },
-            {
-                "points": 50,
-                "name": "Thought Provoking",
-                "description": "Have 500 or more posts with at least a 1:1 ratio of Likes.",
-                "date": "2014-04-14T14:40:12-0400"
-            },
-            {
-                "points": 20,
-                "name": "Jerkief",
-                "description": "\"Aroo, maybe so.\" - President Richard Nixon during the 3000 presidential election",
-                "date": "2014-03-07T12:40:11-0500"
-            },
-            {
-                "points": 25,
-                "name": "Inspiration that hard to come by",
-                "description": "Receive 250 Likes on your posts or messages.",
-                "date": "2014-03-05T19:52:31-0500"
-            },
-            {
-                "points": 15,
-                "name": "Your thoughts have been inputed",
-                "description": "Receive 100 Likes on your posts or messages.",
-                "date": "2014-03-05T19:52:31-0500"
-            },
-            {
-                "points": 10,
-                "name": "Mm, yeah",
-                "description": "Receive 50 Likes on your posts or messages.",
-                "date": "2014-03-05T19:52:31-0500"
-            }
-        ]
-    },
-    "2": {
-        "user_id": "2",
-        "trophies": [
-            {
-                "points": 25,
-                "name": "The Line, Held",
-                "description": "Survive the Innaguration of President Donald J. Trump.",
-                "date": "2017-02-10T19:29:49-0500"
-            },
-            {
-                "points": 75,
-                "name": "Inspirational",
-                "description": "Have over 1000 posts with at least a 1:1 ratio of Likes.",
-                "date": "2015-03-29T12:40:17-0400"
-            },
-            {
-                "points": 10,
-                "name": "I Want To Get Off Mr. Jan's Wild Ride",
-                "description": "Survive Deagle Nation.\n(Register before the February 22nd \"Jace is a hoax.\" thread.)",
-                "date": "2015-03-02T21:40:44-0500"
-            },
-            {
-                "points": 25,
-                "name": "Online socialization is a bust!",
-                "description": "Meet another member of the forums offline.",
-                "date": "2015-02-06T07:40:54-0500"
-            },
-            {
-                "points": 15,
-                "name": "CWCki Sperg!",
-                "description": "Join the forums before March 1st, 2014 -- the creation of the Parkourdude91 board.",
-                "date": "2014-12-16T08:40:41-0500"
-            },
-            {
-                "points": 15,
-                "name": "Christorian",
-                "description": "Join the forums before March 1st, 2013 -- the first month that the Lolcow board existed.",
-                "date": "2014-12-16T08:40:41-0500"
-            },
-            {
-                "points": 20,
-                "name": "Fire Relief Fund Contributor",
-                "description": "Donated to the January 2014 fund to send Chris a \"big box of stuff\".",
-                "date": "2014-08-28T08:40:44-0400"
-            },
-            {
-                "points": 50,
-                "name": "Thought Provoking",
-                "description": "Have 500 or more posts with at least a 1:1 ratio of Likes.",
-                "date": "2014-06-02T17:40:22-0400"
-            },
-            {
-                "points": 100,
-                "name": "Christorical Figure",
-                "description": "Have played a role in the story of Christian Weston Chandler.",
-                "date": "2014-03-12T23:59:34-0400"
-            },
-            {
-                "points": 20,
-                "name": "Jerkief",
-                "description": "\"Aroo, maybe so.\" - President Richard Nixon during the 3000 presidential election",
-                "date": "2014-03-07T07:40:39-0500"
-            },
-            {
-                "points": 25,
-                "name": "Inspiration that hard to come by",
-                "description": "Receive 250 Likes on your posts or messages.",
-                "date": "2014-03-06T04:41:17-0500"
-            },
-            {
-                "points": 15,
-                "name": "Your thoughts have been inputed",
-                "description": "Receive 100 Likes on your posts or messages.",
-                "date": "2014-03-06T04:41:17-0500"
-            },
-            {
-                "points": 10,
-                "name": "Mm, yeah",
-                "description": "Receive 50 Likes on your posts or messages.",
-                "date": "2014-03-06T04:41:17-0500"
-            }
-        ]
-    },
-    "1": {
-        "user_id": "1",
-        "trophies": [
-            {
-                "points": 25,
-                "name": "Phase 3: Shitpost",
-                "description": "Survive Phase 2 of #DropKiwifarms.\nRegister before August 30th, 2022 and be active in the month of August.",
-                "date": "2022-08-31T15:40:44-0400"
-            },
-            {
-                "points": 40,
-                "name": "Talent Finder",
-                "description": "Create a Lolcow thread that receives over 100,000 views.\nThis trophy is manually given.",
-                "date": "2015-09-28T04:37:43-0400"
-            },
-            {
-                "points": 5,
-                "name": "Extremely Helpful Gamer",
-                "description": "Complete a feat of strength in service of Deagle Nation.",
-                "date": "2015-08-18T05:24:15-0400"
-            },
-            {
-                "points": 10,
-                "name": "I Want To Get Off Mr. Jan's Wild Ride",
-                "description": "Survive Deagle Nation.\n(Register before the February 22nd \"Jace is a hoax.\" thread.)",
-                "date": "2015-03-02T19:40:39-0500"
-            },
-            {
-                "points": 15,
-                "name": "CWCki Sperg!",
-                "description": "Join the forums before March 1st, 2014 -- the creation of the Parkourdude91 board.",
-                "date": "2014-12-15T23:20:46-0500"
-            },
-            {
-                "points": 15,
-                "name": "Christorian",
-                "description": "Join the forums before March 1st, 2013 -- the first month that the Lolcow board existed.",
-                "date": "2014-12-15T23:20:46-0500"
-            },
-            {
-                "points": 10,
-                "name": "(Charity) Semper Fidelis to All Are Armed Forces",
-                "description": "2014 Charity: Injured Marine Semper Fi Fund",
-                "date": "2014-11-16T21:21:16-0500"
-            },
-            {
-                "points": 10,
-                "name": "(Charity) A-U-T-I-S-M",
-                "description": "2014 Charity: Autism Research Institute\n\"A-U-T-I-S-M: what does it mean? Silence and friends unseen! A few brains as well: that is autism! And that makes us seem special to you!\"",
-                "date": "2014-11-06T22:40:10-0500"
-            },
-            {
-                "points": 20,
-                "name": "Jerkief",
-                "description": "\"Aroo, maybe so.\" - President Richard Nixon during the 3000 presidential election",
-                "date": "2014-08-27T21:40:48-0400"
-            },
-            {
-                "points": 20,
-                "name": "Fire Relief Fund Contributor",
-                "description": "Donated to the January 2014 fund to send Chris a \"big box of stuff\".",
-                "date": "2014-08-27T14:38:54-0400"
-            },
-            {
-                "points": 15,
-                "name": "Hitler's Paintbrush",
-                "description": "Make a serious artistic contribution to the site.",
-                "date": "2014-08-20T19:40:23-0400"
-            },
-            {
-                "points": 5,
-                "name": "Voice of Spergatory",
-                "description": "Do a reading of a forum post.",
-                "date": "2014-04-17T16:50:14-0400"
-            },
-            {
-                "points": 50,
-                "name": "Loyal Sonichu Fan",
-                "description": "An esteemed trophy for the world's most dedicated Sonichu fans.",
-                "date": "2014-04-10T07:40:30-0400"
-            },
-            {
-                "points": 25,
-                "name": "Online socialization is a bust!",
-                "description": "Meet another member of the forums offline.",
-                "date": "2014-03-12T23:04:28-0400"
-            },
-            {
-                "points": 25,
-                "name": "Inspiration that hard to come by",
-                "description": "Receive 250 Likes on your posts or messages.",
-                "date": "2014-03-05T19:52:31-0500"
-            },
-            {
-                "points": 15,
-                "name": "Your thoughts have been inputed",
-                "description": "Receive 100 Likes on your posts or messages.",
-                "date": "2014-03-05T19:52:31-0500"
-            },
-            {
-                "points": 10,
-                "name": "Mm, yeah",
-                "description": "Receive 50 Likes on your posts or messages.",
-                "date": "2014-03-05T19:52:31-0500"
-            },
-            {
-                "points": 75,
-                "name": "Inspirational",
-                "description": "Have over 1000 posts with at least a 1:1 ratio of Likes.",
-                "date": "2014-03-05T19:52:31-0500"
-            }
-        ]
+    "trophies": {
+        "3": {
+            "user_id": "3",
+            "trophies_earned": [
+                {
+                    "points": 25,
+                    "name": "The Line, Held",
+                    "description": "Survive the Innaguration of President Donald J. Trump.",
+                    "date": "2020-04-17T00:15:42-0400"
+                },
+                {
+                    "points": 15,
+                    "name": "CWCki Sperg!",
+                    "description": "Join the forums before March 1st, 2014 -- the creation of the Parkourdude91 board.",
+                    "date": "2015-11-01T22:29:53-0500"
+                },
+                {
+                    "points": 15,
+                    "name": "Christorian",
+                    "description": "Join the forums before March 1st, 2013 -- the first month that the Lolcow board existed.",
+                    "date": "2015-11-01T22:29:53-0500"
+                },
+                {
+                    "points": 50,
+                    "name": "Thought Provoking",
+                    "description": "Have 500 or more posts with at least a 1:1 ratio of Likes.",
+                    "date": "2014-04-14T14:40:12-0400"
+                },
+                {
+                    "points": 20,
+                    "name": "Jerkief",
+                    "description": "\"Aroo, maybe so.\" - President Richard Nixon during the 3000 presidential election",
+                    "date": "2014-03-07T12:40:11-0500"
+                },
+                {
+                    "points": 25,
+                    "name": "Inspiration that hard to come by",
+                    "description": "Receive 250 Likes on your posts or messages.",
+                    "date": "2014-03-05T19:52:31-0500"
+                },
+                {
+                    "points": 15,
+                    "name": "Your thoughts have been inputed",
+                    "description": "Receive 100 Likes on your posts or messages.",
+                    "date": "2014-03-05T19:52:31-0500"
+                },
+                {
+                    "points": 10,
+                    "name": "Mm, yeah",
+                    "description": "Receive 50 Likes on your posts or messages.",
+                    "date": "2014-03-05T19:52:31-0500"
+                }
+            ]
+        },
+        "2": {
+            "user_id": "2",
+            "trophies_earned": [
+                {
+                    "points": 25,
+                    "name": "The Line, Held",
+                    "description": "Survive the Innaguration of President Donald J. Trump.",
+                    "date": "2017-02-10T19:29:49-0500"
+                },
+                {
+                    "points": 75,
+                    "name": "Inspirational",
+                    "description": "Have over 1000 posts with at least a 1:1 ratio of Likes.",
+                    "date": "2015-03-29T12:40:17-0400"
+                },
+                {
+                    "points": 10,
+                    "name": "I Want To Get Off Mr. Jan's Wild Ride",
+                    "description": "Survive Deagle Nation.\n(Register before the February 22nd \"Jace is a hoax.\" thread.)",
+                    "date": "2015-03-02T21:40:44-0500"
+                },
+                {
+                    "points": 25,
+                    "name": "Online socialization is a bust!",
+                    "description": "Meet another member of the forums offline.",
+                    "date": "2015-02-06T07:40:54-0500"
+                },
+                {
+                    "points": 15,
+                    "name": "CWCki Sperg!",
+                    "description": "Join the forums before March 1st, 2014 -- the creation of the Parkourdude91 board.",
+                    "date": "2014-12-16T08:40:41-0500"
+                },
+                {
+                    "points": 15,
+                    "name": "Christorian",
+                    "description": "Join the forums before March 1st, 2013 -- the first month that the Lolcow board existed.",
+                    "date": "2014-12-16T08:40:41-0500"
+                },
+                {
+                    "points": 20,
+                    "name": "Fire Relief Fund Contributor",
+                    "description": "Donated to the January 2014 fund to send Chris a \"big box of stuff\".",
+                    "date": "2014-08-28T08:40:44-0400"
+                },
+                {
+                    "points": 50,
+                    "name": "Thought Provoking",
+                    "description": "Have 500 or more posts with at least a 1:1 ratio of Likes.",
+                    "date": "2014-06-02T17:40:22-0400"
+                },
+                {
+                    "points": 100,
+                    "name": "Christorical Figure",
+                    "description": "Have played a role in the story of Christian Weston Chandler.",
+                    "date": "2014-03-12T23:59:34-0400"
+                },
+                {
+                    "points": 20,
+                    "name": "Jerkief",
+                    "description": "\"Aroo, maybe so.\" - President Richard Nixon during the 3000 presidential election",
+                    "date": "2014-03-07T07:40:39-0500"
+                },
+                {
+                    "points": 25,
+                    "name": "Inspiration that hard to come by",
+                    "description": "Receive 250 Likes on your posts or messages.",
+                    "date": "2014-03-06T04:41:17-0500"
+                },
+                {
+                    "points": 15,
+                    "name": "Your thoughts have been inputed",
+                    "description": "Receive 100 Likes on your posts or messages.",
+                    "date": "2014-03-06T04:41:17-0500"
+                },
+                {
+                    "points": 10,
+                    "name": "Mm, yeah",
+                    "description": "Receive 50 Likes on your posts or messages.",
+                    "date": "2014-03-06T04:41:17-0500"
+                }
+            ]
+        },
+        "1": {
+            "user_id": "1",
+            "trophies_earned": [
+                {
+                    "points": 25,
+                    "name": "Phase 3: Shitpost",
+                    "description": "Survive Phase 2 of #DropKiwifarms.\nRegister before August 30th, 2022 and be active in the month of August.",
+                    "date": "2022-08-31T15:40:44-0400"
+                },
+                {
+                    "points": 40,
+                    "name": "Talent Finder",
+                    "description": "Create a Lolcow thread that receives over 100,000 views.\nThis trophy is manually given.",
+                    "date": "2015-09-28T04:37:43-0400"
+                },
+                {
+                    "points": 5,
+                    "name": "Extremely Helpful Gamer",
+                    "description": "Complete a feat of strength in service of Deagle Nation.",
+                    "date": "2015-08-18T05:24:15-0400"
+                },
+                {
+                    "points": 10,
+                    "name": "I Want To Get Off Mr. Jan's Wild Ride",
+                    "description": "Survive Deagle Nation.\n(Register before the February 22nd \"Jace is a hoax.\" thread.)",
+                    "date": "2015-03-02T19:40:39-0500"
+                },
+                {
+                    "points": 15,
+                    "name": "CWCki Sperg!",
+                    "description": "Join the forums before March 1st, 2014 -- the creation of the Parkourdude91 board.",
+                    "date": "2014-12-15T23:20:46-0500"
+                },
+                {
+                    "points": 15,
+                    "name": "Christorian",
+                    "description": "Join the forums before March 1st, 2013 -- the first month that the Lolcow board existed.",
+                    "date": "2014-12-15T23:20:46-0500"
+                },
+                {
+                    "points": 10,
+                    "name": "(Charity) Semper Fidelis to All Are Armed Forces",
+                    "description": "2014 Charity: Injured Marine Semper Fi Fund",
+                    "date": "2014-11-16T21:21:16-0500"
+                },
+                {
+                    "points": 10,
+                    "name": "(Charity) A-U-T-I-S-M",
+                    "description": "2014 Charity: Autism Research Institute\n\"A-U-T-I-S-M: what does it mean? Silence and friends unseen! A few brains as well: that is autism! And that makes us seem special to you!\"",
+                    "date": "2014-11-06T22:40:10-0500"
+                },
+                {
+                    "points": 20,
+                    "name": "Jerkief",
+                    "description": "\"Aroo, maybe so.\" - President Richard Nixon during the 3000 presidential election",
+                    "date": "2014-08-27T21:40:48-0400"
+                },
+                {
+                    "points": 20,
+                    "name": "Fire Relief Fund Contributor",
+                    "description": "Donated to the January 2014 fund to send Chris a \"big box of stuff\".",
+                    "date": "2014-08-27T14:38:54-0400"
+                },
+                {
+                    "points": 15,
+                    "name": "Hitler's Paintbrush",
+                    "description": "Make a serious artistic contribution to the site.",
+                    "date": "2014-08-20T19:40:23-0400"
+                },
+                {
+                    "points": 5,
+                    "name": "Voice of Spergatory",
+                    "description": "Do a reading of a forum post.",
+                    "date": "2014-04-17T16:50:14-0400"
+                },
+                {
+                    "points": 50,
+                    "name": "Loyal Sonichu Fan",
+                    "description": "An esteemed trophy for the world's most dedicated Sonichu fans.",
+                    "date": "2014-04-10T07:40:30-0400"
+                },
+                {
+                    "points": 25,
+                    "name": "Online socialization is a bust!",
+                    "description": "Meet another member of the forums offline.",
+                    "date": "2014-03-12T23:04:28-0400"
+                },
+                {
+                    "points": 25,
+                    "name": "Inspiration that hard to come by",
+                    "description": "Receive 250 Likes on your posts or messages.",
+                    "date": "2014-03-05T19:52:31-0500"
+                },
+                {
+                    "points": 15,
+                    "name": "Your thoughts have been inputed",
+                    "description": "Receive 100 Likes on your posts or messages.",
+                    "date": "2014-03-05T19:52:31-0500"
+                },
+                {
+                    "points": 10,
+                    "name": "Mm, yeah",
+                    "description": "Receive 50 Likes on your posts or messages.",
+                    "date": "2014-03-05T19:52:31-0500"
+                },
+                {
+                    "points": 75,
+                    "name": "Inspirational",
+                    "description": "Have over 1000 posts with at least a 1:1 ratio of Likes.",
+                    "date": "2014-03-05T19:52:31-0500"
+                }
+            ]
+        }
     }
 }

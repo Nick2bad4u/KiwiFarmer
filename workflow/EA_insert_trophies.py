@@ -18,7 +18,7 @@ from urllib.parse import urlparse
 
 ###############################################################################
 
-PAGE_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_members_about'))
+PAGE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_members_about'))
 START = 0
 DATABASE_FILE = 'kiwifarms_trophies_20210224.json'
 
@@ -124,7 +124,7 @@ if __name__ == '__main__':
             # Convert trophy_page details to a dictionary
             trophy_data = {
                 'user_id': user_id,
-                'trophies': trophy_page.trophies
+                'trophies_earned': trophy_page.trophies
             }
 
             # Check if the member already exists in the data
@@ -140,7 +140,10 @@ if __name__ == '__main__':
         except Exception as e:
             logger.error(f'Failed to process {page_file}: {e}')
 
+    # Wrap the data in a top-level "trophies" key
+    final_data = {'trophies': existing_data}
+
     # Save all data to JSON file
-    save_data(DATABASE_FILE, existing_data)
+    save_data(DATABASE_FILE, final_data)
 
     logger.info("Script finished")

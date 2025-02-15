@@ -16,11 +16,19 @@ database = {}
 # Add users data
 database['users'] = users
 
-# Add following data
-database['following'] = following
+# Merge following data into users
+for user_id, follow_list in following.items():
+    if user_id in database['users']:
+        database['users'][user_id]['following'] = follow_list
+    else:
+        database['users'][user_id] = {'following': follow_list}
 
-# Add trophies data
-database['trophies'] = trophies
+# Merge trophies data into users
+for user_id, trophy_data in trophies.items():
+    if user_id in database['users']:
+        database['users'][user_id]['trophies'] = trophy_data['trophies']
+    else:
+        database['users'][user_id] = {'trophies': trophy_data['trophies']}
 
 # Add threads data
 database['threads'] = threads

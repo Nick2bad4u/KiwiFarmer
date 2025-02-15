@@ -15,7 +15,7 @@ logging.basicConfig(
 )
 
 # Define the directory containing the HTML files and the output JSON file
-PAGE_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_members_connections'))
+PAGE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_members_connections'))
 DATABASE_FILE = 'kiwifarms_following_20210224.json'
 
 # Initialize a dictionary to store all user-following relationships
@@ -25,7 +25,8 @@ all_data = {}
 if os.path.exists(DATABASE_FILE):
     logging.info(f"Loading existing data from {DATABASE_FILE}...")
     with open(DATABASE_FILE, 'r', encoding='utf-8') as json_file:
-        all_data = json.load(json_file)
+        existing_data = json.load(json_file)
+        all_data = existing_data.get("follower", {})  # Load existing followers data
     logging.info(f"Loaded data for {len(all_data)} users.")
 else:
     logging.info(f"No existing data found. Starting from scratch.")
@@ -40,7 +41,8 @@ for html_file in html_files:
         # Extract the username and user_id from the filename
         filename = os.path.basename(html_file)
         user_info = filename.replace('members.', '').replace('.about.html', '')
-        logging.info(f"Processing file: {filename} (User Info: {user_info})")
+        user_id = user_info.split('.')[0]  # Extract the numeric user_id
+        logging.info(f"Processing file: {filename} (User ID: {user_id})")
 
         # Load the HTML content from the file
         with open(html_file, 'r', encoding='utf-8') as file:
@@ -58,44 +60,40 @@ for html_file in html_files:
                 if follower_link:
                     # Extract user_id from the URL
                     following_user_id = follower_link['href'].split('/')[-2]
-                    follower_data['user_id'] = following_user_id
+                    follower_parts = following_user_id.rsplit('.', 1)
+                    if len(follower_parts) == 2:
+                        user_name, follower_id = follower_parts
+                    else:
+                        user_name = follower_parts[0]
+                        follower_id = ""
+                    follower_data = {
+                        "user_name": user_name,
+                        "user_id": int(follower_id) if follower_id.isdigit() else follower_id
+                    }
 
-                    # # Extract message count, points, and referrals
-                    # content_row_minor = follower.find('div', class_='contentRow-minor')
-                    # if content_row_minor:
-                    #     pairs = content_row_minor.find_all('dl', class_='pairs pairs--inline')
-                    #     for pair in pairs:
-                    #         key = pair.find('dt').text.strip().lower()
-                    #         value = pair.find('dd').text.strip()
-                    #         follower_data[key] = value
+                    # Add the follower data to the list if not already present
+                    if user_id not in all_data:
+                        all_data[user_id] = {}
+                    if follower_id not in all_data[user_id]:
+                        all_data[user_id][follower_id] = follower_data
+                        logging.info(f"Added follower {follower_id} for user {user_id}.")
+                    else:
+                        logging.info(f"Follower {follower_id} already exists for user {user_id}.")
 
-                    # # Extract location (if available)
-                    # content_row_lesser = follower.find('div', class_='contentRow-lesser')
-                    # if content_row_lesser:
-                    #     location = content_row_lesser.find('a', class_='u-concealed')
-                    #     if location:
-                    #         follower_data['location'] = location.text.strip()
-                    #     else:
-                    #         follower_data['location'] = None
-
-                    # Add the follower data to the list
-                    if user_info not in all_data:
-                        all_data[user_info] = []
-                    all_data[user_info].append(follower_data)
-
-            logging.info(f"Found {len(all_data[user_info])} followers for user {user_info}.")
+            logging.info(f"Found {len(all_data[user_id])} followers for user {user_id}.")
         else:
             logging.warning(f"No followers list found in file: {filename}")
 
     except Exception as e:
         logging.error(f"Error processing file {filename}: {e}")
 
+# Wrap the data under a "follower" key
+final_data = {"follower": all_data}
+
 # Write the updated data to the JSON file
 logging.info(f"Writing data to {DATABASE_FILE}...")
 with open(DATABASE_FILE, 'w', encoding='utf-8') as json_file:
-    # Modify the keys to remove the extra parts and keep only the user_id
-    cleaned_data = {key.split('.')[0]: value for key, value in all_data.items()}
-    json.dump(cleaned_data, json_file, indent=4)
-logging.info(f"Data saved successfully. Total users in dataset: {len(cleaned_data)}.")
+    json.dump(final_data, json_file, indent=4)
+logging.info(f"Data saved successfully. Total users in dataset: {len(all_data)}.")
 
 print(f"Data extracted and saved to {DATABASE_FILE}")

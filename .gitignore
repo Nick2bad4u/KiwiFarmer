@@ -85,3 +85,4 @@ venv.bak/
 # custom local environment variables
 .history/
 data/
+script.log
