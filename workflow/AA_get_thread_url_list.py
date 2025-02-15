@@ -28,7 +28,10 @@ OUTPUT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data
 
 SITEMAPS = [
     'sitemap-1.xml',
-    'sitemap-2.xml'
+    'sitemap-2.xml',
+    'sitemap-3.xml',
+    'sitemap-4.xml',
+    'sitemap-5.xml'
 ]
 
 URL_PREFIX = 'https://kiwifarms.st/'
