@@ -47,7 +47,8 @@ logging.basicConfig(level=logging.INFO,
 logger = logging.getLogger()
 
 
-def download_sitemap_with_selenium(url):
+def initialize_selenium_driver():
+    """Initialize and return a Selenium WebDriver instance."""
     options = Options()
     options.headless = True  # Run in headless mode
     options.add_argument("--no-sandbox")
@@ -55,7 +56,11 @@ def download_sitemap_with_selenium(url):
 
     driver = webdriver.Chrome(service=Service(
         ChromeDriverManager().install()), options=options)
+    return driver
 
+
+def download_sitemap_with_selenium(driver, url):
+    """Download the content of a sitemap using the provided Selenium WebDriver."""
     try:
         driver.get(url)
         time.sleep(10)  # Allow time for the JavaScript challenge to be solved
@@ -65,47 +70,51 @@ def download_sitemap_with_selenium(url):
     except Exception as e:
         logger.error(f"Failed to download {url}: {e}")
         return None
-    finally:
-        driver.quit()
 
 
 if __name__ == '__main__':
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    for sitemap in SITEMAPS:
+    # Initialize the Selenium WebDriver
+    driver = initialize_selenium_driver()
 
-        sitemap_url = URL_PREFIX + sitemap
-        sitemap_content = download_sitemap_with_selenium(sitemap_url)
+    try:
+        for sitemap in SITEMAPS:
+            sitemap_url = URL_PREFIX + sitemap
+            sitemap_content = download_sitemap_with_selenium(driver, sitemap_url)
 
-        if sitemap_content:
-            output_sitemap = os.path.join(OUTPUT_DIR, sitemap)
-            with open(output_sitemap, 'w', encoding='utf-8') as f:
-                f.write(sitemap_content)
+            if sitemap_content:
+                output_sitemap = os.path.join(OUTPUT_DIR, sitemap)
+                with open(output_sitemap, 'w', encoding='utf-8') as f:
+                    f.write(sitemap_content)
 
-            with open(output_sitemap, 'r', encoding='utf-8') as f:
-                soup = BeautifulSoup(f.read(), 'xml')
+                with open(output_sitemap, 'r', encoding='utf-8') as f:
+                    soup = BeautifulSoup(f.read(), 'xml')
 
-            urls = soup.find_all('url')
-            urls = [url.find('loc').text for url in urls]
+                urls = soup.find_all('url')
+                urls = [url.find('loc').text for url in urls]
 
-            thread_urls = [
-                url for url in urls if url.startswith(THREAD_PATTERN)]
-            member_urls = [
-                url for url in urls if url.startswith(MEMBER_PATTERN)]
+                thread_urls = [
+                    url for url in urls if url.startswith(THREAD_PATTERN)]
+                member_urls = [
+                    url for url in urls if url.startswith(MEMBER_PATTERN)]
 
-            # Ensure the thread_url_list and member_url_list are written correctly
-            thread_url_list = os.path.join(OUTPUT_DIR, THREAD_LIST_FILENAME)
-            with open(thread_url_list, 'a', encoding='utf-8') as f:
-                for url in thread_urls:
-                    f.write(url + '\n')
+                # Ensure the thread_url_list and member_url_list are written correctly
+                thread_url_list = os.path.join(OUTPUT_DIR, THREAD_LIST_FILENAME)
+                with open(thread_url_list, 'a', encoding='utf-8') as f:
+                    for url in thread_urls:
+                        f.write(url + '\n')
 
-            member_url_list = os.path.join(OUTPUT_DIR, MEMBER_LIST_FILENAME)
-            with open(member_url_list, 'a', encoding='utf-8') as f:
-                for url in member_urls:
-                    f.write(url + '\n')
+                member_url_list = os.path.join(OUTPUT_DIR, MEMBER_LIST_FILENAME)
+                with open(member_url_list, 'a', encoding='utf-8') as f:
+                    for url in member_urls:
+                        f.write(url + '\n')
 
-            logger.info(
-                f"Processed {sitemap}: {len(thread_urls)} thread URLs and {len(member_urls)} member URLs")
+                logger.info(
+                    f"Processed {sitemap}: {len(thread_urls)} thread URLs and {len(member_urls)} member URLs")
+    finally:
+        # Close the Selenium WebDriver after all sitemaps are processed
+        driver.quit()
 
 ###############################################################################

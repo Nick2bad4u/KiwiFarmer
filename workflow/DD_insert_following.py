@@ -26,7 +26,7 @@ if os.path.exists(DATABASE_FILE):
     logging.info(f"Loading existing data from {DATABASE_FILE}...")
     with open(DATABASE_FILE, 'r', encoding='utf-8') as json_file:
         existing_data = json.load(json_file)
-        all_data = existing_data.get("follower", {})  # Load existing followers data
+        all_data = existing_data.get("followers", {})  # Load existing followers data
     logging.info(f"Loaded data for {len(all_data)} users.")
 else:
     logging.info(f"No existing data found. Starting from scratch.")
@@ -87,8 +87,8 @@ for html_file in html_files:
     except Exception as e:
         logging.error(f"Error processing file {filename}: {e}")
 
-# Wrap the data under a "follower" key
-final_data = {"follower": all_data}
+# Wrap the data under a "followers" key
+final_data = {"followers": all_data}
 
 # Write the updated data to the JSON file
 logging.info(f"Writing data to {DATABASE_FILE}...")

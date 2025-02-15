@@ -85,4 +85,6 @@ venv.bak/
 # custom local environment variables
 .history/
 data/
+data_visuals/
 script.log
+visualization.log

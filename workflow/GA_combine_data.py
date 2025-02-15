@@ -24,11 +24,11 @@ for user_id, follow_list in following.items():
         database['users'][user_id] = {'following': follow_list}
 
 # Merge trophies data into users
-for user_id, trophy_data in trophies.items():
+for user_id, trophy_data in trophies['trophies'].items():
     if user_id in database['users']:
-        database['users'][user_id]['trophies'] = trophy_data['trophies']
+        database['users'][user_id]['trophies'] = trophy_data['trophies_earned']
     else:
-        database['users'][user_id] = {'trophies': trophy_data['trophies']}
+        database['users'][user_id] = {'trophies': trophy_data['trophies_earned']}
 
 # Add threads data
 database['threads'] = threads
