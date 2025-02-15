@@ -6,8 +6,8 @@ ignore_list = [
     ".git",
     "node_modules",
     ".DS_Store",
-    "ignore_this_file.txt",
-    ".history"
+    ".history",
+    "styles"
 ]
 
 def should_ignore(path, ignore_list):
