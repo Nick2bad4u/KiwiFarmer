@@ -20,6 +20,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 from kiwifarmer.utils import (
     page_filename_to_url,
@@ -28,8 +30,8 @@ from kiwifarmer.utils import (
 
 ###############################################################################
 
-URL_LIST_FILE =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'thread_url_list.txt'))
-OUTPUT_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_threads'))
+URL_LIST_FILE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'thread_url_list.txt'))
+OUTPUT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_threads'))
 NUM_THREADS = 1
 THRESHOLD_KB = 20
 MAX_RETRIES = 3
@@ -56,10 +58,15 @@ def setup_selenium():
         ChromeDriverManager().install()), options=options)
     return driver
 
+def wait_for_page_load(driver):
+    WebDriverWait(driver, 30).until(
+        lambda d: d.execute_script('return document.readyState') == 'complete'
+    )
+
 def download_page(url, driver):
     try:
         driver.get(url)
-        time.sleep(RETRY_INTERVAL)  # Allow time for the page to load
+        wait_for_page_load(driver)  # Wait until the page is fully loaded
         content = driver.page_source
         return content
     except Exception as e:
