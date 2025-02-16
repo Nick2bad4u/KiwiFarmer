@@ -20,7 +20,7 @@ from urllib.parse import urlparse
 
 PAGE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_members_about'))
 START = 0
-DATABASE_FILE = 'kiwifarms_trophies_20210224.json'
+TROPHY_DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'trophy_data'))
 
 ###############################################################################
 
@@ -30,6 +30,7 @@ logging.basicConfig(level=logging.INFO,
 logger = logging.getLogger()
 
 def load_existing_data(file_path):
+    """Load existing data from a JSON file. Return an empty dictionary if the file is empty or invalid."""
     if os.path.exists(file_path):
         with open(file_path, 'r', encoding='utf-8') as file:
             try:
@@ -44,6 +45,7 @@ def load_existing_data(file_path):
     return {}
 
 def save_data(file_path, data):
+    """Save data to a JSON file."""
     with open(file_path, 'w', encoding='utf-8') as file:
         json.dump(data, file, indent=4)
 
@@ -98,8 +100,9 @@ def get_user_id_from_url(page_file):
     return user_id
 
 if __name__ == '__main__':
-    # Load existing data as a dictionary with member_id as the key
-    existing_data = load_existing_data(DATABASE_FILE)
+    # Ensure the trophy data directory exists
+    if not os.path.exists(TROPHY_DATA_DIR):
+        os.makedirs(TROPHY_DATA_DIR)
 
     # Process HTML files of pages, insert fields into JSON
     # ---------------------------------------------------------------------------#
@@ -127,23 +130,26 @@ if __name__ == '__main__':
                 'trophies_earned': trophy_page.trophies
             }
 
-            # Check if the member already exists in the data
-            if user_id in existing_data:
-                # Update the existing member's data
-                existing_data[user_id].update(trophy_data)
-                logger.info(f'Updated existing member {user_id}')
+            # Define the path for the user's trophy JSON file
+            user_trophy_file_path = os.path.join(TROPHY_DATA_DIR, f'{user_id}.json')
+
+            # Load existing trophy data if the file exists
+            existing_trophy_data = load_existing_data(user_trophy_file_path)
+
+            # Check if the user already exists in the data
+            if existing_trophy_data:
+                # Update the existing user's trophy data
+                existing_trophy_data.update(trophy_data)
+                logger.info(f'Updated existing user {user_id}')
             else:
-                # Add a new member entry
-                existing_data[user_id] = trophy_data
-                logger.info(f'Added new member {user_id} to data list')
+                # Add a new user entry
+                existing_trophy_data = trophy_data
+                logger.info(f'Added new user {user_id} to data list')
+
+            # Save the user's trophy data to their respective JSON file
+            save_data(user_trophy_file_path, existing_trophy_data)
 
         except Exception as e:
             logger.error(f'Failed to process {page_file}: {e}')
-
-    # Wrap the data in a top-level "trophies" key
-    final_data = {'trophies': existing_data}
-
-    # Save all data to JSON file
-    save_data(DATABASE_FILE, final_data)
 
     logger.info("Script finished")

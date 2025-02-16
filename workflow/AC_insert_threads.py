@@ -1,5 +1,3 @@
-# -*- coding: UTF-8 -*-
-
 """Test initialization of the `Thread` class.
 """
 
@@ -24,7 +22,7 @@ THREAD_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data
 
 START = 0
 
-DATABASE_FILE = 'kiwifarms_20210224.json'
+DATABASE_DIR = 'data/kiwifarms_threads'  # Changed to directory name
 
 ###############################################################################
 
@@ -36,7 +34,11 @@ logger = logging.getLogger()
 def load_existing_data(file_path):
     if os.path.exists(file_path):
         with open(file_path, 'r', encoding='utf-8') as file:
-            return json.load(file)
+            try:
+                return json.load(file)
+            except json.JSONDecodeError:
+                logger.error(f"Existing data file {file_path} is corrupt. Returning empty dict.")
+                return {}
     return {}
 
 def save_data(file_path, data):
@@ -83,8 +85,9 @@ def extract_messages(thread_soup):
 
 if __name__ == '__main__':
 
-    # Load existing data
-    data = load_existing_data(DATABASE_FILE)
+    # Create the directory if it doesn't exist
+    if not os.path.exists(DATABASE_DIR):
+        os.makedirs(DATABASE_DIR)
 
     # Process HTML files of threads, insert fields into JSON
     # ---------------------------------------------------------------------------#
@@ -101,6 +104,12 @@ if __name__ == '__main__':
         thread = base.Thread(thread_page=thread_soup)
 
         if thread.thread_timestamp is not None:
+            thread_id = str(thread.thread_id)
+            thread_file_path = os.path.join(DATABASE_DIR, f'{thread_id}.json')
+
+            # Load existing data for this thread
+            existing_data = load_existing_data(thread_file_path)
+
             # Extract messages from the thread
             messages = extract_messages(thread_soup)
 
@@ -112,18 +121,14 @@ if __name__ == '__main__':
                 'messages': messages,
             }
 
-            # Add thread data to the existing data
-            if str(thread.thread_id) not in data:
-                data[str(thread.thread_id)] = thread_data
-                logger.info(f'Successfully added {thread_file} to data list')
+            # Check if the thread already exists
+            if existing_data:
+                logger.info(f'Thread {thread.thread_id} already exists. Skipping.')
             else:
-                logger.info(f'Thread {thread.thread_id} already exists in the data list')
+                # Save thread data to JSON file
+                save_data(thread_file_path, thread_data)
+                logger.info(f'Successfully added {thread_file} to data list')
         else:
             logger.error(f'Failed to process {thread_file} due to missing timestamp')
 
-    # Save all data to JSON file
-    save_data(DATABASE_FILE, data)
-
     logger.info('Script finished')
-
-###############################################################################

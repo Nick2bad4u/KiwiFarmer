@@ -1,5 +1,3 @@
-# -*- coding: UTF-8 -*-
-
 """Download and write to file the HTML for all KiwiFarms users.
 """
 
@@ -18,12 +16,15 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 
 ###############################################################################
 
-OUTPUT_DIR =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_members'))
+OUTPUT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_members'))
 LOGIN_URL = 'https://kiwifarms.st/login/'
-URL_LIST_FILE =os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'member_url_list.txt'))
+URL_LIST_FILE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'member_url_list.txt'))
 
 ###############################################################################
 
@@ -50,12 +51,12 @@ def login_to_kiwifarms(driver):
         username_id = soup.find('input', {'autocomplete': 'username'})['id']
         password_id = soup.find('input', {'type': 'password'})['id']
 
-        driver.find_element_by_id(username_id).send_keys(
+        driver.find_element(By.ID, username_id).send_keys(
             os.getenv('KIWIFARMS_USERNAME'))
-        driver.find_element_by_id(password_id).send_keys(
+        driver.find_element(By.ID, password_id).send_keys(
             os.getenv('KIWIFARMS_PASSWORD'))
-        driver.find_element_by_css_selector(
-            '.button--primary.button.button--icon.button--icon--login').click()
+        driver.find_element(By.CSS_SELECTOR,
+                           '.button--primary.button.button--icon.button--icon--login').click()
         logger.info("Logged in successfully")
     except (NoSuchElementException, TimeoutException) as e:
         logger.error(f"Error during login: {e}")
@@ -68,7 +69,16 @@ def download_member_pages(driver, url_list, output_dir):
         logger.info(f"Processing {i}: {url}")
         try:
             driver.get(url + '#about')
-            with open(os.path.join(output_dir, f'{i}.html'), 'w', encoding='utf-8') as f:
+
+            # Wait for the page to load (adjust timeout as needed)
+            WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.CLASS_NAME, 'block-container'))
+            )
+
+            # Extract filename from URL
+            filename = url.split('/')[-2] + ".html"
+
+            with open(os.path.join(output_dir, filename), 'w', encoding='utf-8') as f:
                 f.write(driver.page_source)
             logger.info(f"Successfully downloaded {url}")
         except Exception as e:

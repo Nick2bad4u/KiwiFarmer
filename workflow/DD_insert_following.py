@@ -16,20 +16,12 @@ logging.basicConfig(
 
 # Define the directory containing the HTML files and the output JSON file
 PAGE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_members_connections'))
-DATABASE_FILE = 'kiwifarms_following_20210224.json'
+DATABASE_DIR = 'data/kiwifarms_followers'  # Directory to store individual JSON files
 
-# Initialize a dictionary to store all user-following relationships
-all_data = {}
-
-# Load existing data from the JSON file (if it exists)
-if os.path.exists(DATABASE_FILE):
-    logging.info(f"Loading existing data from {DATABASE_FILE}...")
-    with open(DATABASE_FILE, 'r', encoding='utf-8') as json_file:
-        existing_data = json.load(json_file)
-        all_data = existing_data.get("followers", {})  # Load existing followers data
-    logging.info(f"Loaded data for {len(all_data)} users.")
-else:
-    logging.info(f"No existing data found. Starting from scratch.")
+# Create the output directory if it doesn't exist
+if not os.path.exists(DATABASE_DIR):
+    os.makedirs(DATABASE_DIR)
+    logging.info(f"Created directory: {DATABASE_DIR}")
 
 # Get a list of all HTML files in the directory
 html_files = glob.glob(os.path.join(PAGE_DIR, '*.html'))
@@ -53,6 +45,20 @@ for html_file in html_files:
 
         # Extract the following_user_ids and additional details from the list of followers
         followers_list = soup.find('ol', class_='block-body')
+
+        # Load existing data from the JSON file, if it exists
+        output_file = os.path.join(DATABASE_DIR, f'{user_id}.json')
+        existing_data = {}
+        if os.path.exists(output_file):
+            try:
+                with open(output_file, 'r', encoding='utf-8') as f:
+                    existing_data = json.load(f)
+            except json.JSONDecodeError:
+                logging.warning(f"JSONDecodeError: Could not decode existing data in {output_file}. Starting from scratch.")
+                existing_data = {}
+
+        followers_data = existing_data  # Initialize with existing data
+
         if followers_list:
             for follower in followers_list.find_all('li', class_='block-row'):
                 follower_data = {}
@@ -66,34 +72,34 @@ for html_file in html_files:
                     else:
                         user_name = follower_parts[0]
                         follower_id = ""
+
+                    if not follower_id:
+                        logging.warning(f"Skipping follower due to missing follower_id in file: {filename}")
+                        continue
+
                     follower_data = {
                         "user_name": user_name,
                         "user_id": int(follower_id) if follower_id.isdigit() else follower_id
                     }
 
                     # Add the follower data to the list if not already present
-                    if user_id not in all_data:
-                        all_data[user_id] = {}
-                    if follower_id not in all_data[user_id]:
-                        all_data[user_id][follower_id] = follower_data
+                    if follower_id not in followers_data:
+                        followers_data[follower_id] = follower_data
                         logging.info(f"Added follower {follower_id} for user {user_id}.")
                     else:
                         logging.info(f"Follower {follower_id} already exists for user {user_id}.")
 
-            logging.info(f"Found {len(all_data[user_id])} followers for user {user_id}.")
+            logging.info(f"Found {len(followers_data)} followers for user {user_id}.")
         else:
             logging.warning(f"No followers list found in file: {filename}")
+
+        # Write the followers data to the JSON file
+        logging.info(f"Writing data to {output_file}...")
+        with open(output_file, 'w', encoding='utf-8') as json_file:
+            json.dump(followers_data, json_file, indent=4)
+        logging.info(f"Data saved successfully for user {user_id}.")
 
     except Exception as e:
         logging.error(f"Error processing file {filename}: {e}")
 
-# Wrap the data under a "followers" key
-final_data = {"followers": all_data}
-
-# Write the updated data to the JSON file
-logging.info(f"Writing data to {DATABASE_FILE}...")
-with open(DATABASE_FILE, 'w', encoding='utf-8') as json_file:
-    json.dump(final_data, json_file, indent=4)
-logging.info(f"Data saved successfully. Total users in dataset: {len(all_data)}.")
-
-print(f"Data extracted and saved to {DATABASE_FILE}")
+print(f"Data extracted and saved to individual JSON files in {DATABASE_DIR}")

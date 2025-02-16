@@ -20,7 +20,7 @@ from kiwifarmer import base
 
 USER_PAGE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'downloaded_members'))
 START = 0
-DATABASE_FILE = 'kiwifarms_users_20210224.json'
+DATABASE_DIR = 'data/kiwifarms_users'  # Changed to directory name
 
 ###############################################################################
 
@@ -35,14 +35,11 @@ def load_existing_data(file_path):
         with open(file_path, 'r', encoding='utf-8') as file:
             try:
                 data = json.load(file)
-                if not isinstance(data, dict):
-                    logger.error(f"Existing data file {file_path} contains data of type {type(data)}, expected dict. Overwriting with empty dict.")
-                    return {"users": {}}  # Initialize with "users" key
                 return data
             except json.JSONDecodeError:
-                logger.error(f"Existing data file {file_path} is corrupt. Overwriting with empty dict.")
-                return {"users": {}}  # Initialize with "users" key
-    return {"users": {}}  # Initialize with "users" key
+                logger.error(f"Existing data file {file_path} is corrupt. Returning empty dict.")
+                return {}
+    return {}
 
 def save_data(file_path, data):
     """Save data to a JSON file."""
@@ -65,12 +62,10 @@ def fix_user_image_url(user_image):
     return user_image
 
 if __name__ == '__main__':
-    # Load existing data as a dictionary with user_id as the key
-    existing_data = load_existing_data(DATABASE_FILE)
 
-    # Ensure the "users" key exists in the existing data
-    if "users" not in existing_data:
-        existing_data["users"] = {}
+    # Create the directory if it doesn't exist
+    if not os.path.exists(DATABASE_DIR):
+        os.makedirs(DATABASE_DIR)
 
     # Process HTML files of user pages, insert fields into JSON
     # ---------------------------------------------------------------------------#
@@ -95,6 +90,12 @@ if __name__ == '__main__':
             logger.warning(f'Skipping {user_page_file} due to missing user_id or user_username')
             continue
 
+        user_id = str(user.user_id)
+        user_file_path = os.path.join(DATABASE_DIR, f'{user_id}.json')
+
+        # Load existing data for this user
+        existing_data = load_existing_data(user_file_path)
+
         # Convert user details to a dictionary
         user_data = {
             'user_username': user.user_username,
@@ -110,20 +111,23 @@ if __name__ == '__main__':
         }
 
         # Check if the user already exists in the data
-        if str(user.user_id) in existing_data["users"]:
+        if existing_data:
             # Update only the fields that are missing or have changed
+            updated = False
             for key, value in user_data.items():
-                if key not in existing_data["users"][str(user.user_id)] or existing_data["users"][str(user.user_id)][key] != value:
-                    existing_data["users"][str(user.user_id)][key] = value
+                if key not in existing_data or existing_data[key] != value:
+                    existing_data[key] = value
                     logger.info(f'Updated field "{key}" for user {user.user_id}')
+                    updated = True
+
+            if not updated:
+                logger.info(f'No updates for user {user.user_id}')
         else:
             # Add a new user entry
-            existing_data["users"][str(user.user_id)] = user_data
+            existing_data = user_data
             logger.info(f'Added new user {user.user_id} to data list')
 
-    # Save all data to JSON file
-    save_data(DATABASE_FILE, existing_data)
+        # Save data to JSON file
+        save_data(user_file_path, existing_data)
 
     logger.info('Script finished')
-
-###############################################################################
