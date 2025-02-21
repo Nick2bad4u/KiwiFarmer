@@ -11,9 +11,9 @@ pytest==8.3.4
 redis==5.2.1
 Requests==2.32.3
 seaborn==0.13.2
-selenium==4.28.1
+selenium==4.29.0
 setuptools==75.8.0
-Sphinx==8.1.3
+Sphinx==8.2.0
 textblob==0.19.0
 webdriver_manager==4.0.2
 wordcloud==1.9.4
