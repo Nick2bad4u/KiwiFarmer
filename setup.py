@@ -44,7 +44,7 @@ setup(
       'pytest-asyncio >= 0.14.0' ],
     'smat': [
       'redis >= 3.5.3',
-      'elasticsearch >= 7.0.0, < 9.0.0' ], },
+      'elasticsearch >= 7.0.0, < 10.0.0' ], },
   include_package_data = True,
   zip_safe = False )
 
