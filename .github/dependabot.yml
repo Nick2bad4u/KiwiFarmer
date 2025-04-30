@@ -12,7 +12,7 @@ updates:
   - package-ecosystem: github-actions
     directory: /
     schedule:
-      interval: daily
+      interval: monthly
     allow:
       # Allow both direct and indirect updates for all packages
       - dependency-type: "all"
@@ -24,17 +24,17 @@ updates:
         patterns:
           - "*"
 
-  - package-ecosystem: "pip"
-    directory: "/" # Location of the package manifest files
+  - package-ecosystem: pip
+    directory: /
     schedule:
-      interval: "daily" # Check for updates weekly
+      interval: monthly
     allow:
       # Allow both direct and indirect updates for all packages
       - dependency-type: "all"
     labels:
       - "pip"
     groups:
-      pip:
+      github-actions:
         applies-to: version-updates
         patterns:
           - "*"
